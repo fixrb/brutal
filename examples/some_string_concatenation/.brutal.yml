@@ -1,0 +1,18 @@
+header: |
+  # Some string concatenation unit tests
+
+subject: |
+  "Hello" + "%{hello_target}%{punctuation_mark}"
+
+variables:
+  :hello_target:
+    -
+    - ", Bob"
+
+  :punctuation_mark:
+    - "!"
+    - ...
+
+challenges:
+  - .to_s
+  - .length

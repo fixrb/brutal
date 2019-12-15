@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'yaml'
+
+FILE_NAME = '.brutal.yml'
+CONF_PATH = ::File.join(::Dir.pwd, FILE_NAME)
+
+abort "File #{CONF_PATH} not found!" unless ::File.exist?(CONF_PATH)
+
+conf = ::YAML.load_file(CONF_PATH)
+
+header      = conf.fetch('header', '')
+subject     = conf.fetch('subject')
+challenges  = conf.fetch('challenges')
+variables   = conf.fetch('variables')
+
+raise ::TypeError unless header.is_a?(::String)
+raise ::TypeError unless challenges.is_a?(::Array)
+raise ::TypeError unless variables.is_a?(::Hash)
+
+require_relative ::File.join('..', 'lib', 'brutal')
+
+brutal_scaffold = case ARGV.fetch(0, nil)
+                  when nil
+                    ::Brutal::Framework::Poro
+                  else
+                    abort "Framework #{ARGV[0].inspect} not (yet) supported!"
+                  end
+
+eval(header)
+
+brutal_specs = header + brutal_scaffold.new(subject, *challenges, **variables)
+                                       .to_s
+
+file = ::File.open('test.rb', 'w')
+file.write(brutal_specs)
+file.close
