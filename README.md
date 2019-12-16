@@ -2,7 +2,7 @@
 
 > Brutal test suite scaffold generator
 
-![A lumberjack brutally cutting a tree.](img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg)
+![A lumberjack brutally cutting a tree.](https://raw.githubusercontent.com/cyril/brutal.rb/master/img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg)
 
 [![Build Status](https://api.travis-ci.org/cyril/brutal.rb.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
@@ -25,7 +25,7 @@ Or install it yourself as:
 
     $ gem install brutal
 
-## QuickStart
+## Quick Start
 
 Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
@@ -43,6 +43,7 @@ The Brutal YAML file handles 4 keys:
 Given this `.brutal.yml` config file:
 
 ```yaml
+---
 header: |
   # Some string concatenation unit tests
 
@@ -59,8 +60,8 @@ variables:
     - ...
 
 challenges:
-  - .to_s
-  - .length
+  - "%{actual}.to_s"
+  - "%{actual}.length"
 ```
 
 The `brutal` command would generate the following file:
@@ -70,31 +71,31 @@ The `brutal` command would generate the following file:
 
 # ------------------------------------------------------------------------------
 
-result = "Hello" + "!"
+actual = "Hello" + "!"
 
-raise unless result.to_s == "Hello!"
-raise unless result.length == 6
-
-# ------------------------------------------------------------------------------
-
-result = "Hello" + "..."
-
-raise unless result.to_s == "Hello..."
-raise unless result.length == 8
+raise unless actual.to_s == "Hello!"
+raise unless actual.length == 6
 
 # ------------------------------------------------------------------------------
 
-result = "Hello" + ", Bob!"
+actual = "Hello" + "..."
 
-raise unless result.to_s == "Hello, Bob!"
-raise unless result.length == 11
+raise unless actual.to_s == "Hello..."
+raise unless actual.length == 8
 
 # ------------------------------------------------------------------------------
 
-result = "Hello" + ", Bob..."
+actual = "Hello" + ", Bob!"
 
-raise unless result.to_s == "Hello, Bob..."
-raise unless result.length == 13
+raise unless actual.to_s == "Hello, Bob!"
+raise unless actual.length == 11
+
+# ------------------------------------------------------------------------------
+
+actual = "Hello" + ", Bob..."
+
+raise unless actual.to_s == "Hello, Bob..."
+raise unless actual.length == 13
 ```
 
 ## Integration with Rake

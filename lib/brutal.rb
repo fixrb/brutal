@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Main namespace
+#
+# @api public
 module Brutal
 end
 

@@ -1,3 +1,4 @@
+---
 header: |
   # Some string concatenation unit tests
 
@@ -14,5 +15,5 @@ variables:
     - ...
 
 challenges:
-  - .to_s
-  - .length
+  - "%{actual}.to_s"
+  - "%{actual}.length"

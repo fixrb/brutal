@@ -23,7 +23,7 @@ require_relative ::File.join('..', 'lib', 'brutal')
 
 brutal_scaffold = case ARGV.fetch(0, nil)
                   when nil
-                    ::Brutal::Framework::Poro
+                    ::Brutal::Framework::Por
                   else
                     abort "Framework #{ARGV[0].inspect} not (yet) supported!"
                   end

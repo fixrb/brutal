@@ -2,28 +2,28 @@
 
 # ------------------------------------------------------------------------------
 
-result = "Hello" + "!"
+actual = "Hello" + "!"
 
-raise unless result.to_s == "Hello!"
-raise unless result.length == 6
-
-# ------------------------------------------------------------------------------
-
-result = "Hello" + "..."
-
-raise unless result.to_s == "Hello..."
-raise unless result.length == 8
+raise unless actual.to_s == "Hello!"
+raise unless actual.length == 6
 
 # ------------------------------------------------------------------------------
 
-result = "Hello" + ", Bob!"
+actual = "Hello" + "..."
 
-raise unless result.to_s == "Hello, Bob!"
-raise unless result.length == 11
+raise unless actual.to_s == "Hello..."
+raise unless actual.length == 8
 
 # ------------------------------------------------------------------------------
 
-result = "Hello" + ", Bob..."
+actual = "Hello" + ", Bob!"
 
-raise unless result.to_s == "Hello, Bob..."
-raise unless result.length == 13
+raise unless actual.to_s == "Hello, Bob!"
+raise unless actual.length == 11
+
+# ------------------------------------------------------------------------------
+
+actual = "Hello" + ", Bob..."
+
+raise unless actual.to_s == "Hello, Bob..."
+raise unless actual.length == 13
