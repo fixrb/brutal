@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email        = 'contact@cyril.email'
   spec.summary      = 'Brutal test suite scaffold generator'
   spec.description  = spec.summary
-  spec.homepage     = 'https://github.com/cyril/brutal.rb'
+  spec.homepage     = 'https://github.com/fixrb/brutal'
   spec.license      = 'MIT'
   spec.files        = Dir['LICENSE.md', 'README.md', 'bin/*', 'lib/**/*']
   spec.executables  = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }

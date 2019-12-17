@@ -2,11 +2,11 @@
 
 > Brutal test suite scaffold generator
 
-![A lumberjack brutally cutting a tree.](https://raw.githubusercontent.com/cyril/brutal.rb/master/img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg)
+![A lumberjack brutally cutting a tree.](https://raw.githubusercontent.com/fixrb/brutal/master/img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg)
 
-[![Build Status](https://api.travis-ci.org/cyril/brutal.rb.svg?branch=master)][travis]
+[![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
-[![Inline docs](https://inch-ci.org/github/cyril/brutal.rb.svg?branch=master)][inchpages]
+[![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=master)][inchpages]
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 ## Installation
@@ -110,8 +110,8 @@ end
 
 ## Contact
 
-* Home page: https://github.com/cyril/brutal.rb
-* Bugs/issues: https://github.com/cyril/brutal.rb/issues
+* Home page: https://github.com/fixrb/brutal
+* Bugs/issues: https://github.com/fixrb/brutal/issues
 
 ## Rubies
 
@@ -121,7 +121,7 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/cyril/brutal.rb. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/cyril/brutal.rb/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/fixrb/brutal. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/fixrb/brutal/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -129,9 +129,9 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the GreatGuardian project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/cyril/brutal.rb/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the GreatGuardian project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/fixrb/brutal/blob/master/CODE_OF_CONDUCT.md).
 
 [gem]: https://rubygems.org/gems/brutal
-[travis]: https://travis-ci.org/cyril/brutal.rb
-[inchpages]: https://inch-ci.org/github/cyril/brutal.rb
+[travis]: https://travis-ci.org/fixrb/brutal
+[inchpages]: https://inch-ci.org/github/fixrb/brutal
 [rubydoc]: https://rubydoc.info/gems/brutal/frames
