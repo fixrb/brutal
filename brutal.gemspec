@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.version      = File.read('VERSION.semver').chomp
   spec.author       = 'Cyril Kato'
   spec.email        = 'contact@cyril.email'
-  spec.summary      = 'Brutal test suite scaffold generator'
+  spec.summary      = 'Scaffolds test cases from the code itself.'
   spec.description  = spec.summary
   spec.homepage     = 'https://github.com/fixrb/brutal'
   spec.license      = 'MIT'

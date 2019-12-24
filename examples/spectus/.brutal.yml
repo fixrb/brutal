@@ -5,56 +5,57 @@ header: |
   require 'spectus'
   include Spectus
 
+front_object: |
+  "foo"
+
 subject: |
-    begin
-      it { %{lambda} }.%{level} %{matcher}
-    rescue ::Spectus::Result::Fail => e
-      e
-    end
+  begin
+    it { %{front_object}.%{challenge} }.%{level} %{matcher}
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 
 variables:
-  :lambda:
-    - 42
-    - "'foo'.upcase"
-    - "'foo'.gsub!('f', 'b')"
-    - "'foo'.boom"
-    - "'foo'.empty?(4)"
-    - ArgumentError.new
-    - Exception
-  :level:
-    - MUST
-    - SHOULD
-    - MAY
-    - MUST_NOT
-    - SHOULD_NOT
-    - MUST!
-    - SHOULD!
-    - MAY!
-    - MUST_NOT!
-    - SHOULD_NOT!
-  :matcher:
-    - raise_exception(NoMethodError)
-    - raise_exception(ArgumentError)
-    - equal(42)
+  challenge:
+    - "upcase"
+    - "gsub!('f', 'b')"
+    - "boom"
+    - "empty?(4)"
+  level:
+    - "MUST"
+    - "SHOULD"
+    - "MAY"
+    - "MUST_NOT"
+    - "SHOULD_NOT"
+    - "MUST!"
+    - "SHOULD!"
+    - "MAY!"
+    - "MUST_NOT!"
+    - "SHOULD_NOT!"
+  matcher:
+    - "raise_exception(NoMethodError)"
+    - "raise_exception(ArgumentError)"
+    - "eql('foo')"
+    - "equal(42)"
 
-challenges:
-  - "%{actual}.level"
-  - "%{actual}.to_s"
-  - "%{actual}.to_sym"
-  - "%{actual}.error?"
-  - "%{actual}.failure?"
-  - "%{actual}.info?"
-  - "%{actual}.negate?"
-  - "%{actual}.failed?"
-  - "%{actual}.passed?"
-  - "%{actual}.success?"
-  - "%{actual}.valid?"
-  - "%{actual}.warning?"
-  - "%{actual}.char"
-  - "%{actual}.message"
-  - "%{actual}.to_s"
-  - "%{actual}.inspect"
-  - "%{actual}.color('foo')"
-  - "%{actual}.actual.class"
-  - "%{actual}.error.class"
-  - "%{actual}.got.class"
+actual_values:
+  - "%{subject}.level"
+  - "%{subject}.to_s"
+  - "%{subject}.to_sym"
+  - "%{subject}.error?"
+  - "%{subject}.failure?"
+  - "%{subject}.info?"
+  - "%{subject}.negate?"
+  - "%{subject}.failed?"
+  - "%{subject}.passed?"
+  - "%{subject}.success?"
+  - "%{subject}.valid?"
+  - "%{subject}.warning?"
+  - "%{subject}.char"
+  - "%{subject}.message"
+  - "%{subject}.to_s"
+  - "%{subject}.inspect"
+  - "%{subject}.color('foo')"
+  - "%{subject}.actual.class"
+  - "%{subject}.error.class"
+  - "%{subject}.got.class"

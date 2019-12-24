@@ -1,0 +1,13 @@
+---
+front_object: -42
+
+subject: |
+  %{front_object}.%{challenge}
+
+variables:
+  challenge:
+    - abs
+    - "-(2)"
+
+actual_values:
+  - "%{subject}.to_s"

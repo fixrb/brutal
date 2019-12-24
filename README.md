@@ -1,13 +1,22 @@
-# Brutal
+# Brutal 👹
 
-> Brutal test suite scaffold generator
-
-![A lumberjack brutally cutting a tree.](https://raw.githubusercontent.com/fixrb/brutal/master/img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg)
+> I don't like testing because it's redundant. If we are smart enough, we can avoid it. <br/>
+> -- Matz
 
 [![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
 [![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=master)][inchpages]
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
+
+__Brutal__ is a _code-first_ approach that automates the writing of unit tests.
+
+By being able to generate test cases from the code itself, developers can focus on their creation, save time and energy, for more happiness.
+
+<p>
+  <img
+    src="https://github.com/fixrb/brutal/raw/master/img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg"
+    alt="A lumberjack brutally cutting a tree" />
+</p>
 
 ## Installation
 
@@ -34,9 +43,10 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 The Brutal YAML file handles 4 keys:
 
 * `header` (optional): Some code to execute before the test suite.
-* `subject` (required): The front object of the test suite.
-* `variables` (required): A hash to decline the subject in to various contexts.
-* `challenges` (required): An array of methods to apply to each result.
+* `front_object` (required): The front object of the test suite.
+* `subject` (required): The object of each context.
+* `variables` (required): A hash to generate the subject of each context.
+* `actual_values` (required): A list of tests to challenge the subject.
 
 ## Example
 
@@ -44,61 +54,43 @@ Given this `.brutal.yml` config file:
 
 ```yaml
 ---
-header: |
-  # Some string concatenation unit tests
+front_object: |
+  "Hello "
 
 subject: |
-  "Hello" + "%{hello_target}%{punctuation_mark}"
+  %{front_object} + %{string}
 
 variables:
-  :hello_target:
-    -
-    - ", Bob"
+  string:
+    - "'Alice'"
+    - "'Bob'"
 
-  :punctuation_mark:
-    - "!"
-    - ...
-
-challenges:
-  - "%{actual}.to_s"
-  - "%{actual}.length"
+actual_values:
+  - "%{subject}.to_s"
+  - "%{subject}.length"
 ```
 
-The `brutal` command would generate the following file:
+The `brutal` command would save this Plain Old Ruby in to a `test.rb` file:
 
 ```ruby
-# Some string concatenation unit tests
+front_object = "Hello "
 
 # ------------------------------------------------------------------------------
 
-actual = "Hello" + "!"
-
-raise unless actual.to_s == "Hello!"
-raise unless actual.length == 6
-
-# ------------------------------------------------------------------------------
-
-actual = "Hello" + "..."
-
-raise unless actual.to_s == "Hello..."
-raise unless actual.length == 8
-
-# ------------------------------------------------------------------------------
-
-actual = "Hello" + ", Bob!"
-
-raise unless actual.to_s == "Hello, Bob!"
+actual = front_object + 'Alice'
+raise unless actual.to_s == "Hello Alice"
 raise unless actual.length == 11
 
 # ------------------------------------------------------------------------------
 
-actual = "Hello" + ", Bob..."
-
-raise unless actual.to_s == "Hello, Bob..."
-raise unless actual.length == 13
+actual = front_object + 'Bob'
+raise unless actual.to_s == "Hello Bob"
+raise unless actual.length == 9
 ```
 
-## Integration with Rake
+[More examples](examples/) are available.
+
+## Rake integration example
 
 The generated brutal test suite `test.rb` file can be declared as follows:
 
@@ -119,6 +111,10 @@ end
 * [Rubinius](https://rubinius.com/)
 * [JRuby](https://www.jruby.org/)
 
+## Versioning
+
+__Brutal__ follows [Semantic Versioning 2.0](https://semver.org/).
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/fixrb/brutal. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/fixrb/brutal/blob/master/CODE_OF_CONDUCT.md).
@@ -135,3 +131,12 @@ Everyone interacting in the GreatGuardian project's codebases, issue trackers, c
 [travis]: https://travis-ci.org/fixrb/brutal
 [inchpages]: https://inch-ci.org/github/fixrb/brutal
 [rubydoc]: https://rubydoc.info/gems/brutal/frames
+
+***
+
+<p>
+  This project is sponsored by:<br />
+  <a href="https://sashite.com/"><img
+    src="https://github.com/fixrb/brutal/raw/master/img/sashite.png"
+    alt="Sashite" /></a>
+</p>

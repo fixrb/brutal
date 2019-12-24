@@ -1,0 +1,30 @@
+---
+header: |
+  # frozen_string_literal: true
+
+  require 'simplecov'
+
+  SimpleCov.command_name 'Brutal test suite'
+  SimpleCov.start
+
+  require './lib/brutal'
+
+front_object: 'Brutal::ScaffoldGenerator::Por'
+
+subject: |
+  %{front_object}.new(%{var_front_object}, %{var_subject}, *%{var_actual_values}, challenge: ["abs", "-(2)"])
+
+variables:
+  var_front_object:
+    - 42
+
+  var_subject:
+    - |
+      "%{front_object}.%{challenge}"
+
+  var_actual_values:
+    - |
+      "%{subject}.to_s"
+
+actual_values:
+  - "%{subject}.to_s"

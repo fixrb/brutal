@@ -1,0 +1,15 @@
+---
+front_object: |
+  "Hello "
+
+subject: |
+  %{front_object} + %{string}
+
+variables:
+  string:
+    - "'Alice'"
+    - "'Bob'"
+
+actual_values:
+  - "%{subject}.to_s"
+  - "%{subject}.length"

@@ -10,29 +10,34 @@ abort "File #{CONF_PATH} not found!" unless ::File.exist?(CONF_PATH)
 
 conf = ::YAML.load_file(CONF_PATH)
 
-header      = conf.fetch('header', '')
-subject     = conf.fetch('subject')
-challenges  = conf.fetch('challenges')
-variables   = conf.fetch('variables')
+header        = conf.fetch('header', '').to_s.chomp
+front_object  = conf.fetch('front_object')
+subject       = conf.fetch('subject')
+variables     = conf.fetch('variables', {})
+actual_values = conf.fetch('actual_values')
 
-raise ::TypeError unless header.is_a?(::String)
-raise ::TypeError unless challenges.is_a?(::Array)
+raise ::TypeError unless subject.is_a?(::String)
 raise ::TypeError unless variables.is_a?(::Hash)
+raise ::TypeError unless actual_values.is_a?(::Array)
+
+front_object = front_object.chomp if front_object.is_a?(::String)
 
 require_relative ::File.join('..', 'lib', 'brutal')
 
-brutal_scaffold = case ARGV.fetch(0, nil)
-                  when nil
-                    ::Brutal::Framework::Por
-                  else
-                    abort "Framework #{ARGV[0].inspect} not (yet) supported!"
-                  end
+scaffold = case ARGV.fetch(0, nil)
+           when nil
+             ::Brutal::ScaffoldGenerator::Por
+           else
+             abort "#{ARGV[0].inspect} not (yet) supported!"
+           end
 
-eval(header)
+eval(header) # rubocop:disable Security/Eval
 
-brutal_specs = header + brutal_scaffold.new(subject, *challenges, **variables)
-                                       .to_s
+doc = [
+  header,
+  scaffold.new(front_object, subject, *actual_values, **variables).to_s
+].reject(&:empty?).join("\n")
 
 file = ::File.open('test.rb', 'w')
-file.write(brutal_specs)
+file.write(doc)
 file.close

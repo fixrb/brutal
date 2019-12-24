@@ -1,0 +1,24 @@
+---
+header: |
+  # Some array concatenation unit tests
+
+front_object: |
+  [42, Object]
+
+subject: |
+  %{front_object} + [%{item1}, %{item2}]
+
+variables:
+  :item1:
+    - "nil"
+    - 1
+
+  :item2:
+    - '"!"'
+    - "'!!'"
+    - |
+      "..."
+
+actual_values:
+  - "%{subject}.to_s"
+  - '%{subject}.length'

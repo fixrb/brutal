@@ -3,4 +3,8 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   Exclude:
-    - 'test.rb'
+    - test.rb
+    - examples/**/*
+
+Layout/LineLength:
+  Enabled: false
