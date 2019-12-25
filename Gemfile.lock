@@ -22,7 +22,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
-    rubocop-performance (1.5.1)
+    rubocop-performance (1.5.2)
       rubocop (>= 0.71.0)
     ruby-progressbar (1.10.1)
     simplecov (0.17.1)
@@ -40,10 +40,10 @@ DEPENDENCIES
   brutal!
   bundler (~> 2.0)
   rake (~> 13.0)
-  rubocop (~> 0.78.0)
+  rubocop
   rubocop-performance
   simplecov (~> 0.17)
   yard (~> 0.9)
 
 BUNDLED WITH
-   2.1.1
+   2.1.2
