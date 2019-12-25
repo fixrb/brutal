@@ -40,7 +40,7 @@ DEPENDENCIES
   brutal!
   bundler (~> 2.0)
   rake (~> 13.0)
-  rubocop
+  rubocop (~> 0.78.0)
   rubocop-performance
   simplecov (~> 0.17)
   yard (~> 0.9)
