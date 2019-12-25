@@ -17,7 +17,7 @@ actual = front_object.new(42, "%{front_object}.%{challenge}", *"%{subject}.to_s"
 raise unless actual.to_s == %q(
 # ------------------------------------------------------------------------------
 
-front_object = 42
+front_object = 4
 
 # ------------------------------------------------------------------------------
 
