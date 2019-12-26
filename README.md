@@ -1,4 +1,4 @@
-# Brutal 👹
+# Brutal 🧪
 
 > I don't like testing because it's redundant. If we are smart enough, we can avoid it. <br/>
 > -- Matz
@@ -40,7 +40,8 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
 ## Usage
 
-The Brutal YAML file handles 4 keys:
+Brutal's configuration file is `.brutal.yml`.
+This file can contains those keys:
 
 * `header` (optional): Some code to execute before the test suite.
 * `front_object` (required): The front object of the test suite.
@@ -48,9 +49,15 @@ The Brutal YAML file handles 4 keys:
 * `variables` (required): A hash to generate the subject of each context.
 * `actual_values` (required): A list of tests to challenge the subject.
 
+### Optional parameters
+
+It would also be possible to ask for an RSpec template by passing "`rspec`" argument:
+
+> brutal rspec
+
 ## Example
 
-Given this `.brutal.yml` config file:
+Given this config file:
 
 ```yaml
 ---
@@ -70,7 +77,7 @@ actual_values:
   - "%{subject}.length"
 ```
 
-The `brutal` command would save this Plain Old Ruby in to a `test.rb` file:
+The `brutal` command would generate and write in to a `test.rb` file the following "Plain Old Ruby":
 
 ```ruby
 front_object = "Hello "
@@ -88,7 +95,29 @@ raise unless actual.to_s == "Hello Bob"
 raise unless actual.length == 9
 ```
 
-[More examples](examples/) are available.
+And the `brutal rspec` command would generate and write in to a `test_spec.rb` file the following spec:
+
+```ruby
+RSpec.describe do
+  let(:front_object) { "Hello " }
+
+  context do
+    let(:actual) { front_object + 'Alice' }
+
+    it { expect(actual.to_s).to eq("Hello Alice") }
+    it { expect(actual.length).to eq(11) }
+  end
+
+  context do
+    let(:actual) { front_object + 'Bob' }
+
+    it { expect(actual.to_s).to eq("Hello Bob") }
+    it { expect(actual.length).to eq(9) }
+  end
+end
+```
+
+More examples are available [here](examples/).
 
 ## Rake integration example
 
