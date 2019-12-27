@@ -24,20 +24,22 @@ front_object = front_object.chomp if front_object.is_a?(::String)
 
 require_relative ::File.join('..', 'lib', 'brutal')
 
-scaffold = case ARGV.fetch(0, nil)
-           when nil
-             ::Brutal::ScaffoldGenerator::Por
-           else
-             abort "#{ARGV[0].inspect} not (yet) supported!"
-           end
+scaffold, file_name  = case ARGV.fetch(0, nil)
+                       when nil
+                         [::Brutal::ScaffoldGenerator::Por, 'test.rb']
+                       when 'rspec'
+                         [::Brutal::ScaffoldGenerator::RSpec, 'test_spec.rb']
+                       else
+                         abort "#{ARGV[0].inspect} not (yet) supported!"
+                       end
 
 eval(header) # rubocop:disable Security/Eval
 
 doc = [
   header,
   scaffold.new(front_object, subject, *actual_values, **variables).to_s
-].reject(&:empty?).join("\n")
+].reject(&:empty?).join("\n\n")
 
-file = ::File.open('test.rb', 'w')
+file = ::File.open(file_name, 'w')
 file.write(doc)
 file.close

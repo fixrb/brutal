@@ -1,22 +1,24 @@
-# Brutal 👹
-
-> I don't like testing because it's redundant. If we are smart enough, we can avoid it. <br/>
-> -- Matz
+# Brutal 💎🔨
 
 [![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
 [![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=master)][inchpages]
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
-__Brutal__ is a _code-first_ approach that automates the writing of unit tests.
+> A _code-first_ approach to automate the writing of unit tests.
 
-By being able to generate test cases from the code itself, developers can focus on their creation, save time and energy, for more happiness.
+## Intro
 
-<p>
-  <img
-    src="https://github.com/fixrb/brutal/raw/master/img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg"
-    alt="A lumberjack brutally cutting a tree" />
-</p>
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.png)](https://www.youtube.com/watch?v=cmOt9HhszCI&start=1732&end=1736 "I don't like tests. It's not DRY.")
+
+> I don't like tests. It's not DRY.<br/>
+> -- Matz
+
+## Purpose
+
+Take a break and let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
+
+By delegating to it the writing of unit tests, you'll be able to focus on your core business.
 
 ## Installation
 
@@ -40,7 +42,8 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
 ## Usage
 
-The Brutal YAML file handles 4 keys:
+Brutal's configuration file is `.brutal.yml`.
+This file can contains those keys:
 
 * `header` (optional): Some code to execute before the test suite.
 * `front_object` (required): The front object of the test suite.
@@ -48,9 +51,15 @@ The Brutal YAML file handles 4 keys:
 * `variables` (required): A hash to generate the subject of each context.
 * `actual_values` (required): A list of tests to challenge the subject.
 
+### Optional parameters
+
+It would also be possible to ask for an RSpec template by passing "`rspec`" argument:
+
+> brutal rspec
+
 ## Example
 
-Given this `.brutal.yml` config file:
+Given this config file:
 
 ```yaml
 ---
@@ -70,7 +79,7 @@ actual_values:
   - "%{subject}.length"
 ```
 
-The `brutal` command would save this Plain Old Ruby in to a `test.rb` file:
+The `brutal` command would generate and write in to a `test.rb` file the following "Plain Old Ruby":
 
 ```ruby
 front_object = "Hello "
@@ -88,7 +97,29 @@ raise unless actual.to_s == "Hello Bob"
 raise unless actual.length == 9
 ```
 
-[More examples](examples/) are available.
+And the `brutal rspec` command would generate and write in to a `test_spec.rb` file the following spec:
+
+```ruby
+RSpec.describe do
+  let(:front_object) { "Hello " }
+
+  context do
+    let(:actual) { front_object + 'Alice' }
+
+    it { expect(actual.to_s).to eq("Hello Alice") }
+    it { expect(actual.length).to eq(11) }
+  end
+
+  context do
+    let(:actual) { front_object + 'Bob' }
+
+    it { expect(actual.to_s).to eq("Hello Bob") }
+    it { expect(actual.length).to eq(9) }
+  end
+end
+```
+
+More examples are available [here](examples/).
 
 ## Rake integration example
 

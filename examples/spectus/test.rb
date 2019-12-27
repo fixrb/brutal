@@ -3,6 +3,7 @@
 require 'spectus'
 include Spectus
 
+
 # ------------------------------------------------------------------------------
 
 front_object = "foo"
@@ -14,6 +15,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -42,6 +44,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -70,6 +73,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -98,6 +102,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
@@ -126,6 +131,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
@@ -154,6 +160,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
@@ -182,6 +189,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :warning
@@ -210,6 +218,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :warning
@@ -238,6 +247,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -266,6 +276,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -294,6 +305,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -322,6 +334,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
@@ -350,6 +363,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -378,6 +392,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -406,6 +421,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -434,6 +450,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
@@ -462,6 +479,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -490,6 +508,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -518,6 +537,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -546,6 +566,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
@@ -574,6 +595,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -602,6 +624,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -630,6 +653,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -658,6 +682,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
@@ -686,6 +711,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
@@ -714,6 +740,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
@@ -742,6 +769,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :warning
@@ -770,6 +798,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :warning
@@ -798,6 +827,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -826,6 +856,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -854,6 +885,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -882,6 +914,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
@@ -910,6 +943,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -938,6 +972,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -966,6 +1001,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -994,6 +1030,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
@@ -1022,6 +1059,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -1050,6 +1088,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -1078,6 +1117,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -1106,6 +1146,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
@@ -1134,6 +1175,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected \"boo\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -1162,6 +1204,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -1190,6 +1233,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -1218,6 +1262,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
@@ -1246,6 +1291,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
@@ -1274,6 +1320,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
@@ -1302,6 +1349,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :warning
@@ -1330,6 +1378,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to equal 42."
 raise unless actual.to_sym == :warning
@@ -1358,6 +1407,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -1386,6 +1436,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -1414,6 +1465,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -1442,6 +1494,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
@@ -1470,6 +1523,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -1498,6 +1552,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -1526,6 +1581,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -1554,6 +1610,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
@@ -1582,6 +1639,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -1610,6 +1668,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -1638,6 +1697,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -1666,6 +1726,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
@@ -1694,6 +1755,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -1722,6 +1784,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -1750,6 +1813,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -1778,6 +1842,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
@@ -1806,6 +1871,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
@@ -1834,6 +1900,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
@@ -1862,6 +1929,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :warning
@@ -1890,6 +1958,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: expected nil to equal 42."
 raise unless actual.to_sym == :warning
@@ -1918,6 +1987,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
@@ -1946,6 +2016,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
@@ -1974,6 +2045,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
@@ -2002,6 +2074,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
@@ -2030,6 +2103,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -2058,6 +2132,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -2086,6 +2161,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -2114,6 +2190,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
@@ -2142,6 +2219,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
@@ -2170,6 +2248,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
@@ -2198,6 +2277,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
@@ -2226,6 +2306,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
@@ -2254,6 +2335,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
@@ -2282,6 +2364,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2310,6 +2393,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2338,6 +2422,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2366,6 +2451,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
@@ -2394,6 +2480,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2422,6 +2509,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2450,6 +2538,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2478,6 +2567,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
@@ -2506,6 +2596,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
@@ -2534,6 +2625,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
@@ -2562,6 +2654,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
@@ -2590,6 +2683,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :failure
@@ -2618,6 +2712,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2646,6 +2741,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2674,6 +2770,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2702,6 +2799,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :warning
@@ -2730,6 +2828,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2758,6 +2857,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2786,6 +2886,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2814,6 +2915,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
@@ -2842,6 +2944,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2870,6 +2973,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2898,6 +3002,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2926,6 +3031,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
@@ -2954,6 +3060,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -2982,6 +3089,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3010,6 +3118,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3038,6 +3147,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
@@ -3066,6 +3176,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
@@ -3094,6 +3205,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
@@ -3122,6 +3234,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
@@ -3150,6 +3263,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :failure
@@ -3178,6 +3292,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3206,6 +3321,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3234,6 +3350,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3262,6 +3379,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :warning
@@ -3290,6 +3408,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3318,6 +3437,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3346,6 +3466,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
@@ -3374,6 +3495,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3402,6 +3524,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
@@ -3430,6 +3553,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3458,6 +3582,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3486,6 +3611,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3514,6 +3640,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
@@ -3542,6 +3669,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3570,6 +3698,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3598,6 +3727,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3626,6 +3756,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
@@ -3654,6 +3785,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3682,6 +3814,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3710,6 +3843,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3738,6 +3872,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :failure
@@ -3766,6 +3901,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3794,6 +3930,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3822,6 +3959,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3850,6 +3988,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :warning
@@ -3878,6 +4017,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3906,6 +4046,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3934,6 +4075,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -3962,6 +4104,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
@@ -3990,6 +4133,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4018,6 +4162,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4046,6 +4191,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4074,6 +4220,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
@@ -4102,6 +4249,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4130,6 +4278,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4158,6 +4307,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4186,6 +4336,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
@@ -4214,6 +4365,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4242,6 +4394,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MAY
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4270,6 +4423,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4298,6 +4452,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "Failure: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :failure
@@ -4326,6 +4481,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4354,6 +4510,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :MUST
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4382,6 +4539,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4410,6 +4568,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "Warning: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :warning
@@ -4438,6 +4597,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
@@ -4466,6 +4626,7 @@ actual = begin
 rescue ::Spectus::Result::Fail => e
   e
 end
+
 raise unless actual.level == :SHOULD
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
