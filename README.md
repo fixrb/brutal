@@ -9,7 +9,7 @@
 
 ## Intro
 
-[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.png)](https://www.youtube.com/watch?v=cmOt9HhszCI&start=1732&end=1736 "I don't like tests. It's not DRY.")
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.png)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
 
 > I don't like tests. It's not DRY.<br/>
 > -- Matz
