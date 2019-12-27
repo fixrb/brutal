@@ -1,22 +1,24 @@
-# Brutal 🧪
-
-> I don't like testing because it's redundant. If we are smart enough, we can avoid it. <br/>
-> -- Matz
+# Brutal 💎🔨
 
 [![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
 [![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=master)][inchpages]
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
-__Brutal__ is a _code-first_ approach that automates the writing of unit tests.
+> A _code-first_ approach to automate the writing of unit tests.
 
-By being able to generate test cases from the code itself, developers can focus on their creation, save time and energy, for more happiness.
+## Intro
 
-<p>
-  <img
-    src="https://github.com/fixrb/brutal/raw/master/img/Ferdinand_Hodler_-_Woodcutter_-_Google_Art_Project.jpg"
-    alt="A lumberjack brutally cutting a tree" />
-</p>
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.png)](https://www.youtube.com/watch?v=cmOt9HhszCI&start=1732&end=1736 "I don't like tests. It's not DRY.")
+
+> I don't like tests. It's not DRY.<br/>
+> -- Matz
+
+## Purpose
+
+Take a break and let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
+
+By delegating to it the writing of unit tests, you'll be able to focus on your core business.
 
 ## Installation
 
