@@ -14,8 +14,8 @@ front_object = Brutal::ScaffoldGenerator::Por
 # ------------------------------------------------------------------------------
 
 actual = front_object.new(42, "%{front_object}.%{challenge}", *"%{subject}.to_s", challenge: ["abs", "-(2)"])
-raise unless actual.to_s == %q(
-# ------------------------------------------------------------------------------
+
+raise unless actual.to_s == %q(# ------------------------------------------------------------------------------
 
 front_object = 42
 

@@ -9,16 +9,65 @@
 
 ## Intro
 
-[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.png)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.svg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
 
 > I don't like tests. It's not DRY.<br/>
-> -- Matz
+> -- [Matz](https://github.com/matz)
 
 ## Purpose
 
 Take a break and let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
 
-By delegating to it the writing of unit tests, you'll be able to focus on your core business.
+Without giving the power to test everything, it makes it easy to generate in no time a set of tests for all relevant contexts.
+
+By delegating to __Brutal__ the repetitive and redundant task of writing tests, you'll be able to focus on your core business: writing code.
+
+## Warning
+
+__Brutal__ does not prevent from bugs.
+As a picture of the behavior of the code, its generated tests would be wrong if the code is wrong.
+
+This is why it is important to carefully read the generated test suite, to ensure that it describes the behavior of the code as it is supposed to behave.
+
+However, when the `brutal` command is executed successfully,
+we can consider that both __Brutal__'s configuration file (`.brutal.yml`) and evaluated code as syntactically correct.
+
+In the context of a versioned project, to avoid regressions,
+the integrity of the behavior of the code can easily be checked by re-generating a picture to be compared with the previous one.
+Here is an example with [The Greeter class](https://github.com/fixrb/brutal/raw/master/examples/the_greeter_class/) code:
+
+```sh
+git diff
+```
+
+```diff
+  # The Greeter class
+  class Greeter
+    def initialize(name)
+-     @name = name
++     @name = name.capitalize
+    end
+
+    def salute
+      "Hello #{@name}!"
+    end
+  end
+```
+
+```diff
+  require './greeter'
+
+  # ------------------------------------------------------------------------------
+
+  front_object = Greeter
+
+  # ------------------------------------------------------------------------------
+
+  actual = front_object.new('world')
+
+- raise unless actual.salute == "Hello world!"
++ raise unless actual.salute == "Hello World!"
+```
 
 ## Installation
 
@@ -42,8 +91,8 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
 ## Usage
 
-Brutal's configuration file is `.brutal.yml`.
-This file can contains those keys:
+__Brutal__'s configuration file is `.brutal.yml`, which acts like a meta-spec.
+This YAML file can contains the following keys:
 
 * `header` (optional): Some code to execute before the test suite.
 * `front_object` (required): The front object of the test suite.
@@ -119,7 +168,7 @@ RSpec.describe do
 end
 ```
 
-More examples are available [here](examples/).
+More examples are available [here](https://github.com/fixrb/brutal/raw/master/examples/).
 
 ## Rake integration example
 
@@ -146,22 +195,9 @@ end
 
 __Brutal__ follows [Semantic Versioning 2.0](https://semver.org/).
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/fixrb/brutal. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/fixrb/brutal/blob/master/CODE_OF_CONDUCT.md).
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the GreatGuardian project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/fixrb/brutal/blob/master/CODE_OF_CONDUCT.md).
-
-[gem]: https://rubygems.org/gems/brutal
-[travis]: https://travis-ci.org/fixrb/brutal
-[inchpages]: https://inch-ci.org/github/fixrb/brutal
-[rubydoc]: https://rubydoc.info/gems/brutal/frames
 
 ***
 
@@ -171,3 +207,8 @@ Everyone interacting in the GreatGuardian project's codebases, issue trackers, c
     src="https://github.com/fixrb/brutal/raw/master/img/sashite.png"
     alt="Sashite" /></a>
 </p>
+
+[gem]: https://rubygems.org/gems/brutal
+[travis]: https://travis-ci.org/fixrb/brutal
+[inchpages]: https://inch-ci.org/github/fixrb/brutal
+[rubydoc]: https://rubydoc.info/gems/brutal/frames

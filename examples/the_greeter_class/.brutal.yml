@@ -1,0 +1,16 @@
+---
+header: |
+  require './greeter'
+
+front_object: |
+  Greeter
+
+subject: |
+  %{front_object}.new(%{string})
+
+variables:
+  string:
+    - "'world'"
+
+actual_values:
+  - "%{subject}.salute"

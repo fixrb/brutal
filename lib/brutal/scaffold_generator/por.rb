@@ -20,7 +20,7 @@ module Brutal
 
         test_params = Array(values_arr[0]).product(*Array(values_arr[1..-1]))
 
-        blank_line +
+        blank_line.gsub(/\A\n/, '') +
         "front_object = #{front_object_str}\n" +
         blank_line +
         test_params.map do |values|

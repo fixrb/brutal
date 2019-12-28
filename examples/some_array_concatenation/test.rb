@@ -1,6 +1,5 @@
 # Some array concatenation unit tests
 
-
 # ------------------------------------------------------------------------------
 
 front_object = [42, Object]

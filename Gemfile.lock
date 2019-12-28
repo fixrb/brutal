@@ -11,7 +11,7 @@ GEM
     jaro_winkler (1.5.4)
     json (2.3.0)
     parallel (1.19.1)
-    parser (2.6.5.0)
+    parser (2.7.0.0)
       ast (~> 2.4.0)
     rainbow (3.0.0)
     rake (13.0.1)
@@ -38,7 +38,7 @@ PLATFORMS
 
 DEPENDENCIES
   brutal!
-  bundler (~> 2.0)
+  bundler (~> 2.1)
   rake (~> 13.0)
   rubocop
   rubocop-performance
