@@ -40,6 +40,8 @@ Here is an example with [The Greeter class](https://github.com/fixrb/brutal/raw/
 git diff
 ```
 
+The code:
+
 ```diff
   # The Greeter class
   class Greeter
@@ -53,6 +55,8 @@ git diff
     end
   end
 ```
+
+The generated test of the code:
 
 ```diff
   require './greeter'
