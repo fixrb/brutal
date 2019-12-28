@@ -16,62 +16,18 @@
 
 ## Purpose
 
-Take a break and let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
+Let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
 
 Without giving the power to test everything, it makes it easy to generate in no time a set of tests for all relevant contexts.
 
-By delegating to __Brutal__ the repetitive and redundant task of writing tests, you'll be able to focus on your core business: writing code.
+By delegating to __Brutal__ this repetitive (and redundant) job of writing tests, you'll be able to focus on your core business: writing code.
 
 ## Warning
 
 __Brutal__ does not prevent from bugs.
-As a picture of the behavior of the code, its generated tests would be wrong if the code is wrong.
+As a picture of the behavior of the code, generated tests would be wrong if the code is wrong.
 
-This is why it is important to carefully read the generated test suite, to ensure that it describes the behavior of the code as it is supposed to behave.
-
-However, when the `brutal` command is executed successfully,
-we can consider that both __Brutal__'s configuration file (`.brutal.yml`) and evaluated code as syntactically correct.
-
-In the context of a versioned project, to avoid regressions,
-the integrity of the behavior of the code can easily be checked by re-generating a picture to be compared with the previous one.
-Here is an example with [The Greeter class](https://github.com/fixrb/brutal/raw/master/examples/the_greeter_class/) code:
-
-```sh
-git diff
-```
-
-The code:
-
-```diff
-  # The Greeter class
-  class Greeter
-    def initialize(name)
--     @name = name
-+     @name = name.capitalize
-    end
-
-    def salute
-      "Hello #{@name}!"
-    end
-  end
-```
-
-The generated test of the code:
-
-```diff
-  require './greeter'
-
-  # ------------------------------------------------------------------------------
-
-  front_object = Greeter
-
-  # ------------------------------------------------------------------------------
-
-  actual = front_object.new('world')
-
-- raise unless actual.salute == "Hello world!"
-+ raise unless actual.salute == "Hello World!"
-```
+This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is supposed to behave.
 
 ## Installation
 
@@ -104,11 +60,35 @@ This YAML file can contains the following keys:
 * `variables` (required): A hash to generate the subject of each context.
 * `actual_values` (required): A list of tests to challenge the subject.
 
+### Behavioral integrity
+
+In versioned projects, the integrity of the behavior of the code could easily be checked by executing `brutal` after changes.
+If something goes wrong, `git diff test.rb` can show it.
+
+Example of regression from [The Greeter class](https://github.com/fixrb/brutal/raw/master/examples/the_greeter_class/):
+
+```diff
+  require './greeter'
+
+  # ------------------------------------------------------------------------------
+
+  front_object = Greeter
+
+  # ------------------------------------------------------------------------------
+
+  actual = front_object.new('world')
+
+- raise unless actual.salute == "Hello World!"
++ raise unless actual.salute == "Hello !"
+```
+
 ### Optional parameters
 
 It would also be possible to ask for an RSpec template by passing "`rspec`" argument:
 
-> brutal rspec
+```sh
+brutal rspec
+```
 
 ## Example
 
@@ -140,12 +120,14 @@ front_object = "Hello "
 # ------------------------------------------------------------------------------
 
 actual = front_object + 'Alice'
+
 raise unless actual.to_s == "Hello Alice"
 raise unless actual.length == 11
 
 # ------------------------------------------------------------------------------
 
 actual = front_object + 'Bob'
+
 raise unless actual.to_s == "Hello Bob"
 raise unless actual.length == 9
 ```
@@ -176,7 +158,7 @@ More examples are available [here](https://github.com/fixrb/brutal/raw/master/ex
 
 ## Rake integration example
 
-The generated brutal test suite `test.rb` file can be declared as follows:
+A generated `test.rb` file could be matched as follows:
 
 ```ruby
 Rake::TestTask.new do |t|
