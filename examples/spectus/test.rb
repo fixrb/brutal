@@ -1,11 +1,12 @@
 # frozen_string_literal: false
 
 require 'spectus'
+
 include Spectus
 
 # ------------------------------------------------------------------------------
 
-front_object = "foo"
+front_object = 'foo'
 
 # ------------------------------------------------------------------------------
 
@@ -16,7 +17,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -27,11 +27,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -45,7 +47,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -56,11 +57,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -74,7 +77,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -85,11 +87,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -103,7 +107,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -114,11 +117,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -132,7 +137,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -143,11 +147,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -161,7 +167,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -172,11 +177,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -190,7 +197,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -201,11 +207,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_s == "Warning: expected \"FOO\" to eql \"foo\"."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -219,7 +227,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -230,11 +237,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to equal 42."
 raise unless actual.to_s == "Warning: expected \"FOO\" to equal 42."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -248,7 +257,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -259,11 +267,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -277,7 +287,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -288,11 +297,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -306,7 +317,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -317,11 +327,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -335,7 +347,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -346,11 +357,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -364,7 +377,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -375,11 +387,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -393,7 +407,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -404,11 +417,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -422,7 +437,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -433,11 +447,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -451,7 +467,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -462,11 +477,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -480,7 +497,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -491,11 +507,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -509,7 +527,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -520,11 +537,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -538,7 +557,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -549,11 +567,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -567,7 +587,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -578,11 +597,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -596,7 +617,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -607,11 +627,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -625,7 +647,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -636,11 +657,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -654,7 +677,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -665,11 +687,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -683,7 +707,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -694,11 +717,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -712,7 +737,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -723,11 +747,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -741,7 +767,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -752,11 +777,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_s == "Warning: expected \"FOO\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -770,7 +797,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -781,11 +807,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_s == "Warning: expected \"FOO\" to eql \"foo\"."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -799,7 +827,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -810,11 +837,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected \"FOO\" to equal 42."
 raise unless actual.to_s == "Warning: expected \"FOO\" to equal 42."
+raise unless actual.colored_string == "\e[33mWarning: expected \"FOO\" to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -828,7 +857,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -839,11 +867,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -857,7 +887,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -868,11 +897,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected \"FOO\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -886,7 +917,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -897,11 +927,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected \"FOO\" to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -915,7 +947,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -926,11 +957,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"FOO\" to equal 42."
 raise unless actual.to_s == "Failure: expected \"FOO\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -944,7 +977,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -955,11 +987,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -973,7 +1007,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -984,11 +1017,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1002,7 +1037,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1013,11 +1047,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1031,7 +1067,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1042,11 +1077,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1060,7 +1097,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1071,11 +1107,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1089,7 +1127,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1100,11 +1137,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected \"FOO\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1118,7 +1157,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1129,11 +1167,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected \"FOO\" not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1147,7 +1187,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1158,11 +1197,1213 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected \"FOO\" not to equal 42."
 raise unless actual.to_s == "Success: expected \"FOO\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected to eql \"foo\"."
+raise unless actual.to_s == "Success: expected to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to equal 42."
+raise unless actual.to_s == "Failure: expected \"foo\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.to_s == "Warning: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.to_s == "Warning: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected to eql \"foo\"."
+raise unless actual.to_s == "Success: expected to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: false, level: :SHOULD, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected \"foo\" to equal 42."
+raise unless actual.to_s == "Warning: expected \"foo\" to equal 42."
+raise unless actual.colored_string == "\e[33mWarning: expected \"foo\" to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected to eql \"foo\"."
+raise unless actual.to_s == "Success: expected to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: false, level: :MAY, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to equal 42."
+raise unless actual.to_s == "Failure: expected \"foo\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected not to eql \"foo\"."
+raise unless actual.to_s == "Failure: expected not to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected not to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: true, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to equal 42."
+raise unless actual.to_s == "Success: expected \"foo\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected not to eql \"foo\"."
+raise unless actual.to_s == "Warning: expected not to eql \"foo\"."
+raise unless actual.colored_string == "\e[33mWarning: expected not to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: true, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to equal 42."
+raise unless actual.to_s == "Success: expected \"foo\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST! raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST! raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST! eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected to eql \"foo\"."
+raise unless actual.to_s == "Success: expected to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST! equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to equal 42."
+raise unless actual.to_s == "Failure: expected \"foo\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD! raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.to_s == "Warning: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD! raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.to_s == "Warning: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[33mWarning: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD! eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected to eql \"foo\"."
+raise unless actual.to_s == "Success: expected to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: false, level: :SHOULD, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD! equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected \"foo\" to equal 42."
+raise unless actual.to_s == "Warning: expected \"foo\" to equal 42."
+raise unless actual.colored_string == "\e[33mWarning: expected \"foo\" to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY! raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY! raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.to_s == "Failure: expected \"foo\" to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY! eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected to eql \"foo\"."
+raise unless actual.to_s == "Success: expected to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: true, matcher: :eql, negate: false, level: :MAY, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MAY! equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MAY
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == false
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected \"foo\" to equal 42."
+raise unless actual.to_s == "Failure: expected \"foo\" to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT! raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT! raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT! eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :failure
+raise unless actual.error? == false
+raise unless actual.failure? == true
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == true
+raise unless actual.passed? == false
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == false
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
+raise unless actual.message == "Failure: expected not to eql \"foo\"."
+raise unless actual.to_s == "Failure: expected not to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected not to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Fail(actual: \"foo\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: true, level: :MUST, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.MUST_NOT! equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :MUST
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to equal 42."
+raise unless actual.to_s == "Success: expected \"foo\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT! raise_exception(NoMethodError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT! raise_exception(ArgumentError)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.to_s == "Success: expected \"foo\" not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == TrueClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT! eql('foo')
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :warning
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == false
+raise unless actual.valid? == false
+raise unless actual.warning? == true
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
+raise unless actual.message == "Warning: expected not to eql \"foo\"."
+raise unless actual.to_s == "Warning: expected not to eql \"foo\"."
+raise unless actual.colored_string == "\e[33mWarning: expected not to eql \"foo\".\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: \"foo\", got: false, matcher: :eql, negate: true, level: :SHOULD, valid: false)"
+raise unless actual.actual.class == String
+raise unless actual.error.class == NilClass
+raise unless actual.got.class == FalseClass
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  it { front_object.itself }.SHOULD_NOT! equal(42)
+rescue ::Spectus::Result::Fail => e
+  e
+end
+
+raise unless actual.level == :SHOULD
+raise unless actual.to_sym == :success
+raise unless actual.error? == false
+raise unless actual.failure? == false
+raise unless actual.info? == false
+raise unless actual.negate? == true
+raise unless actual.failed? == false
+raise unless actual.passed? == true
+raise unless actual.success? == true
+raise unless actual.valid? == true
+raise unless actual.warning? == false
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
+raise unless actual.message == "Success: expected \"foo\" not to equal 42."
+raise unless actual.to_s == "Success: expected \"foo\" not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise unless actual.inspect == "Spectus::Result::Pass(actual: \"foo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1176,7 +2417,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected \"boo\" to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1187,11 +2427,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected \"boo\" to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected \"boo\" to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == String
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1205,7 +2447,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1216,11 +2457,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1234,7 +2477,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1245,11 +2487,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1263,7 +2507,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1274,11 +2517,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to equal 42."
 raise unless actual.to_s == "Failure: expected nil to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1292,7 +2537,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1303,11 +2547,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to raise_exception NoMethodError."
 raise unless actual.to_s == "Warning: expected nil to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1321,7 +2567,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1332,11 +2577,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to raise_exception ArgumentError."
 raise unless actual.to_s == "Warning: expected nil to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1350,7 +2597,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1361,11 +2607,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to eql \"foo\"."
 raise unless actual.to_s == "Warning: expected nil to eql \"foo\"."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1379,7 +2627,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to equal 42."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1390,11 +2637,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to equal 42."
 raise unless actual.to_s == "Warning: expected nil to equal 42."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1408,7 +2657,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1419,11 +2667,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1437,7 +2687,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1448,11 +2697,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1466,7 +2717,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1477,11 +2727,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1495,7 +2747,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1506,11 +2757,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to equal 42."
 raise unless actual.to_s == "Failure: expected nil to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1524,7 +2777,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1535,11 +2787,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1553,7 +2807,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1564,11 +2817,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1582,7 +2837,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1593,11 +2847,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1611,7 +2867,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1622,11 +2877,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to equal 42."
 raise unless actual.to_s == "Success: expected nil not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1640,7 +2897,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1651,11 +2907,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1669,7 +2927,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1680,11 +2937,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1698,7 +2957,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1709,11 +2967,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1727,7 +2987,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1738,11 +2997,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to equal 42."
 raise unless actual.to_s == "Success: expected nil not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -1756,7 +3017,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1767,11 +3027,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1785,7 +3047,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1796,11 +3057,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1814,7 +3077,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1825,11 +3087,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1843,7 +3107,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1854,11 +3117,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to equal 42."
 raise unless actual.to_s == "Failure: expected nil to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1872,7 +3137,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1883,11 +3147,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to raise_exception NoMethodError."
 raise unless actual.to_s == "Warning: expected nil to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1901,7 +3167,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1912,11 +3177,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to raise_exception ArgumentError."
 raise unless actual.to_s == "Warning: expected nil to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1930,7 +3197,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1941,11 +3207,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to eql \"foo\"."
 raise unless actual.to_s == "Warning: expected nil to eql \"foo\"."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1959,7 +3227,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: expected nil to equal 42."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -1970,11 +3237,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: expected nil to equal 42."
 raise unless actual.to_s == "Warning: expected nil to equal 42."
+raise unless actual.colored_string == "\e[33mWarning: expected nil to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -1988,7 +3257,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -1999,11 +3267,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to raise_exception NoMethodError."
 raise unless actual.to_s == "Failure: expected nil to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -2017,7 +3287,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -2028,11 +3297,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to raise_exception ArgumentError."
 raise unless actual.to_s == "Failure: expected nil to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -2046,7 +3317,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -2057,11 +3327,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to eql \"foo\"."
 raise unless actual.to_s == "Failure: expected nil to eql \"foo\"."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: \"foo\", got: false, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -2075,7 +3347,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Failure: expected nil to equal 42."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -2086,11 +3357,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: expected nil to equal 42."
 raise unless actual.to_s == "Failure: expected nil to equal 42."
+raise unless actual.colored_string == "\e[35mFailure: expected nil to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -2104,7 +3377,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2115,11 +3387,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2133,7 +3407,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2144,11 +3417,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2162,7 +3437,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2173,11 +3447,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2191,7 +3467,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2202,11 +3477,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to equal 42."
 raise unless actual.to_s == "Success: expected nil not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2220,7 +3497,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2231,11 +3507,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception NoMethodError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception NoMethodError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception NoMethodError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2249,7 +3527,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2260,11 +3537,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to raise_exception ArgumentError."
 raise unless actual.to_s == "Success: expected nil not to raise_exception ArgumentError."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to raise_exception ArgumentError.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2278,7 +3557,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2289,11 +3567,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to eql \"foo\"."
 raise unless actual.to_s == "Success: expected nil not to eql \"foo\"."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to eql \"foo\".\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: \"foo\", got: true, matcher: :eql, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2307,7 +3587,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: expected nil not to equal 42."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2318,11 +3597,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: expected nil not to equal 42."
 raise unless actual.to_s == "Success: expected nil not to equal 42."
+raise unless actual.colored_string == "\e[32mSuccess: expected nil not to equal 42.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2336,7 +3617,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2347,11 +3627,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[32mSuccess: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2365,7 +3647,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2376,11 +3657,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2394,7 +3677,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2405,11 +3687,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2423,7 +3707,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2434,11 +3717,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2452,7 +3737,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2463,11 +3747,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[32mSuccess: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2481,7 +3767,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2492,11 +3777,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2510,7 +3797,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2521,11 +3807,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2539,7 +3827,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2550,11 +3837,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2568,7 +3857,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2579,11 +3867,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[32mSuccess: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2597,7 +3887,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2608,11 +3897,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[36mI\e[0m"
+raise unless actual.emoji == "💡"
+raise unless actual.char == "I"
+raise unless actual.colored_char == "\e[36mI\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[36mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[36mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2626,7 +3917,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2637,11 +3927,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[36mI\e[0m"
+raise unless actual.emoji == "💡"
+raise unless actual.char == "I"
+raise unless actual.colored_char == "\e[36mI\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[36mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[36mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2655,7 +3947,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2666,11 +3957,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[36mI\e[0m"
+raise unless actual.emoji == "💡"
+raise unless actual.char == "I"
+raise unless actual.colored_char == "\e[36mI\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[36mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[36mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2684,7 +3977,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -2695,11 +3987,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Failure: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[35mFailure: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -2713,7 +4007,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2724,11 +4017,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2742,7 +4037,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2753,11 +4047,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2771,7 +4067,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2782,11 +4077,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2800,7 +4097,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2811,11 +4107,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Warning: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[33mWarning: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -2829,7 +4127,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2840,11 +4137,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2858,7 +4157,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2869,11 +4167,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2887,7 +4187,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2898,11 +4197,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2916,7 +4217,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -2927,11 +4227,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[32mSuccess: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -2945,7 +4247,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2956,11 +4257,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -2974,7 +4277,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -2985,11 +4287,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3003,7 +4307,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3014,11 +4317,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3032,7 +4337,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -3043,11 +4347,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[32mSuccess: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -3061,7 +4367,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3072,11 +4377,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3090,7 +4397,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3101,11 +4407,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3119,7 +4427,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3130,11 +4437,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3148,7 +4457,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -3159,11 +4467,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Success: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[32mSuccess: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -3177,7 +4487,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3188,11 +4497,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[36mI\e[0m"
+raise unless actual.emoji == "💡"
+raise unless actual.char == "I"
+raise unless actual.colored_char == "\e[36mI\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[36mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[36mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3206,7 +4517,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3217,11 +4527,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[36mI\e[0m"
+raise unless actual.emoji == "💡"
+raise unless actual.char == "I"
+raise unless actual.colored_char == "\e[36mI\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[36mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[36mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3235,7 +4547,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :info
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3246,11 +4557,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[36mI\e[0m"
+raise unless actual.emoji == "💡"
+raise unless actual.char == "I"
+raise unless actual.colored_char == "\e[36mI\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[36mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[36mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3264,7 +4577,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -3275,11 +4587,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Failure: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[35mFailure: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -3293,7 +4607,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3304,11 +4617,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3322,7 +4637,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3333,11 +4647,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3351,7 +4667,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3362,11 +4677,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3380,7 +4697,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -3391,11 +4707,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "Warning: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[33mWarning: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"boo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == NoMethodError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -3409,7 +4727,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3420,11 +4737,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3438,7 +4757,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3449,11 +4767,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3467,7 +4787,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3478,11 +4797,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "NoMethodError: undefined method `boom' for \"boo\":String."
 raise unless actual.to_s == "NoMethodError: undefined method `boom' for \"boo\":String."
+raise unless actual.colored_string == "\e[31mNoMethodError: undefined method `boom' for \"boo\":String.\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"boo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == NoMethodError
 raise unless actual.got.class == NilClass
@@ -3496,7 +4817,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3507,11 +4827,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3525,7 +4847,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -3536,11 +4857,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -3554,7 +4877,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3565,11 +4887,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3583,7 +4907,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3594,11 +4917,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3612,7 +4937,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3623,11 +4947,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3641,7 +4967,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -3652,11 +4977,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -3670,7 +4997,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3681,11 +5007,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3699,7 +5027,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3710,11 +5037,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3728,7 +5057,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3739,11 +5067,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3757,7 +5087,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -3768,11 +5097,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -3786,7 +5117,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3797,11 +5127,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3815,7 +5147,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3826,11 +5157,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3844,7 +5177,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3855,11 +5187,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3873,7 +5207,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -3884,11 +5217,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Failure: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[35mFailure: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -3902,7 +5237,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3913,11 +5247,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3931,7 +5267,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3942,11 +5277,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3960,7 +5297,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -3971,11 +5307,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -3989,7 +5327,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -4000,11 +5337,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Warning: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[33mWarning: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -4018,7 +5357,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4029,11 +5367,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4047,7 +5387,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4058,11 +5397,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4076,7 +5417,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4087,11 +5427,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4105,7 +5447,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -4116,11 +5457,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -4134,7 +5477,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4145,11 +5487,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4163,7 +5507,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4174,11 +5517,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4192,7 +5537,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4203,11 +5547,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4221,7 +5567,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -4232,11 +5577,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -4250,7 +5597,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4261,11 +5607,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4279,7 +5627,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4290,11 +5637,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4308,7 +5657,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4319,11 +5667,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4337,7 +5687,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :success
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -4348,11 +5697,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == true
 raise unless actual.valid? == true
 raise unless actual.warning? == false
-raise unless actual.char == "\e[32m.\e[0m"
+raise unless actual.emoji == "✅"
+raise unless actual.char == "."
+raise unless actual.colored_char == "\e[32m.\e[0m"
 raise unless actual.message == "Success: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Success: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
-raise unless actual.color('foo') == "\e[32mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == TrueClass
@@ -4366,7 +5717,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4377,11 +5727,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4395,7 +5747,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MAY
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4406,11 +5757,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4424,7 +5777,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4435,11 +5787,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4453,7 +5807,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "Failure: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :failure
 raise unless actual.error? == false
 raise unless actual.failure? == true
@@ -4464,11 +5817,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[35mF\e[0m"
+raise unless actual.emoji == "❌"
+raise unless actual.char == "F"
+raise unless actual.colored_char == "\e[35mF\e[0m"
 raise unless actual.message == "Failure: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Failure: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[35mFailure: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[35mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -4482,7 +5837,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4493,11 +5847,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4511,7 +5867,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :MUST
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4522,11 +5877,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4540,7 +5897,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4551,11 +5907,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4569,7 +5927,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "Warning: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :warning
 raise unless actual.error? == false
 raise unless actual.failure? == false
@@ -4580,11 +5937,13 @@ raise unless actual.passed? == true
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == true
-raise unless actual.char == "\e[33mW\e[0m"
+raise unless actual.emoji == "⚠️"
+raise unless actual.char == "W"
+raise unless actual.colored_char == "\e[33mW\e[0m"
 raise unless actual.message == "Warning: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "Warning: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[33mWarning: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[33mfoo\e[0m"
 raise unless actual.actual.class == ArgumentError
 raise unless actual.error.class == NilClass
 raise unless actual.got.class == FalseClass
@@ -4598,7 +5957,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4609,11 +5967,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: \"foo\", got: nil, matcher: :eql, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass
@@ -4627,7 +5987,6 @@ rescue ::Spectus::Result::Fail => e
 end
 
 raise unless actual.level == :SHOULD
-raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_sym == :error
 raise unless actual.error? == true
 raise unless actual.failure? == false
@@ -4638,11 +5997,13 @@ raise unless actual.passed? == false
 raise unless actual.success? == false
 raise unless actual.valid? == false
 raise unless actual.warning? == false
-raise unless actual.char == "\e[31mE\e[0m"
+raise unless actual.emoji == "💥"
+raise unless actual.char == "E"
+raise unless actual.colored_char == "\e[31mE\e[0m"
 raise unless actual.message == "ArgumentError: wrong number of arguments (given 1, expected 0)."
 raise unless actual.to_s == "ArgumentError: wrong number of arguments (given 1, expected 0)."
+raise unless actual.colored_string == "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
 raise unless actual.inspect == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
-raise unless actual.color('foo') == "\e[31mfoo\e[0m"
 raise unless actual.actual.class == NilClass
 raise unless actual.error.class == ArgumentError
 raise unless actual.got.class == NilClass

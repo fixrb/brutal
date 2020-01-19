@@ -3,10 +3,11 @@ header: |
   # frozen_string_literal: false
 
   require 'spectus'
+
   include Spectus
 
 front_object: |
-  "foo"
+  'foo'
 
 subject: |
   begin
@@ -18,15 +19,16 @@ subject: |
 variables:
   challenge:
     - "upcase"
+    - "itself"
     - "gsub!('f', 'b')"
     - "boom"
     - "empty?(4)"
   level:
-    - "MUST"
-    - "SHOULD"
-    - "MAY"
-    - "MUST_NOT"
-    - "SHOULD_NOT"
+    - MUST
+    - SHOULD
+    - MAY
+    - MUST_NOT
+    - SHOULD_NOT
     - "MUST!"
     - "SHOULD!"
     - "MAY!"
@@ -40,7 +42,6 @@ variables:
 
 actual_values:
   - "%{subject}.level"
-  - "%{subject}.to_s"
   - "%{subject}.to_sym"
   - "%{subject}.error?"
   - "%{subject}.failure?"
@@ -51,11 +52,13 @@ actual_values:
   - "%{subject}.success?"
   - "%{subject}.valid?"
   - "%{subject}.warning?"
+  - "%{subject}.emoji"
   - "%{subject}.char"
+  - "%{subject}.colored_char"
   - "%{subject}.message"
   - "%{subject}.to_s"
+  - "%{subject}.colored_string"
   - "%{subject}.inspect"
-  - "%{subject}.color('foo')"
   - "%{subject}.actual.class"
   - "%{subject}.error.class"
   - "%{subject}.got.class"

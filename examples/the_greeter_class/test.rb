@@ -1,4 +1,8 @@
-require './greeter'
+begin
+  require_relative './greeter'
+rescue ::LoadError
+  require './greeter'
+end
 
 # ------------------------------------------------------------------------------
 

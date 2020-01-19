@@ -1,6 +1,10 @@
 ---
 header: |
-  require './greeter'
+  begin
+    require_relative 'greeter'
+  rescue ::LoadError
+    require './greeter'
+  end
 
 front_object: |
   Greeter

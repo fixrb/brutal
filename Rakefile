@@ -7,7 +7,7 @@ require 'rubocop/rake_task'
 RuboCop::RakeTask.new
 
 Rake::TestTask.new do |t|
-  t.pattern = 'test.rb'
+  t.pattern = '**/test.rb'
   t.verbose = true
   t.warning = true
 end
