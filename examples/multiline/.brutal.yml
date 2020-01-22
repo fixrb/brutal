@@ -2,6 +2,7 @@
 front_object: -42
 
 subject: |
+  # This is a useless comment.
   %{front_object}.%{challenge}
 
 variables:

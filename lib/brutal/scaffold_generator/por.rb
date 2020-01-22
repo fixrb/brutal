@@ -30,7 +30,13 @@ module Brutal
 
           actual_str = format(inspect(subject), **attributes)
 
-          string = "actual = #{actual_str}\n\n"
+          string = <<~CODE
+            actual = begin
+            #{actual_str.gsub(/^/, '  ')}
+            end
+
+          CODE
+
           actual = eval(actual_str) # rubocop:disable Security/Eval, Lint/UselessAssignment
 
           actual_values.each do |actual_value|

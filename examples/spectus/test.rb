@@ -11,9 +11,11 @@ front_object = 'foo'
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -41,9 +43,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -71,9 +75,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -101,9 +107,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -131,9 +139,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -161,9 +171,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -191,9 +203,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -221,9 +235,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -251,9 +267,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -281,9 +299,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -311,9 +331,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -341,9 +363,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -371,9 +395,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -401,9 +427,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -431,9 +459,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -461,9 +491,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -491,9 +523,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -521,9 +555,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -551,9 +587,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -581,9 +619,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -611,9 +651,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -641,9 +683,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -671,9 +715,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -701,9 +747,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -731,9 +779,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -761,9 +811,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -791,9 +843,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -821,9 +875,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -851,9 +907,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -881,9 +939,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -911,9 +971,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -941,9 +1003,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MAY! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MAY! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -971,9 +1035,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1001,9 +1067,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1031,9 +1099,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1061,9 +1131,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.MUST_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.MUST_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1091,9 +1163,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1121,9 +1195,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1151,9 +1227,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1181,9 +1259,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.upcase }.SHOULD_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.upcase }.SHOULD_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1211,9 +1291,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1241,9 +1323,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1271,9 +1355,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1301,9 +1387,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1331,9 +1419,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1361,9 +1451,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1391,9 +1483,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1421,9 +1515,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1451,9 +1547,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -1481,9 +1579,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -1511,9 +1611,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -1541,9 +1643,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -1571,9 +1675,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1601,9 +1707,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1631,9 +1739,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1661,9 +1771,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1691,9 +1803,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1721,9 +1835,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1751,9 +1867,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1781,9 +1899,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1811,9 +1931,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1841,9 +1963,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1871,9 +1995,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1901,9 +2027,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -1931,9 +2059,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1961,9 +2091,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -1991,9 +2123,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2021,9 +2155,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2051,9 +2187,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2081,9 +2219,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2111,9 +2251,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2141,9 +2283,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MAY! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MAY! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2171,9 +2315,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2201,9 +2347,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2231,9 +2379,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2261,9 +2411,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.MUST_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.MUST_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2291,9 +2443,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2321,9 +2475,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2351,9 +2507,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2381,9 +2539,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.itself }.SHOULD_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.itself }.SHOULD_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2411,9 +2571,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2441,9 +2603,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2471,9 +2635,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2501,9 +2667,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2531,9 +2699,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2561,9 +2731,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2591,9 +2763,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2621,9 +2795,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2651,9 +2827,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2681,9 +2859,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2711,9 +2891,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2741,9 +2923,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -2771,9 +2955,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2801,9 +2987,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2831,9 +3019,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2861,9 +3051,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -2891,9 +3083,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2921,9 +3115,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2951,9 +3147,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -2981,9 +3179,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3011,9 +3211,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3041,9 +3243,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3071,9 +3275,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3101,9 +3307,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3131,9 +3339,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3161,9 +3371,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3191,9 +3403,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3221,9 +3435,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3251,9 +3467,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3281,9 +3499,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3311,9 +3531,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3341,9 +3563,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MAY! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MAY! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3371,9 +3595,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3401,9 +3627,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3431,9 +3659,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3461,9 +3691,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.MUST_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.MUST_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3491,9 +3723,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3521,9 +3755,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3551,9 +3787,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3581,9 +3819,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.gsub!('f', 'b') }.SHOULD_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.gsub!('f', 'b') }.SHOULD_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3611,9 +3851,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3641,9 +3883,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3671,9 +3915,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3701,9 +3947,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -3731,9 +3979,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3761,9 +4011,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3791,9 +4043,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3821,9 +4075,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -3851,9 +4107,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3881,9 +4139,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3911,9 +4171,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3941,9 +4203,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -3971,9 +4235,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4001,9 +4267,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4031,9 +4299,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4061,9 +4331,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4091,9 +4363,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4121,9 +4395,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4151,9 +4427,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4181,9 +4459,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4211,9 +4491,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4241,9 +4523,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4271,9 +4555,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4301,9 +4587,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4331,9 +4619,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4361,9 +4651,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4391,9 +4683,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4421,9 +4715,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4451,9 +4747,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -4481,9 +4779,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -4511,9 +4811,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -4541,9 +4843,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MAY! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MAY! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -4571,9 +4875,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4601,9 +4907,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4631,9 +4939,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4661,9 +4971,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.MUST_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.MUST_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4691,9 +5003,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4721,9 +5035,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4751,9 +5067,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4781,9 +5099,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.boom }.SHOULD_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.boom }.SHOULD_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4811,9 +5131,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4841,9 +5163,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4871,9 +5195,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4901,9 +5227,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -4931,9 +5259,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4961,9 +5291,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -4991,9 +5323,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5021,9 +5355,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5051,9 +5387,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5081,9 +5419,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5111,9 +5451,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5141,9 +5483,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5171,9 +5515,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5201,9 +5547,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5231,9 +5579,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5261,9 +5611,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5291,9 +5643,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5321,9 +5675,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5351,9 +5707,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5381,9 +5739,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5411,9 +5771,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5441,9 +5803,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5471,9 +5835,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5501,9 +5867,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5531,9 +5899,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5561,9 +5931,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5591,9 +5963,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5621,9 +5995,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5651,9 +6027,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5681,9 +6059,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5711,9 +6091,11 @@ raise unless actual.got.class == TrueClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5741,9 +6123,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MAY! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MAY! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MAY
@@ -5771,9 +6155,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5801,9 +6187,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5831,9 +6219,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5861,9 +6251,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.MUST_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.MUST_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :MUST
@@ -5891,9 +6283,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT! raise_exception(NoMethodError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT! raise_exception(NoMethodError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5921,9 +6315,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT! raise_exception(ArgumentError)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT! raise_exception(ArgumentError)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5951,9 +6347,11 @@ raise unless actual.got.class == FalseClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT! eql('foo')
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT! eql('foo')
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD
@@ -5981,9 +6379,11 @@ raise unless actual.got.class == NilClass
 # ------------------------------------------------------------------------------
 
 actual = begin
-  it { front_object.empty?(4) }.SHOULD_NOT! equal(42)
-rescue ::Spectus::Result::Fail => e
-  e
+  begin
+    it { front_object.empty?(4) }.SHOULD_NOT! equal(42)
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
 end
 
 raise unless actual.level == :SHOULD

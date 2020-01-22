@@ -17,13 +17,13 @@ subject: |
   end
 
 variables:
-  challenge:
+  :challenge:
     - "upcase"
     - "itself"
     - "gsub!('f', 'b')"
     - "boom"
     - "empty?(4)"
-  level:
+  :level:
     - MUST
     - SHOULD
     - MAY
@@ -34,7 +34,7 @@ variables:
     - "MAY!"
     - "MUST_NOT!"
     - "SHOULD_NOT!"
-  matcher:
+  :matcher:
     - "raise_exception(NoMethodError)"
     - "raise_exception(ArgumentError)"
     - "eql('foo')"

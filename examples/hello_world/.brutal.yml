@@ -6,7 +6,7 @@ subject: |
   %{front_object} + %{string}
 
 variables:
-  string:
+  :string:
     - "'Alice'"
     - "'Bob'"
 

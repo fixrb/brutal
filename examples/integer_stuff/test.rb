@@ -4,12 +4,16 @@ front_object = -42
 
 # ------------------------------------------------------------------------------
 
-actual = front_object.abs
+actual = begin
+  front_object.abs
+end
 
 raise unless actual.to_s == "42"
 
 # ------------------------------------------------------------------------------
 
-actual = front_object.-(2)
+actual = begin
+  front_object.-(2)
+end
 
 raise unless actual.to_s == "-44"

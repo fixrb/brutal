@@ -1,21 +1,21 @@
 # ------------------------------------------------------------------------------
 
-front_object = "Hello "
+front_object = -42
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object + 'Alice'
+  # This is a useless comment.
+  front_object.abs
 end
 
-raise unless actual.to_s == "Hello Alice"
-raise unless actual.length == 11
+raise unless actual.to_s == "42"
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object + 'Bob'
+  # This is a useless comment.
+  front_object.-(2)
 end
 
-raise unless actual.to_s == "Hello Bob"
-raise unless actual.length == 9
+raise unless actual.to_s == "-44"

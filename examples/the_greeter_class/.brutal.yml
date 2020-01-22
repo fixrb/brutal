@@ -13,7 +13,7 @@ subject: |
   %{front_object}.new(%{string})
 
 variables:
-  string:
+  :string:
     - "'world'"
 
 actual_values:
