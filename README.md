@@ -1,5 +1,6 @@
 # Brutal 💎🔨
 
+[![RuboCop Status](https://github.com/fixrb/brutal/workflows/RuboCop/badge.svg)][workflow_rubocop]
 [![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
 [![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=master)][inchpages]
@@ -7,7 +8,7 @@
 
 > A _code-first_ approach to automate the writing of unit tests.
 
-## Intro
+## Why
 
 [![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
 
@@ -27,7 +28,9 @@ By delegating to __Brutal__ this repetitive (and redundant) job of writing tests
 __Brutal__ does not prevent from bugs.
 As a picture of the behavior of the code, generated tests would be wrong if the code is wrong.
 
-This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is supposed to behave.
+This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is expected to behave.
+
+This is the cost to enter the _Brutal-Driven Development_ with confidence.
 
 ## Installation
 
@@ -62,8 +65,11 @@ This YAML file can contains the following keys:
 
 ### Behavioral integrity
 
-In versioned projects, the integrity of the behavior of the code could easily be checked by executing `brutal` after changes.
-If something goes wrong, `git diff test.rb` can show it.
+In versioned projects,
+the integrity of the behavior of the code could easily be compared by executing `brutal` after changes.
+
+Assuming a project is versioned with git,
+if something goes wrong, the `git diff test.rb` command should instantly show changes between the behavior of the previous code and the behavior of the new one.
 
 Example of regression from [The Greeter class](https://github.com/fixrb/brutal/raw/master/examples/the_greeter_class/):
 
@@ -168,14 +174,7 @@ end
 
 ## Contact
 
-* Home page: https://github.com/fixrb/brutal
-* Bugs/issues: https://github.com/fixrb/brutal/issues
-
-## Rubies
-
-* [MRI](https://www.ruby-lang.org/)
-* [Rubinius](https://rubinius.com/)
-* [JRuby](https://www.jruby.org/)
+* Source code: https://github.com/fixrb/brutal
 
 ## Versioning
 
@@ -194,6 +193,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
     alt="Sashite" /></a>
 </p>
 
+[workflow_rubocop]: https://github.com/fixrb/brutal/actions?query=workflow%3ARuboCop
 [gem]: https://rubygems.org/gems/brutal
 [travis]: https://travis-ci.org/fixrb/brutal
 [inchpages]: https://inch-ci.org/github/fixrb/brutal

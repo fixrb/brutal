@@ -12,11 +12,11 @@ Gem::Specification.new do |spec|
   spec.files        = Dir['LICENSE.md', 'README.md', 'bin/brutal', 'lib/**/*']
   spec.executables  = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
-  spec.add_development_dependency 'bundler',    '~> 2.1'
-  spec.add_development_dependency 'rake',       '~> 13.0'
-  spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'rubocop-performance'
-  spec.add_development_dependency 'simplecov',  '~> 0.17'
-  spec.add_development_dependency 'spectus',    '~> 3.1'
-  spec.add_development_dependency 'yard',       '~> 0.9'
+  spec.add_development_dependency 'bundler',              '~> 2.1'
+  spec.add_development_dependency 'rake',                 '~> 13.0'
+  spec.add_development_dependency 'rubocop',              '~> 0.79'
+  spec.add_development_dependency 'rubocop-performance',  '~> 1.5'
+  spec.add_development_dependency 'simplecov',            '~> 0.17'
+  spec.add_development_dependency 'spectus',              '~> 3.1'
+  spec.add_development_dependency 'yard',                 '~> 0.9'
 end
