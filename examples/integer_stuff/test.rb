@@ -1,11 +1,9 @@
-# ------------------------------------------------------------------------------
-
-front_object = -42
+# Brutal test suite
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object.abs
+  -42.abs
 end
 
 raise unless actual.to_s == "42"
@@ -13,7 +11,7 @@ raise unless actual.to_s == "42"
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object.-(2)
+  -42.-(2)
 end
 
 raise unless actual.to_s == "-44"

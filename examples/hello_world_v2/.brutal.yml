@@ -1,0 +1,12 @@
+---
+subject: |
+  "Hello " + "%{string}"
+
+contexts:
+  :string:
+    - Alice
+    - Bob
+
+actuals:
+  - "%{subject}.to_s"
+  - "%{subject}.length"

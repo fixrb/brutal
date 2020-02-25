@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require_relative ::File.join('..', 'lib', 'brutal')
+require_relative File.join('..', 'lib', 'brutal')
 
 require 'irb'
 IRB.start(__FILE__)

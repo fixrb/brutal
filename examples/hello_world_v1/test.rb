@@ -1,11 +1,9 @@
-# ------------------------------------------------------------------------------
-
-front_object = "Hello "
+# Brutal test suite
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object + 'Alice'
+  "Hello " + 'Alice'
 end
 
 raise unless actual.to_s == "Hello Alice"
@@ -14,7 +12,7 @@ raise unless actual.length == 11
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object + 'Bob'
+  "Hello " + 'Bob'
 end
 
 raise unless actual.to_s == "Hello Bob"

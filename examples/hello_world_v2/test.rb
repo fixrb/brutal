@@ -3,17 +3,17 @@
 # ------------------------------------------------------------------------------
 
 actual = begin
-  # This is a useless comment.
-  -42.abs
+  "Hello " + "Alice"
 end
 
-raise unless actual.to_s == "42"
+raise unless actual.to_s == "Hello Alice"
+raise unless actual.length == 11
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  # This is a useless comment.
-  -42.-(2)
+  "Hello " + "Bob"
 end
 
-raise unless actual.to_s == "-44"
+raise unless actual.to_s == "Hello Bob"
+raise unless actual.length == 9

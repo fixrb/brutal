@@ -1,4 +1,7 @@
-require: rubocop-performance
+require:
+  - rubocop-performance
+  - rubocop-thread_safety
+
 inherit_from: .rubocop_todo.yml
 
 AllCops:
@@ -6,5 +9,11 @@ AllCops:
     - test.rb
     - examples/**/*
 
-Layout/LineLength:
-  Enabled: false
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true

@@ -21,7 +21,7 @@ Let __Brutal__ shape for you the actual behavior of your code against as many co
 
 Without giving the power to test everything, it makes it easy to generate in no time a set of tests for all relevant contexts.
 
-By delegating to __Brutal__ this repetitive (and redundant) job of writing tests, you'll be able to focus on your core business: writing code.
+By delegating to __Brutal__ this repetitive (and redundant) job of writing tests, you'll be able to focus on your core business: the code.
 
 ## Warning
 
@@ -52,24 +52,74 @@ Or install it yourself as:
 
 Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
-## Usage
+## Settings
 
-__Brutal__'s configuration file is `.brutal.yml`, which acts like a meta-spec.
-This YAML file can contains the following keys:
+__Brutal__'s configuration file is `.brutal.yml`.
 
-* `header` (optional): Some code to execute before the test suite.
-* `front_object` (required): The front object of the test suite.
-* `subject` (required): The object of each context.
-* `variables` (required): A hash to generate the subject of each context.
-* `actual_values` (required): A list of tests to challenge the subject.
+A `.brutal.yml` manifest has 4 top-level sections:
+
+* `header` - Specifies the code to execute before generating the test suite.
+* `subject` - Specifies the template of the code to be declined across contexts.
+* `contexts` - Specifies a list of variables to populate the subject's template.
+* `actuals` - Specifies templates to challenge evaluated subjects & get results.
+
+### Example
+
+Given the following configuration:
+
+```yaml
+---
+subject: |
+  "Hello " + "%{string}"
+
+contexts:
+  string:
+    - Alice
+    - Bob
+
+actuals:
+  - "%{subject}.to_s"
+  - "%{subject}.length"
+```
+
+After running the `brutal` command in the same directory,
+a `test.rb` file should be generated:
+
+```ruby
+# Brutal test suite
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  "Hello " + "Alice"
+end
+
+raise unless actual.to_s == "Hello Alice"
+raise unless actual.length == 11
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  "Hello " + "Bob"
+end
+
+raise unless actual.to_s == "Hello Bob"
+raise unless actual.length == 9
+```
+
+And when executed as is, no exceptions should be thrown as long as the behavior of the code does not change.
+
+> ruby test.rb
+
+For more examples: https://github.com/fixrb/brutal/raw/master/examples/
 
 ### Behavioral integrity
 
 In versioned projects,
 the integrity of the behavior of the code could easily be compared by executing `brutal` after changes.
 
-Assuming a project is versioned with git,
-if something goes wrong, the `git diff test.rb` command should instantly show changes between the behavior of the previous code and the behavior of the new one.
+Assuming a project is versioned with `git`, if something goes wrong,
+the `git diff test.rb` command would instantly show changes between the behavior of the previous code and the behavior of the new one.
 
 Example of regression from [The Greeter class](https://github.com/fixrb/brutal/raw/master/examples/the_greeter_class/):
 
@@ -78,89 +128,11 @@ Example of regression from [The Greeter class](https://github.com/fixrb/brutal/r
 
   # ------------------------------------------------------------------------------
 
-  front_object = Greeter
-
-  # ------------------------------------------------------------------------------
-
-  actual = front_object.new('world')
+  actual = Greeter.new('world')
 
 - raise unless actual.salute == "Hello World!"
 + raise unless actual.salute == "Hello !"
 ```
-
-### Optional parameters
-
-It would also be possible to ask for an RSpec template by passing "`rspec`" argument:
-
-```sh
-brutal rspec
-```
-
-## Example
-
-Given this config file:
-
-```yaml
----
-front_object: |
-  "Hello "
-
-subject: |
-  %{front_object} + %{string}
-
-variables:
-  string:
-    - "'Alice'"
-    - "'Bob'"
-
-actual_values:
-  - "%{subject}.to_s"
-  - "%{subject}.length"
-```
-
-The `brutal` command would generate and write in to a `test.rb` file the following "Plain Old Ruby":
-
-```ruby
-front_object = "Hello "
-
-# ------------------------------------------------------------------------------
-
-actual = front_object + 'Alice'
-
-raise unless actual.to_s == "Hello Alice"
-raise unless actual.length == 11
-
-# ------------------------------------------------------------------------------
-
-actual = front_object + 'Bob'
-
-raise unless actual.to_s == "Hello Bob"
-raise unless actual.length == 9
-```
-
-And the `brutal rspec` command would generate and write in to a `test_spec.rb` file the following spec:
-
-```ruby
-RSpec.describe do
-  let(:front_object) { "Hello " }
-
-  context do
-    let(:actual) { front_object + 'Alice' }
-
-    it { expect(actual.to_s).to eq("Hello Alice") }
-    it { expect(actual.length).to eq(11) }
-  end
-
-  context do
-    let(:actual) { front_object + 'Bob' }
-
-    it { expect(actual.to_s).to eq("Hello Bob") }
-    it { expect(actual.length).to eq(9) }
-  end
-end
-```
-
-More examples are available [here](https://github.com/fixrb/brutal/raw/master/examples/).
 
 ## Rake integration example
 

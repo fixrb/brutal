@@ -6,12 +6,8 @@ end
 
 # ------------------------------------------------------------------------------
 
-front_object = Greeter
-
-# ------------------------------------------------------------------------------
-
 actual = begin
-  front_object.new('world')
+  Greeter.new('world')
 end
 
 raise unless actual.salute == "Hello World!"

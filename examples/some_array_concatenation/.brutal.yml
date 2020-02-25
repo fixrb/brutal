@@ -2,13 +2,10 @@
 header: |
   # Some array concatenation unit tests
 
-front_object: |
-  [42, Object]
-
 subject: |
-  %{front_object} + [%{item1}, %{item2}]
+  [42, Object] + [%{item1}, %{item2}]
 
-variables:
+contexts:
   :item1:
     - "nil"
     - 1
@@ -19,6 +16,6 @@ variables:
     - |
       "..."
 
-actual_values:
+actuals:
   - "%{subject}.to_s"
   - '%{subject}.length'
