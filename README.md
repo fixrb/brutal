@@ -8,6 +8,52 @@
 
 > A _code-first_ approach to automate the writing of unit tests.
 
+## Overview
+
+Let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
+
+Without giving the power to test everything, it makes it easy to generate in no time a set of tests for all relevant contexts.
+
+By delegating to __Brutal__ this repetitive (and redundant) job of writing tests, you'll be able to focus on your core business: the code.
+
+## Warning
+
+The __Brutal__ development process does not prevent from bugs,
+and generated tests would be wrong if the code is wrong.
+
+This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is expected to behave.
+
+That is the price for _Brutal-Driven Development_.
+
+## Why
+
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
+
+> I don't like tests. It's not DRY.<br/>
+> -- [Matz](https://github.com/matz)
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'brutal'
+```
+
+And then execute:
+
+    $ bundle install
+
+Or install it yourself as:
+
+    $ gem install brutal
+
+## Quick Start
+
+Just type `brutal` in a Ruby project's folder and watch the magic happen.
+
+## Usage
+
 The `brutal.yml` file is a manifest you can use to define your __Brutal__ meta-spec.
 It has 4 top-level sections:
 
@@ -16,7 +62,7 @@ It has 4 top-level sections:
 * `contexts` - Specifies a list of variables to populate the subject's template.
 * `actuals` - Specifies templates to challenge evaluated subjects & get results.
 
-# Getting started
+### Getting started
 
 1. Create a `brutal.yml` file in your application's root directory.
 The following example `brutal.yml` defines the shape of a Hello test suite:
@@ -62,65 +108,9 @@ raise unless actual.to_s == "Hello Bob"
 raise unless actual.length == 9
 ```
 
-## Warning
-
-__Brutal__ does not prevent from bugs, and generated tests would be wrong if the code is wrong.
-
-This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is expected to behave.
-
-That is the price of _Brutal-Driven Development_.
-
-## Why
-
-[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
-
-> I don't like tests. It's not DRY.<br/>
-> -- [Matz](https://github.com/matz)
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'brutal'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install brutal
-
-## Quick Start
-
-Just type `brutal` in a Ruby project's folder and watch the magic happen.
-
 ### Examples
 
 https://github.com/fixrb/brutal/raw/master/examples/
-
-### Behavioral integrity
-
-In versioned projects,
-the integrity of the behavior of the code could easily be compared by executing `brutal` after changes.
-
-Assuming a project is versioned with `git`, if something goes wrong,
-the `git diff test.rb` command would instantly show changes between the behavior of the previous code and the behavior of the new one.
-
-Example of regression from [The Greeter class](https://github.com/fixrb/brutal/raw/master/examples/the_greeter_class/):
-
-```diff
-  require './greeter'
-
-  # ------------------------------------------------------------------------------
-
-  actual = Greeter.new('world')
-
-- raise unless actual.salute == "Hello World!"
-+ raise unless actual.salute == "Hello !"
-```
 
 ## Rake integration example
 
