@@ -16,6 +16,13 @@ Without giving the power to test everything, it makes it easy to generate in no 
 
 By delegating to __Brutal__ this repetitive (and redundant) job of writing tests, you'll be able to focus on your core business: the code.
 
+## Why
+
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
+
+> I don't like tests. It's not DRY.<br/>
+> -- [Matz](https://github.com/matz)
+
 ## Warning
 
 The __Brutal__ development process does not prevent from bugs,
@@ -24,13 +31,6 @@ and generated tests would be wrong if the code is wrong.
 This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is expected to behave.
 
 That is the price for _Brutal-Driven Development_.
-
-## Why
-
-[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
-
-> I don't like tests. It's not DRY.<br/>
-> -- [Matz](https://github.com/matz)
 
 ## Installation
 
@@ -108,7 +108,7 @@ raise unless actual.to_s == "Hello Bob"
 raise unless actual.length == 9
 ```
 
-### Examples
+### More examples
 
 https://github.com/fixrb/brutal/raw/master/examples/
 
