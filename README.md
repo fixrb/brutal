@@ -10,11 +10,9 @@
 
 ## Overview
 
-Let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
+Let __Brutal__ shape for you in no time the actual behavior of your code through as many combinations of contexts as needed.
 
-Without giving the power to test everything, it makes it easy to generate in no time a set of tests for all relevant contexts.
-
-By delegating to __Brutal__ this repetitive (and redundant) job of writing tests, you'll be able to focus on your core business: the code.
+By delegating to __Brutal__ the repetitive (and redundant) task of writing tests, you'll be able to focus on your core business: the code itself.
 
 ## Why
 
