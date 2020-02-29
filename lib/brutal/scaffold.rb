@@ -5,12 +5,13 @@ module Brutal
   #
   # @since 1.0.0
   class Scaffold
-    attr_reader :header, :subject, :actuals, :contexts
+    attr_reader(:header, :subject, :actuals, :contexts)
 
     # Initialize a new scaffold generator
     def initialize(header, subject, *actuals, **contexts)
-      warn 'Empty actual values!' if actuals.empty?
-      warn 'Empty contexts!'      if contexts.empty?
+      warn('Empty subject!')        if subject.empty?
+      warn('Empty actual values!')  if actuals.empty?
+      warn('Empty contexts!')       if contexts.empty?
 
       eval(header) # rubocop:disable Security/Eval
 
@@ -31,19 +32,10 @@ module Brutal
     #
     # @return [String]
     #
-    # @api public
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def to_s
-      names       = contexts.keys.sort
-      values_arr  = names.map { |name| contexts.fetch(name) }
-
-      test_params = Array(values_arr[0]).product(*Array(values_arr[1..-1]))
-
-      header.chomp + "\n" +
-      "\n" +
-      blank_line.gsub(/\A\n/, '') +
-
-      test_params.map do |values|
-        attributes = names.each_with_index.inject({}) do |h, (name, i)|
+      header.chomp + "\n" + blank_line + test_params.map do |values|
+        attributes = context_names.each_with_index.inject({}) do |h, (name, i)|
           h.merge(name.to_sym => inspect(values.fetch(i)))
         end
 
@@ -60,17 +52,27 @@ module Brutal
 
         actuals.each do |actual_value|
           result_str = format(actual_value, subject: 'actual')
-          string += "raise unless #{result_str} == #{eval(result_str).inspect}\n" # rubocop:disable Security/Eval
+          string += "raise if #{result_str} != #{eval(result_str).inspect}\n" # rubocop:disable Security/Eval
         end
 
         string
       end.join(blank_line)
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def blank_line
       "\n"                \
       "# #{('-' * 78)}\n" \
       "\n"
+    end
+
+    def context_names
+      contexts.keys.sort
+    end
+
+    def test_params
+      values_arr = context_names.map { |name| contexts.fetch(name) }
+      Array(values_arr[0]).product(*Array(values_arr[1..-1]))
     end
   end
 end

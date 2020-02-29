@@ -3,16 +3,16 @@
 %w[
   configuration
   scaffold
-].each { |file_name| require_relative File.join('brutal', file_name) }
+].each { |file_name| require_relative(File.join('brutal', file_name)) }
 
 # The Brutal namespace
 module Brutal
-  def self.configuration
+  def self.settings
     Configuration.load!
   end
 
   def self.generate
-    Scaffold.new(*configuration)
+    Scaffold.new(*settings)
   end
 
   def self.generate!

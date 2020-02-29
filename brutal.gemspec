@@ -5,7 +5,8 @@ Gem::Specification.new do |spec|
   spec.version      = File.read('VERSION.semver').chomp
   spec.author       = 'Cyril Kato'
   spec.email        = 'contact@cyril.email'
-  spec.summary      = 'A code-first approach to automate the writing of unit tests.'
+  spec.summary      = 'A code-first approach ' \
+                      'to automate the writing of unit tests.'
   spec.description  = spec.summary
   spec.homepage     = 'https://github.com/fixrb/brutal'
   spec.license      = 'MIT'

@@ -11,26 +11,34 @@ module Brutal
     PATH = ::File.join(::Dir.pwd, NAME).freeze
 
     def self.load!
-      new.call
+      new.to_a
     end
 
-    def initialize
-      @settings = ::YAML.load_file(PATH)
+    def self.file!
+      ::YAML.load_file(PATH)
     rescue ::Errno::ENOENT => _e
-      abort "File #{PATH} not found!"
+      abort("File #{PATH} not found!")
     end
 
-    def call
-      header    = @settings.fetch('header',   '# Brutal test suite')
-      subject   = @settings.fetch('subject',  '')
-      contexts  = @settings.fetch('contexts', {})
-      actuals   = @settings.fetch('actuals',  [])
+    attr_reader(:header, :subject, :contexts, :actuals)
 
-      raise ::TypeError, header.inspect   unless header.is_a?(::String)
-      raise ::TypeError, subject.inspect  unless subject.is_a?(::String)
-      raise ::TypeError, contexts.inspect unless contexts.is_a?(::Hash)
-      raise ::TypeError, actuals.inspect  unless actuals.is_a?(::Array)
+    # rubocop:disable Metrics/AbcSize
+    def initialize
+      settings = self.class.file!
 
+      @header   = settings.fetch('header',   '# Brutal test suite')
+      @subject  = settings.fetch('subject',  '')
+      @contexts = settings.fetch('contexts', {})
+      @actuals  = settings.fetch('actuals',  [])
+
+      raise ::TypeError, @header.inspect   unless @header.is_a?(::String)
+      raise ::TypeError, @subject.inspect  unless @subject.is_a?(::String)
+      raise ::TypeError, @contexts.inspect unless @contexts.is_a?(::Hash)
+      raise ::TypeError, @actuals.inspect  unless @actuals.is_a?(::Array)
+    end
+    # rubocop:enable Metrics/AbcSize
+
+    def to_a
       [header, subject, *actuals, **contexts]
     end
   end
