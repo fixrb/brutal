@@ -8,64 +8,18 @@
 
 > A _code-first_ approach to automate the writing of unit tests.
 
-## Why
-
-[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
-
-> I don't like tests. It's not DRY.<br/>
-> -- [Matz](https://github.com/matz)
-
-## Purpose
-
-Let __Brutal__ shape for you the actual behavior of your code against as many combinations of challenges as needed.
-
-Without giving the power to test everything, it makes it easy to generate in no time a set of tests for all relevant contexts.
-
-By delegating to __Brutal__ this repetitive (and redundant) job of writing tests, you'll be able to focus on your core business: the code.
-
-## Warning
-
-__Brutal__ does not prevent from bugs.
-As a picture of the behavior of the code, generated tests would be wrong if the code is wrong.
-
-This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is expected to behave.
-
-This is the cost to enter the _Brutal-Driven Development_ with confidence.
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'brutal'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install brutal
-
-## Quick Start
-
-Just type `brutal` in a Ruby project's folder and watch the magic happen.
-
-## Settings
-
-__Brutal__'s configuration file is `.brutal.yml`.
-
-A `.brutal.yml` manifest has 4 top-level sections:
+The `brutal.yml` file is a manifest you can use to define your __Brutal__ meta-spec.
+It has 4 top-level sections:
 
 * `header` - Specifies the code to execute before generating the test suite.
 * `subject` - Specifies the template of the code to be declined across contexts.
 * `contexts` - Specifies a list of variables to populate the subject's template.
 * `actuals` - Specifies templates to challenge evaluated subjects & get results.
 
-### Example
+# Getting started
 
-Given the following configuration:
+1. Create a `brutal.yml` file in your application's root directory.
+The following example `brutal.yml` defines the shape of a Hello test suite:
 
 ```yaml
 ---
@@ -82,8 +36,9 @@ actuals:
   - "%{subject}.length"
 ```
 
-After running the `brutal` command in the same directory,
-a `test.rb` file should be generated:
+2. Run the `brutal` command from the same directory.
+
+3. Read the generated `test.rb` file in the same directory:
 
 ```ruby
 # Brutal test suite
@@ -107,11 +62,44 @@ raise unless actual.to_s == "Hello Bob"
 raise unless actual.length == 9
 ```
 
-And when executed as is, no exceptions should be thrown as long as the behavior of the code does not change.
+## Warning
 
-> ruby test.rb
+__Brutal__ does not prevent from bugs, and generated tests would be wrong if the code is wrong.
 
-For more examples: https://github.com/fixrb/brutal/raw/master/examples/
+This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is expected to behave.
+
+That is the price of _Brutal-Driven Development_.
+
+## Why
+
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
+
+> I don't like tests. It's not DRY.<br/>
+> -- [Matz](https://github.com/matz)
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'brutal'
+```
+
+And then execute:
+
+    $ bundle install
+
+Or install it yourself as:
+
+    $ gem install brutal
+
+## Quick Start
+
+Just type `brutal` in a Ruby project's folder and watch the magic happen.
+
+### Examples
+
+https://github.com/fixrb/brutal/raw/master/examples/
 
 ### Behavioral integrity
 
