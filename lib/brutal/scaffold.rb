@@ -34,7 +34,7 @@ module Brutal
     #
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def to_s
-      header.chomp + "\n" + blank_line + test_params.map do |values|
+      header.chomp + "\n" + blank_line + combinations_values.map do |values|
         attributes = context_names.each_with_index.inject({}) do |h, (name, i)|
           h.merge(name.to_sym => inspect(values.fetch(i)))
         end
@@ -70,9 +70,12 @@ module Brutal
       contexts.keys.sort
     end
 
-    def test_params
-      values_arr = context_names.map { |name| contexts.fetch(name) }
-      Array(values_arr[0]).product(*Array(values_arr[1..-1]))
+    def contexts_values
+      context_names.map { |context_name| contexts.fetch(context_name) }
+    end
+
+    def combinations_values
+      Array(contexts_values[0]).product(*Array(contexts_values[1..-1]))
     end
   end
 end

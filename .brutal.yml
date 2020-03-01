@@ -36,5 +36,6 @@ contexts:
 actuals:
   - "%{subject}.blank_line"
   - "%{subject}.context_names"
-  - "%{subject}.test_params"
+  - "%{subject}.contexts_values"
+  - "%{subject}.combinations_values"
   - "%{subject}.to_s"
