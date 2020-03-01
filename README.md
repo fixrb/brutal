@@ -8,7 +8,7 @@
 
 > A _code-first_ approach to automate the writing of unit tests.
 
-# Intro
+## Intro
 
 [![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
 
