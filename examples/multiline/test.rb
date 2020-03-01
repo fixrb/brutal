@@ -1,21 +1,19 @@
-# ------------------------------------------------------------------------------
-
-front_object = -42
+# Brutal test suite
 
 # ------------------------------------------------------------------------------
 
 actual = begin
   # This is a useless comment.
-  front_object.abs
+  -42.abs
 end
 
-raise unless actual.to_s == "42"
+raise if actual.to_s != "42"
 
 # ------------------------------------------------------------------------------
 
 actual = begin
   # This is a useless comment.
-  front_object.-(2)
+  -42.-(2)
 end
 
-raise unless actual.to_s == "-44"
+raise if actual.to_s != "-44"

@@ -1,13 +1,11 @@
 ---
-front_object: -42
-
 subject: |
-  %{front_object}.%{challenge}
+  -42.%{challenge}
 
-variables:
+contexts:
   :challenge:
     - abs
     - "-(2)"
 
-actual_values:
+actuals:
   - "%{subject}.to_s"

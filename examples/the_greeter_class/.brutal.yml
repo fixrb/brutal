@@ -6,15 +6,13 @@ header: |
     require './greeter'
   end
 
-front_object: |
-  Greeter
-
 subject: |
-  %{front_object}.new(%{string})
+  Greeter.new(%{string})
 
-variables:
+contexts:
   :string:
+    - "'Alice'"
     - "'world'"
 
-actual_values:
+actuals:
   - "%{subject}.salute"

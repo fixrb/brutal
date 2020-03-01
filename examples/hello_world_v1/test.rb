@@ -3,15 +3,17 @@
 # ------------------------------------------------------------------------------
 
 actual = begin
-  -42.abs
+  "Hello " + 'Alice'
 end
 
-raise if actual.to_s != "42"
+raise if actual.to_s != "Hello Alice"
+raise if actual.length != 11
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  -42.-(2)
+  "Hello " + 'Bob'
 end
 
-raise if actual.to_s != "-44"
+raise if actual.to_s != "Hello Bob"
+raise if actual.length != 9

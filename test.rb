@@ -2,38 +2,31 @@
 
 require 'simplecov'
 
-SimpleCov.command_name 'Brutal test suite'
-SimpleCov.start
+::SimpleCov.command_name 'Brutal test suite'
+::SimpleCov.start
 
-require './lib/brutal'
-
-# ------------------------------------------------------------------------------
-
-front_object = Brutal::ScaffoldGenerator::Por
+require './lib/brutal/scaffold'
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object.new(42, "%{front_object}.%{challenge}", *"%{subject}.to_s", challenge: ["abs", "-(2)"])
+  ::Brutal::Scaffold.new("# frozen_string_literal: true", '"Hello " + "%{string}"', *"%{subject}.length", **{:string=>["Alice", "Bob"]})
 end
 
-raise unless actual.to_s == %q(# ------------------------------------------------------------------------------
-
-front_object = 42
+raise if actual.blank_line != "\n# ------------------------------------------------------------------------------\n\n"
+raise if actual.context_names != [:string]
+raise if actual.contexts_values != [["Alice", "Bob"]]
+raise if actual.combinations_values != [["Alice"], ["Bob"]]
+raise if actual.to_s != "# frozen_string_literal: true\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  \"Hello \" + \"Alice\"\nend\n\nraise if actual.length != 11\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  \"Hello \" + \"Bob\"\nend\n\nraise if actual.length != 9\n"
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object.abs
+  ::Brutal::Scaffold.new("# frozen_string_literal: true", '"Hello " + "%{string}"', *"%{subject}.to_s", **{:string=>["Alice", "Bob"]})
 end
 
-raise unless actual.to_s == "42"
-
-# ------------------------------------------------------------------------------
-
-actual = begin
-  front_object.-(2)
-end
-
-raise unless actual.to_s == "40"
-)
+raise if actual.blank_line != "\n# ------------------------------------------------------------------------------\n\n"
+raise if actual.context_names != [:string]
+raise if actual.contexts_values != [["Alice", "Bob"]]
+raise if actual.combinations_values != [["Alice"], ["Bob"]]
+raise if actual.to_s != "# frozen_string_literal: true\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  \"Hello \" + \"Alice\"\nend\n\nraise if actual.to_s != \"Hello Alice\"\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  \"Hello \" + \"Bob\"\nend\n\nraise if actual.to_s != \"Hello Bob\"\n"

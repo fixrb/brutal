@@ -4,27 +4,38 @@ header: |
 
   require 'simplecov'
 
-  SimpleCov.command_name 'Brutal test suite'
-  SimpleCov.start
+  ::SimpleCov.command_name 'Brutal test suite'
+  ::SimpleCov.start
 
-  require './lib/brutal'
-
-front_object: 'Brutal::ScaffoldGenerator::Por'
+  require './lib/brutal/scaffold'
 
 subject: |
-  %{front_object}.new(%{var_front_object}, %{var_subject}, *%{var_actual_values}, challenge: ["abs", "-(2)"])
+  ::Brutal::Scaffold.new("%{header}", '%{subject}', *%{actuals}, **%{contexts})
 
-variables:
-  :var_front_object:
-    - 42
-
-  :var_subject:
+contexts:
+  :header:
     - |
-      "%{front_object}.%{challenge}"
+      # frozen_string_literal: true
 
-  :var_actual_values:
+  :subject:
+    - |
+      "Hello " + "%{string}"
+
+  :contexts:
+    -
+      :string:
+        - Alice
+        - Bob
+
+  :actuals:
+    - |
+      "%{subject}.length"
     - |
       "%{subject}.to_s"
 
-actual_values:
+actuals:
+  - "%{subject}.blank_line"
+  - "%{subject}.context_names"
+  - "%{subject}.contexts_values"
+  - "%{subject}.combinations_values"
   - "%{subject}.to_s"

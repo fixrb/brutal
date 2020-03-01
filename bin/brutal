@@ -1,45 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'yaml'
+require_relative File.join('..', 'lib', 'brutal')
 
-FILE_NAME = '.brutal.yml'
-CONF_PATH = ::File.join(::Dir.pwd, FILE_NAME)
-
-abort "File #{CONF_PATH} not found!" unless ::File.exist?(CONF_PATH)
-
-conf = ::YAML.load_file(CONF_PATH)
-
-header        = conf.fetch('header', '').to_s.chomp
-front_object  = conf.fetch('front_object')
-subject       = conf.fetch('subject')
-variables     = conf.fetch('variables', {})
-actual_values = conf.fetch('actual_values')
-
-raise ::TypeError unless subject.is_a?(::String)
-raise ::TypeError unless variables.is_a?(::Hash)
-raise ::TypeError unless actual_values.is_a?(::Array)
-
-front_object = front_object.chomp if front_object.is_a?(::String)
-
-require_relative ::File.join('..', 'lib', 'brutal')
-
-scaffold, file_name  = case ARGV.fetch(0, nil)
-                       when nil
-                         [::Brutal::ScaffoldGenerator::Por, 'test.rb']
-                       when 'rspec'
-                         [::Brutal::ScaffoldGenerator::RSpec, 'test_spec.rb']
-                       else
-                         abort "#{ARGV[0].inspect} not (yet) supported!"
-                       end
-
-eval(header) # rubocop:disable Security/Eval
-
-doc = [
-  header,
-  scaffold.new(front_object, subject, *actual_values, **variables).to_s
-].reject(&:empty?).join("\n\n")
-
-file = ::File.open(file_name, 'w')
-file.write(doc)
-file.close
+Brutal.generate!

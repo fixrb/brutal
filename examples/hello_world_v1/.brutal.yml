@@ -1,15 +1,12 @@
 ---
-front_object: |
-  "Hello "
-
 subject: |
-  %{front_object} + %{string}
+  "Hello " + %{string}
 
-variables:
+contexts:
   :string:
     - "'Alice'"
     - "'Bob'"
 
-actual_values:
+actuals:
   - "%{subject}.to_s"
   - "%{subject}.length"

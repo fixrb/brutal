@@ -19,5 +19,22 @@ namespace :test do
   end
 end
 
+task :scaffold! do
+  print 'Generating brutal test suite... '
+  `brutal`
+  puts 'Done.'
+
+  Dir.chdir('examples') do
+    Dir.entries('.').reject { |name| %w[. ..].include?(name) }.each do |example|
+      Dir.chdir(example) do
+        print "Generating #{example} test suite... "
+        `brutal`
+        puts 'Done.'
+      end
+    end
+  end
+end
+
 task(:doc_stats) { ruby '-S yard stats' }
-task default: %i[test doc_stats rubocop]
+
+task default: %i[scaffold! test doc_stats rubocop]

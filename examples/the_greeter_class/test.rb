@@ -6,12 +6,16 @@ end
 
 # ------------------------------------------------------------------------------
 
-front_object = Greeter
+actual = begin
+  Greeter.new('Alice')
+end
+
+raise if actual.salute != "Hello Alice!"
 
 # ------------------------------------------------------------------------------
 
 actual = begin
-  front_object.new('world')
+  Greeter.new('world')
 end
 
-raise unless actual.salute == "Hello World!"
+raise if actual.salute != "Hello World!"
