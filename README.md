@@ -23,12 +23,15 @@ By delegating to __Brutal__ the repetitive (and redundant) task of writing tests
 
 ## Warning
 
-The __Brutal__ development process does not prevent from bugs,
-and generated tests would be wrong if the code is wrong.
+__Brutal__ development process does not prevent from bugs.
 
-This is why it is important to carefully read a generated test suite, to ensure that it describes the behavior of the code as it is expected to behave.
+As a _picture of the behavior of the code_,
+a generated test suite is wrong as long as the code is wrong,
+regardless of whether all true expectations.
 
-That is the price for _Brutal-Driven Development_.
+However, this document becomes relevant when it shows that the code behaves as it is supposed to.
+It is therefore important to read it well.
+This is the price for _Brutal-Driven Development_.
 
 ## Installation
 
