@@ -11,6 +11,7 @@ subject: |
 
 contexts:
   :string:
+    - "'Alice'"
     - "'world'"
 
 actuals:

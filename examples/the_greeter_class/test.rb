@@ -7,7 +7,15 @@ end
 # ------------------------------------------------------------------------------
 
 actual = begin
+  Greeter.new('Alice')
+end
+
+raise if actual.salute != "Hello Alice!"
+
+# ------------------------------------------------------------------------------
+
+actual = begin
   Greeter.new('world')
 end
 
-raise unless actual.salute == "Hello World!"
+raise if actual.salute != "Hello World!"

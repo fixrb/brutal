@@ -8,18 +8,18 @@
 
 > A _code-first_ approach to automate the writing of unit tests.
 
-## Overview
-
-Let __Brutal__ shape for you in no time the actual behavior of your code through as many combinations of contexts as needed.
-
-By delegating to __Brutal__ the repetitive (and redundant) task of writing tests, you'll be able to focus on your core business: the code itself.
-
-## Why
+# Intro
 
 [![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
 
 > I don't like tests. It's not DRY.<br/>
 > -- [Matz](https://github.com/matz)
+
+## Overview
+
+Let __Brutal__ shape for you in no time the actual behavior of your code through as many combinations of contexts as needed.
+
+By delegating to __Brutal__ the repetitive (and redundant) task of writing tests, you'll be able to focus on your core business: the code itself.
 
 ## Warning
 
