@@ -1,0 +1,29 @@
+---
+header: |
+  # frozen_string_literal: true
+
+  require 'simplecov'
+
+  ::SimpleCov.command_name 'Brutal test suite'
+  ::SimpleCov.start
+
+  require './lib/brutal'
+
+subject: |
+  Brutal::Scaffold.new("%{header}", '%{subject}', *%{actuals}, context_string: ["Alice", "Bob"])
+
+contexts:
+  :header:
+    - |
+      require './lib/brutal/scaffold'
+
+  :subject:
+    - |
+      "Hello %{context_string}"
+
+  :actuals:
+    - |
+      "%{subject}.to_s"
+
+actuals:
+  - "%{subject}.to_s"
