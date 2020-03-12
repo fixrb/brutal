@@ -16,7 +16,7 @@ module Brutal
     end
 
     def self.file!
-      ::YAML.load(File.read(PATH), symbolize_names: true)
+      ::YAML.safe_load(File.read(PATH), symbolize_names: true)
     rescue ::Errno::ENOENT => _e
       abort("File #{PATH} not found!")
     end
