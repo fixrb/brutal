@@ -9,13 +9,14 @@ module Brutal
   class Configuration
     NAME = '.brutal.yml'
     PATH = ::File.join(::Dir.pwd, NAME).freeze
+    DEFAULT_HEADER = '# Brutal test suite'
 
     def self.load!
       new.to_a
     end
 
     def self.file!
-      ::YAML.load_file(PATH)
+      ::YAML.load(File.read(PATH), symbolize_names: true)
     rescue ::Errno::ENOENT => _e
       abort("File #{PATH} not found!")
     end
@@ -26,10 +27,10 @@ module Brutal
     def initialize
       settings = self.class.file!
 
-      @header   = settings.fetch('header',   '# Brutal test suite')
-      @subject  = settings.fetch('subject',  '')
-      @contexts = settings.fetch('contexts', {})
-      @actuals  = settings.fetch('actuals',  [])
+      @header   = settings.fetch(:header,   DEFAULT_HEADER)
+      @subject  = settings.fetch(:subject,  '')
+      @contexts = settings.fetch(:contexts, {})
+      @actuals  = settings.fetch(:actuals,  [])
 
       raise ::TypeError, @header.inspect   unless @header.is_a?(::String)
       raise ::TypeError, @subject.inspect  unless @subject.is_a?(::String)
