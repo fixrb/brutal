@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brutal (1.0.0)
+    brutal (1.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -9,9 +9,8 @@ GEM
     ast (2.4.0)
     docile (1.3.2)
     jaro_winkler (1.5.4)
-    json (2.3.0)
     parallel (1.19.1)
-    parser (2.7.0.3)
+    parser (2.7.0.4)
       ast (~> 2.4.0)
     rainbow (3.0.0)
     rake (13.0.1)
@@ -29,11 +28,10 @@ GEM
     rubocop-thread_safety (0.3.4)
       rubocop (>= 0.51.0)
     ruby-progressbar (1.10.1)
-    simplecov (0.17.1)
+    simplecov (0.18.5)
       docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.2)
+      simplecov-html (~> 0.11)
+    simplecov-html (0.12.2)
     unicode-display_width (1.6.1)
     yard (0.9.24)
 

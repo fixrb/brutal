@@ -3,6 +3,7 @@
 require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'rubocop/rake_task'
+require 'erb'
 
 RuboCop::RakeTask.new
 
@@ -17,6 +18,19 @@ namespace :test do
     ENV['COVERAGE'] = 'true'
     Rake::Task['test'].invoke
   end
+end
+
+task :generate_brutal_yml! do
+  print 'Generating brutal.yml file... '
+
+  template = File.read('.brutal.yml.erb')
+  renderer = ERB.new(template)
+
+  file = ::File.open('.brutal.yml', 'w')
+  file.write(renderer.result)
+  file.close
+
+  puts 'Done.'
 end
 
 task :scaffold! do
@@ -37,4 +51,4 @@ end
 
 task(:doc_stats) { ruby '-S yard stats' }
 
-task default: %i[scaffold! test doc_stats rubocop]
+task default: %i[generate_brutal_yml! scaffold! test doc_stats rubocop]

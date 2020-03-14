@@ -3,7 +3,7 @@ subject: |
   -42.%{challenge}
 
 contexts:
-  :challenge:
+  challenge:
     - abs
     - "-(2)"
 

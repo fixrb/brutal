@@ -6,11 +6,11 @@ subject: |
   [42, Object] + [%{item1}, %{item2}]
 
 contexts:
-  :item1:
+  item1:
     - "nil"
     - 1
 
-  :item2:
+  item2:
     - '"!"'
     - "'!!'"
     - |
