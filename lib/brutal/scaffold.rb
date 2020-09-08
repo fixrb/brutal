@@ -5,9 +5,19 @@ module Brutal
   #
   # @since 1.0.0
   class Scaffold
-    attr_reader(:header, :subject, :actuals, :contexts)
+    # Specifies templates to challenge evaluated subjects & get results.
+    attr_reader :actuals
 
-    # Initialize a new scaffold generator
+    # Specifies a list of variables to populate the subject's template.
+    attr_reader :contexts
+
+    # Specifies the code to execute before generating the test suite.
+    attr_reader :header
+
+    # Specifies the template of the code to be declined across contexts.
+    attr_reader :subject
+
+    # Initialize a new scaffold generator.
     def initialize(header, subject, *actuals, **contexts)
       warn('Empty subject!')        if subject.empty?
       warn('Empty actual values!')  if actuals.empty?
@@ -28,7 +38,7 @@ module Brutal
       object.strip
     end
 
-    # Return a string representation
+    # Return a string representation.
     #
     # @return [String]
     #
