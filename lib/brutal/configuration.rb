@@ -5,17 +5,20 @@ module Brutal
   #
   # @since 1.0.0
   class Configuration
-    HEAD = '# Brutal test suite'
+    DEFAULT_HEAD      = '# Brutal test suite'
+    DEFAULT_SUBJECT   = ''
+    DEFAULT_CONTEXTS  = {}.freeze
+    DEFAULT_ACTUALS   = [].freeze
 
     # Load the configuration parameters.
     #
     # @param hash [Hash] Receive the 4 top-level section parameters.
     def self.load(params)
       new(
-        header:   params.fetch('header',    HEAD),
-        subject:  params.fetch('subject',   ''),
-        contexts: params.fetch('contexts',  {}),
-        actuals:  params.fetch('actuals',   [])
+        header: params.fetch('header', DEFAULT_HEAD),
+        subject: params.fetch('subject', DEFAULT_SUBJECT),
+        contexts: params.fetch('contexts', DEFAULT_CONTEXTS),
+        actuals: params.fetch('actuals', DEFAULT_ACTUALS)
       )
     end
 

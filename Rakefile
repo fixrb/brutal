@@ -39,7 +39,9 @@ task :scaffold! do
   puts 'Done.'
 
   Dir.chdir('examples') do
-    Dir.entries('.').reject { |name| %w[. ..].include?(name) }.each do |example|
+    paths = %w[. ..]
+
+    Dir.entries('.').reject { |name| paths.include?(name) }.each do |example|
       Dir.chdir(example) do
         print "Generating #{example} test suite... "
         `brutal`

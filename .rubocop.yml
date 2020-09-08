@@ -7,11 +7,6 @@ AllCops:
     - test.rb
     - examples/**/*
 
-Style/HashEachMethods:
-  Enabled: true
+  NewCops: enable
 
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
+  TargetRubyVersion: 2.7
