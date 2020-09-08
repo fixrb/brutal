@@ -13,7 +13,7 @@ module Brutal
   def self.generate!
     yaml = File::Read.new.call
     hash = Yaml.parse(yaml)
-    conf = Configuration.new(**hash)
+    conf = Configuration.load(hash)
     ruby = Scaffold.new(conf.header,
                         conf.subject,
                         *conf.actuals,
