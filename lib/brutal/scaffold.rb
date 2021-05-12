@@ -19,9 +19,9 @@ module Brutal
 
     # Initialize a new scaffold generator.
     def initialize(header, subject, *actuals, **contexts)
-      warn('Empty subject!')        if subject.empty?
-      warn('Empty actual values!')  if actuals.empty?
-      warn('Empty contexts!')       if contexts.empty?
+      warn("Empty subject!")        if subject.empty?
+      warn("Empty actual values!")  if actuals.empty?
+      warn("Empty contexts!")       if contexts.empty?
 
       eval(header) # rubocop:disable Security/Eval
 
@@ -61,7 +61,7 @@ module Brutal
         actual = eval(actual_str) # rubocop:disable Security/Eval, Lint/UselessAssignment
 
         actuals.each do |actual_value|
-          result_str = format(actual_value, subject: 'actual')
+          result_str = format(actual_value, subject: "actual")
           string += "raise if #{result_str} != #{eval(result_str).inspect}\n" # rubocop:disable Security/Eval
         end
 
@@ -71,8 +71,8 @@ module Brutal
     # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def blank_line
-      "\n"                \
-      "# #{('-' * 78)}\n" \
+      "\n"              \
+      "# #{'-' * 78}\n" \
       "\n"
     end
 

@@ -9,7 +9,7 @@ module Brutal
     #
     # @since 1.1.0
     class Read
-      NAME = '.brutal.yml'
+      NAME = ".brutal.yml"
 
       attr_reader :name
 

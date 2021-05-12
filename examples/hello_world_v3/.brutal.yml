@@ -1,0 +1,16 @@
+---
+subject: |
+  "Hello %{gender} %{name}"
+
+contexts:
+  gender:
+    - Miss
+    - Mr
+    - Mrs
+  name:
+    - Alice
+    - Bob
+
+actuals:
+  - "%{subject}.to_s"
+  - "%{subject}.length"

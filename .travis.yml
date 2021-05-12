@@ -1,15 +1,17 @@
 language: ruby
+sudo: false
 cache: bundler
 branches:
-  only: master
+  only: main
 before_install:
   - gem install bundler
 script:
   - bundle exec rake test
 rvm:
   - 2.7
+  - 3.0
   - ruby-head
-jobs:
+matrix:
   allow_failures:
     - rvm: ruby-head
   fast_finish: true

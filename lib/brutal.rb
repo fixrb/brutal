@@ -6,7 +6,7 @@
   file/write
   scaffold
   yaml
-].each { |file_name| require_relative(File.join('brutal', file_name)) }
+].each { |file_name| require_relative(File.join("brutal", file_name)) }
 
 # The Brutal namespace.
 module Brutal

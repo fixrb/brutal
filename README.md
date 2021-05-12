@@ -1,16 +1,16 @@
 # Brutal 💎🔨
 
 [![RuboCop Status](https://github.com/fixrb/brutal/workflows/RuboCop/badge.svg)][workflow_rubocop]
-[![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=master)][travis]
+[![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=main)][travis]
 [![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
-[![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=master)][inchpages]
+[![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=main)][inchpages]
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 > A _code-first_ approach to automate the writing of unit tests.
 
 ## Intro
 
-[![I Hate Tests](https://github.com/fixrb/brutal/raw/master/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
+[![I Hate Tests](https://github.com/fixrb/brutal/raw/main/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
 
 > I don't like tests. It's not DRY.<br/>
 > -- [Matz](https://github.com/matz)
@@ -38,7 +38,7 @@ This is the price for _Brutal-Driven Development_.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'brutal'
+gem "brutal"
 ```
 
 And then execute:
@@ -111,7 +111,7 @@ raise if actual.length != 9
 
 ### More examples
 
-https://github.com/fixrb/brutal/raw/master/examples/
+https://github.com/fixrb/brutal/raw/main/examples/
 
 ## Rake integration example
 
@@ -119,7 +119,7 @@ A generated `test.rb` file could be matched as follows:
 
 ```ruby
 Rake::TestTask.new do |t|
-  t.pattern = 'test.rb'
+  t.pattern = "test.rb"
 end
 ```
 
@@ -140,7 +140,7 @@ The [gem](https://rubygems.org/gems/brutal) is available as open source under th
 <p>
   This project is sponsored by:<br />
   <a href="https://sashite.com/"><img
-    src="https://github.com/fixrb/brutal/raw/master/img/sashite.png"
+    src="https://github.com/fixrb/brutal/raw/main/img/sashite.png"
     alt="Sashite" /></a>
 </p>
 

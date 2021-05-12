@@ -1,7 +1,7 @@
 begin
-  require_relative 'greeter'
+  require_relative "greeter"
 rescue ::LoadError
-  require './greeter'
+  require "./greeter"
 end
 
 # ------------------------------------------------------------------------------

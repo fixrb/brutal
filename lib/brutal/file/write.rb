@@ -9,7 +9,7 @@ module Brutal
     #
     # @since 1.1.0
     class Write
-      NAME = 'test.rb'
+      NAME = "test.rb"
 
       attr_reader :name
 
@@ -18,7 +18,7 @@ module Brutal
       end
 
       def call(scaffold)
-        file = ::File.open(path, 'w')
+        file = ::File.open(path, "w")
         file.write(scaffold)
 
         true

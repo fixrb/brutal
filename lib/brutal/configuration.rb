@@ -7,18 +7,18 @@ module Brutal
   class Configuration
     DEFAULT_ACTUALS   = [].freeze
     DEFAULT_CONTEXTS  = {}.freeze
-    DEFAULT_HEAD      = '# Brutal test suite'
-    DEFAULT_SUBJECT   = ''
+    DEFAULT_HEAD      = "# Brutal test suite"
+    DEFAULT_SUBJECT   = ""
 
     # Load the configuration parameters.
     #
     # @param params [Hash] Receive the 4 top-level section parameters.
     def self.load(params)
       new(
-        actuals: params.fetch('actuals', DEFAULT_ACTUALS),
-        contexts: params.fetch('contexts', DEFAULT_CONTEXTS),
-        header: params.fetch('header', DEFAULT_HEAD),
-        subject: params.fetch('subject', DEFAULT_SUBJECT)
+        actuals:  params.fetch("actuals", DEFAULT_ACTUALS),
+        contexts: params.fetch("contexts", DEFAULT_CONTEXTS),
+        header:   params.fetch("header", DEFAULT_HEAD),
+        subject:  params.fetch("subject", DEFAULT_SUBJECT)
       )
     end
 
@@ -41,7 +41,7 @@ module Brutal
       raise ::TypeError, header.inspect   unless header.is_a?(::String)
       raise ::TypeError, subject.inspect  unless subject.is_a?(::String)
 
-      @actuals  = actuals
+      @actuals  = actuals.sort
       @contexts = contexts
       @header   = header
       @subject  = subject
