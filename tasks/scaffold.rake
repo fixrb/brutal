@@ -17,7 +17,6 @@ task :scaffold! do
         print "Generating #{example} test suite... "
 
         `bundle exec brutal`
-        `chmod +x test.rb`
 
         puts "Done."
       end
