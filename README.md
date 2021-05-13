@@ -17,7 +17,7 @@
 
 ## Overview
 
-Let __Brutal__ shape for you in no time the actual behavior of your code through as many combinations of contexts as needed.
+Let __Brutal__ shape for you in no time a huge, framework-less vanilla Ruby file describing the actual behavior of your code through as many combinations of contexts as needed.
 
 By delegating to __Brutal__ the repetitive (and redundant) task of writing tests, you'll be able to focus on your core business: the code itself.
 
@@ -122,6 +122,10 @@ Rake::TestTask.new do |t|
   t.pattern = "test.rb"
 end
 ```
+
+## Test suite
+
+__Brutal__'s test set is brutally self-generated here: [./test.rb](https://github.com/fixrb/brutal/blob/main/test.rb)
 
 ## Contact
 
