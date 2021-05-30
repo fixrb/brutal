@@ -33,6 +33,8 @@ However, this document becomes relevant when it shows that the code behaves as i
 It is therefore important to read it well.
 This is the price for _Brutal-Driven Development_.
 
+![Brutal-Driven Development](https://github.com/fixrb/brutal/raw/main/img/brutal-driven-development.jpg)
+
 ## Installation
 
 Add this line to your application's Gemfile:
