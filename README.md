@@ -1,10 +1,10 @@
 # Brutal 💎🔨
 
-[![RuboCop Status](https://github.com/fixrb/brutal/workflows/RuboCop/badge.svg)][workflow_rubocop]
-[![Build Status](https://api.travis-ci.org/fixrb/brutal.svg?branch=main)][travis]
-[![Gem Version](https://badge.fury.io/rb/brutal.svg)][gem]
-[![Inline docs](https://inch-ci.org/github/fixrb/brutal.svg?branch=main)][inchpages]
-[![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
+[![Version](https://img.shields.io/github/v/tag/fixrb/brutal?label=Version&logo=github)](https://github.com/fixrb/brutal/releases)
+[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?)](https://rubydoc.info/github/fixrb/brutal/main)
+[![CI](https://github.com/fixrb/brutal/workflows/CI/badge.svg?branch=main)](https://github.com/fixrb/brutal/actions?query=workflow%3Aci+branch%3Amain)
+[![RuboCop](https://github.com/fixrb/brutal/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/brutal/actions?query=workflow%3Arubocop+branch%3Amain)
+[![License](https://img.shields.io/github/license/fixrb/brutal?label=License&logo=github)](https://github.com/fixrb/brutal/raw/main/LICENSE.md)
 
 > A _code-first_ approach to automate the writing of unit tests.
 
@@ -149,9 +149,3 @@ The [gem](https://rubygems.org/gems/brutal) is available as open source under th
     src="https://github.com/fixrb/brutal/raw/main/img/sashite.png"
     alt="Sashite" /></a>
 </p>
-
-[workflow_rubocop]: https://github.com/fixrb/brutal/actions?query=workflow%3ARuboCop
-[gem]: https://rubygems.org/gems/brutal
-[travis]: https://travis-ci.org/fixrb/brutal
-[inchpages]: https://inch-ci.org/github/fixrb/brutal
-[rubydoc]: https://rubydoc.info/gems/brutal/frames
