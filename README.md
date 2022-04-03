@@ -12,28 +12,26 @@
 
 [![I Hate Tests](https://github.com/fixrb/brutal/raw/main/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
 
-> I don't like tests. It's not DRY.<br/>
+> I don't like tests. It's not DRY.
 > -- [Matz](https://github.com/matz)
 
 ## Overview
 
-Let __Brutal__ shape for you in no time a huge, framework-less vanilla Ruby file describing the actual behavior of your code through as many combinations of contexts as needed.
+Let __Brutal__ craft for you in no time a (potentially huge) framework-less vanilla Ruby file describing the actual behavior of your code across as many context combinations as necessary.
 
-By delegating to __Brutal__ the repetitive (and redundant) task of writing tests, you'll be able to focus on your core business: the code itself.
+By delegating to __Brutal__ the repetitive (and redundant) task of writing tests, you will be able to focus on your core business: the code itself.
+
+![Brutal-Driven Development](https://github.com/fixrb/brutal/raw/main/img/brutal-driven-development.jpg)
 
 ## Warning
 
-__Brutal__ development process does not prevent from bugs.
+The _Brutal-Driven Development_ process does not prevent bugs from appearing in the code.
 
-As a _picture of the behavior of the code_,
-a generated test suite is wrong as long as the code is wrong,
-regardless of whether all true expectations.
+A generated test suite acts as a _picture of the code's behavior_. Therefore, if the code is wrong, the picture of the code's behavior will also be wrong.
 
-However, this document becomes relevant when it shows that the code behaves as it is supposed to.
-It is therefore important to read it well.
-This is the price for _Brutal-Driven Development_.
+The mere fact that all expectations are true does not mean that the code behaves as it should.
 
-![Brutal-Driven Development](https://github.com/fixrb/brutal/raw/main/img/brutal-driven-development.jpg)
+It is therefore the responsibility of the developer to analyze the generated behavioral pictures to ensure that the code reacts as it is supposed to according to the contexts in which it is evaluated.
 
 ## Installation
 
@@ -45,11 +43,15 @@ gem "brutal"
 
 And then execute:
 
-    $ bundle install
+```sh
+bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install brutal
+```sh
+gem install brutal
+```
 
 ## Quick Start
 
@@ -139,7 +141,7 @@ __Brutal__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
-The [gem](https://rubygems.org/gems/brutal) is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The [gem](https://rubygems.org/gems/brutal) is available as open source under the terms of the [MIT License](https://github.com/fixrb/brutal/raw/main/LICENSE.md).
 
 ***
 

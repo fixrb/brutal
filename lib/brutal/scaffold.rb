@@ -41,8 +41,6 @@ module Brutal
     # Return a string representation.
     #
     # @return [String]
-    #
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def to_s
       "#{header.chomp}\n#{blank_line}" + combinations_values.map do |values|
         attributes = context_names.each_with_index.inject({}) do |h, (name, i)|
@@ -53,7 +51,7 @@ module Brutal
 
         string = <<~CODE
           actual = begin
-          #{actual_str.gsub(/^/, '  ')}
+          #{actual_str.gsub(/^/, "  ")}
           end
 
         CODE
@@ -68,12 +66,11 @@ module Brutal
         string
       end.join(blank_line)
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def blank_line
       "\n"              \
-      "# #{'-' * 78}\n" \
-      "\n"
+        "# #{"-" * 78}\n" \
+        "\n"
     end
 
     def context_names

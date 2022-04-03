@@ -9,10 +9,11 @@ Gem::Specification.new do |spec|
                       "to automate the writing of unit tests."
   spec.description  = spec.summary
   spec.homepage     = "https://github.com/fixrb/brutal"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "bin/brutal", "lib/**/*"]
   spec.executables  = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+
+  spec.required_ruby_version = ">= 2.7.0"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
@@ -22,4 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop-thread_safety"
   spec.add_development_dependency "simplecov"
   spec.add_development_dependency "yard"
+
+  spec.metadata["rubygems_mfa_required"] = "true"
 end

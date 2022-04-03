@@ -14,6 +14,7 @@ module Brutal
     yaml = File::Read.new.call
     hash = Yaml.parse(yaml)
     conf = Configuration.load(hash)
+
     ruby = Scaffold.new(conf.header,
                         conf.subject,
                         *conf.actuals,
