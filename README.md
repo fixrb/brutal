@@ -145,7 +145,7 @@ The [gem](https://rubygems.org/gems/brutal) is available as open source under th
 
 ***
 
-This project is sponsored by:
+This project is sponsored by [Sashité](https://github.com/sashite/):
 
-![Sashité logo](img/sponsor/dark/en/sashite.png#gh-dark-mode-only "Sashité")
-![Sashité logo](img/sponsor/light/en/sashite.png#gh-light-mode-only "Sashité")
+![Sashité logo](https://github.com/fixrb/brutal/raw/main/img/sponsor/dark/en/sashite.png#gh-dark-mode-only "Sashité")
+![Sashité logo](https://github.com/fixrb/brutal/raw/main/img/sponsor/light/en/sashite.png#gh-light-mode-only "Sashité")
