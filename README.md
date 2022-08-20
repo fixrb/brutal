@@ -1,8 +1,8 @@
 # Brutal 💎🔨
 
-[![Version](https://img.shields.io/github/v/tag/fixrb/brutal?label=Version&logo=github)](https://github.com/fixrb/brutal/releases)
+[![Version](https://img.shields.io/github/v/tag/fixrb/brutal?label=Version&logo=github)](https://github.com/fixrb/brutal/tags)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/brutal/main)
-[![CI](https://github.com/fixrb/brutal/workflows/CI/badge.svg?branch=main)](https://github.com/fixrb/brutal/actions?query=workflow%3Aci+branch%3Amain)
+[![Ruby](https://github.com/fixrb/brutal/workflows/Ruby/badge.svg?branch=main)](https://github.com/fixrb/brutal/actions?query=workflow%3Aruby+branch%3Amain)
 [![RuboCop](https://github.com/fixrb/brutal/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/brutal/actions?query=workflow%3Arubocop+branch%3Amain)
 [![License](https://img.shields.io/github/license/fixrb/brutal?label=License&logo=github)](https://github.com/fixrb/brutal/raw/main/LICENSE.md)
 

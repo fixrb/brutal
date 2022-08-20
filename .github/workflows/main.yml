@@ -1,11 +1,6 @@
 name: Ruby
 
-on:
-  push:
-    branches:
-      - main
-
-  pull_request:
+on: [push]
 
 jobs:
   build:
@@ -14,9 +9,10 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - "2.7"
-          - "3.0"
-          - "3.1"
+          - 2.7
+          - 3.0
+          - 3.1
+          - head
 
     steps:
     - uses: actions/checkout@v2
@@ -25,5 +21,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+
     - name: Run the test task
       run: bundle exec rake test
