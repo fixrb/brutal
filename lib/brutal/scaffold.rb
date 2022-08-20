@@ -51,7 +51,7 @@ module Brutal
 
         string = <<~CODE
           actual = begin
-          #{actual_str.gsub(/^/, "  ")}
+          #{actual_str.gsub(/^/, '  ')}
           end
 
         CODE
@@ -68,8 +68,8 @@ module Brutal
     end
 
     def blank_line
-      "\n"              \
-        "# #{"-" * 78}\n" \
+      "\n" \
+        "# #{'-' * 78}\n" \
         "\n"
     end
 

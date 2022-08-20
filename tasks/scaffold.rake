@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 desc "Scaffold"
-task :scaffold! do
+task :scaffold do
   print "Generating brutal test suite... "
 
   `bundle exec brutal`

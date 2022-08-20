@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 desc "Generate brutal YAML file"
-task :generate_brutal_yml! do
+task :generate_brutal_yml do
   print "Generating brutal.yml file... "
 
   template = File.read(".brutal.yml.erb")

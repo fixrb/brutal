@@ -18,9 +18,10 @@ YARD::Rake::YardocTask.new
 Dir["tasks/**/*.rake"].each { |t| load t }
 
 task default: %i[
-  generate_brutal_yml!
-  scaffold!
+  generate_rubocop_yml
+  generate_brutal_yml
+  scaffold
   yard
-  rubocop:auto_correct
+  rubocop:autocorrect
   test
 ]
