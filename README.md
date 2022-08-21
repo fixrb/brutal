@@ -59,7 +59,7 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
 ## Usage
 
-The `brutal.yml` file is a manifest you can use to define your __Brutal__ meta-spec.
+The `.brutal.yml` file is a manifest you can use to define your __Brutal__ meta-spec.
 It has 4 top-level sections:
 
 * `header` - Specifies the code to execute before generating the test suite.
@@ -69,8 +69,8 @@ It has 4 top-level sections:
 
 ### Getting started
 
-1. Create a `brutal.yml` file in your application's root directory.
-The following example `brutal.yml` defines the shape of a Hello test suite:
+1. Create a `.brutal.yml` file in your application's root directory.
+The following example `.brutal.yml` defines the shape of a Hello test suite:
 
 ```yaml
 ---
