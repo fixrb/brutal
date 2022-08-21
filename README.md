@@ -59,13 +59,17 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
 ## Usage
 
-The `.brutal.yml` file is a manifest you can use to define your __Brutal__ meta-spec.
-It has 4 top-level sections:
+__Brutal__ needs a configuration file, it's a kind of manifest, or a meta-spec if you prefer.
+This file is composed of 4 top-level sections:
 
 * `header` - Specifies the code to execute before generating the test suite.
 * `subject` - Specifies the template of the code to be declined across contexts.
 * `contexts` - Specifies a list of variables to populate the subject's template.
 * `actuals` - Specifies templates to challenge evaluated subjects & get results.
+
+By default, this file is called `.brutal.yml`, but it would be possible to call it differently by passing it as an argument to the brutal command.
+
+Currently, only the YAML format is supported.
 
 ### Getting started
 

@@ -2,17 +2,23 @@
 
 %w[
   configuration
-  file/read
-  file/write
+  file
   scaffold
   yaml
-].each { |file_name| require_relative(File.join("brutal", file_name)) }
+].each { |filename| require_relative(File.join("brutal", filename)) }
 
 # The Brutal namespace.
 module Brutal
-  def self.generate!
-    yaml = File::Read.new.call
-    hash = Yaml.parse(yaml)
+  def self.generate!(filename)
+    file = File::Read.new(filename).call
+
+    hash = if Yaml.parse?(filename)
+             Yaml.parse(file)
+           else
+             raise ::ArgumentError, "Unrecognized extension.  " \
+                                    "Impossible to parse #{filename.inspect}."
+           end
+
     conf = Configuration.load(hash)
 
     ruby = Scaffold.new(conf.header,
@@ -20,6 +26,8 @@ module Brutal
                         *conf.actuals,
                         **conf.contexts)
 
-    File::Write.new.call(ruby)
+    new_filename = File.generated_filename(filename)
+
+    File::Write.new(new_filename).call(ruby)
   end
 end

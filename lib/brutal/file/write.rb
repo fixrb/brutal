@@ -1,19 +1,14 @@
 # frozen_string_literal: true
 
 module Brutal
-  # Brutal::File
-  #
-  # @since 1.1.0
   module File
     # Brutal::File::Write
     #
     # @since 1.1.0
     class Write
-      NAME = "test.rb"
-
       attr_reader :name
 
-      def initialize(name = NAME)
+      def initialize(name)
         @name = name
       end
 

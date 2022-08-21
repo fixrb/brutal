@@ -1,19 +1,14 @@
 # frozen_string_literal: true
 
 module Brutal
-  # Brutal::File
-  #
-  # @since 1.1.0
   module File
     # Brutal::File::Read
     #
     # @since 1.1.0
     class Read
-      NAME = ".brutal.yml"
-
       attr_reader :name
 
-      def initialize(name = NAME)
+      def initialize(name)
         @name = name
       end
 
