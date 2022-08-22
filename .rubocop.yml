@@ -25,7 +25,6 @@ AllCops:
     - examples/**/*
 
 inherit_from:
-  - .rubocop_todo.yml
   - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop.yml
   - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop/performance.yml
   - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop/rake.yml
@@ -38,19 +37,3 @@ inherit_mode:
 require:
   - rubocop-gitlab-security
   - rubocop-md
-
-# Check with yard instead.
-Style/Documentation:
-  Enabled: false
-
-Style/RedundantBegin:
-  Exclude:
-    - README.md
-
-Style/StringConcatenation:
-  Exclude:
-    - README.md
-
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - README.md

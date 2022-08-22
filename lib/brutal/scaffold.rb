@@ -42,35 +42,13 @@ module Brutal
     #
     # @return [String]
     def to_s
-      "#{header.chomp}\n#{blank_line}" + combinations_values.map do |values|
-        attributes = context_names.each_with_index.inject({}) do |h, (name, i)|
-          h.merge(name.to_sym => inspect(values.fetch(i)))
-        end
-
-        actual_str = format(inspect(subject), **attributes)
-
-        string = <<~CODE
-          actual = begin
-          #{actual_str.gsub(/^/, '  ')}
-          end
-
-        CODE
-
-        actual = eval(actual_str) # rubocop:disable Security/Eval, Lint/UselessAssignment
-
-        actuals.each do |actual_value|
-          result_str = format(actual_value, subject: "actual")
-          string += "raise if #{result_str} != #{eval(result_str).inspect}\n" # rubocop:disable Security/Eval
-        end
-
-        string
-      end.join(blank_line)
+      ruby_lines.join(separator_ruby_code)
     end
 
-    def blank_line
-      "\n" \
-        "# #{'-' * 78}\n" \
-        "\n"
+    def attributes(*values)
+      context_names.each_with_index.inject({}) do |h, (name, i)|
+        h.merge(name.to_sym => inspect(values.fetch(i)))
+      end
     end
 
     def context_names
@@ -83,6 +61,53 @@ module Brutal
 
     def combinations_values
       Array(contexts_values[0]).product(*Array(contexts_values[1..]))
+    end
+
+    def ruby_lines
+      [header_ruby_code] + actual_ruby_codes
+    end
+
+    def actual_ruby_codes
+      combinations_values.map do |values|
+        actual_str = format(inspect(subject), **attributes(*values))
+        string = actual_ruby_code(actual_str)
+        actual = eval(actual_str) # rubocop:disable Security/Eval, Lint/UselessAssignment
+
+        actuals.each do |actual_value|
+          result_str = format(actual_value, subject: "actual")
+          string += "raise if #{result_str} != #{eval(result_str).inspect}\n" # rubocop:disable Security/Eval
+        end
+
+        string
+      end
+    end
+
+    def actual_ruby_code(actual_str)
+      <<~RUBY_CODE
+        actual = begin
+        #{actual_str.gsub(/^/, '  ')}
+        end
+
+      RUBY_CODE
+    end
+
+    def header_ruby_code
+      <<~RUBY_CODE
+        #{header.chomp}
+      RUBY_CODE
+    end
+
+    def separator_ruby_code
+      <<~RUBY_CODE
+
+        #{thematic_break_ruby_code}
+      RUBY_CODE
+    end
+
+    def thematic_break_ruby_code
+      <<~RUBY_CODE
+        # #{'-' * 78}
+      RUBY_CODE
     end
   end
 end

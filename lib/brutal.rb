@@ -9,16 +9,8 @@
 
 # The Brutal namespace.
 module Brutal
-  def self.generate!(filename)
-    file = File::Read.new(filename).call
-
-    hash = if Yaml.parse?(filename)
-             Yaml.parse(file)
-           else
-             raise ::ArgumentError, "Unrecognized extension.  " \
-                                    "Impossible to parse #{filename.inspect}."
-           end
-
+  def self.generate!(pathname, force: true)
+    hash = parse(pathname)
     conf = Configuration.load(hash)
 
     ruby = Scaffold.new(conf.header,
@@ -26,8 +18,26 @@ module Brutal
                         *conf.actuals,
                         **conf.contexts)
 
-    new_filename = File.generated_filename(filename)
-
-    File::Write.new(new_filename).call(ruby)
+    write(pathname, ruby, force: force)
   end
+
+  def self.parse(pathname)
+    return Yaml.parse(read(pathname)) if Yaml.parse?(pathname)
+
+    raise ::ArgumentError, "Unrecognized extension.  " \
+                           "Impossible to parse #{pathname.inspect}."
+  end
+  private_class_method :parse
+
+  def self.read(pathname)
+    File::Read.new(pathname).call
+  end
+  private_class_method :read
+
+  def self.write(pathname, ruby, force:)
+    new_pathname = File.generated_pathname(pathname)
+    File.override_protection(new_pathname) unless force
+    File::Write.new(new_pathname).call(ruby)
+  end
+  private_class_method :write
 end

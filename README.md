@@ -59,7 +59,8 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
 ## Usage
 
-__Brutal__ needs a configuration file, it's a kind of manifest, or a meta-spec if you prefer.
+__Brutal__ needs a configuration file to know how to write your tests.
+Currently, only the YAML format is supported.
 This file is composed of 4 top-level sections:
 
 * `header` - Specifies the code to execute before generating the test suite.
@@ -67,59 +68,31 @@ This file is composed of 4 top-level sections:
 * `contexts` - Specifies a list of variables to populate the subject's template.
 * `actuals` - Specifies templates to challenge evaluated subjects & get results.
 
-By default, this file is called `.brutal.yml`, but it would be possible to call it differently by passing it as an argument to the brutal command.
+This file is by default called `.brutal.yml`, but it would be possible to name it differently by passing it as an argument to the brutal command such as:
 
-Currently, only the YAML format is supported.
+```sh
+brutal test_hello_world.yml
+```
+
+This would create a `test_hello_world.rb` file containing the test suite.
+
+To avoid accidentally overwriting a file, the `--no-force` option can be used:
+
+```sh
+brutal test_hello_world.yml --no-force
+```
+
+> A test_hello_world.rb file already exists!
 
 ### Getting started
 
-1. Create a `.brutal.yml` file in your application's root directory.
-The following example `.brutal.yml` defines the shape of a Hello test suite:
-
-```yaml
----
-subject: |
-  "Hello " + "%{string}"
-
-contexts:
-  string:
-    - Alice
-    - Bob
-
-actuals:
-  - "%{subject}.to_s"
-  - "%{subject}.length"
-```
-
+1. Create a `.brutal.yml` file in your application's root directory. For example: <https://github.com/fixrb/brutal/blob/v1.4.0/examples/hello_world_v1/.brutal.yml>
 2. Run the `brutal` command from the same directory.
-
-3. Read the generated `test.rb` file in the same directory:
-
-```ruby
-# Brutal test suite
-
-# ------------------------------------------------------------------------------
-
-actual = begin
-  "Hello " + "Alice"
-end
-
-raise if actual.to_s != "Hello Alice"
-raise if actual.length != 11
-
-# ------------------------------------------------------------------------------
-
-actual = begin
-  "Hello " + "Bob"
-end
-
-raise if actual.to_s != "Hello Bob"
-raise if actual.length != 9
-```
+3. Read the generated `test.rb` file in the same directory: <https://github.com/fixrb/brutal/blob/v1.4.0/examples/hello_world_v1/test.rb>
 
 ### More examples
 
-https://github.com/fixrb/brutal/raw/main/examples/
+<https://github.com/fixrb/brutal/blob/v1.4.0/examples/>
 
 ## Rake integration example
 

@@ -16,8 +16,8 @@ module Brutal
       ::YAML.safe_load(yaml, symbolize_names: false)
     end
 
-    def self.parse?(filename)
-      filename_extension = filename.split(".")[1..][-1]
+    def self.parse?(pathname)
+      filename_extension = pathname.split(".")[1..][-1]
       FILENAME_EXTENSIONS.include?(filename_extension)
     end
   end
