@@ -8,8 +8,8 @@ module Brutal
   # @since 1.1.0
   module Yaml
     FILENAME_EXTENSIONS = %w[
-      yaml
-      yml
+      .yaml
+      .yml
     ].freeze
 
     def self.parse(yaml)
@@ -17,7 +17,7 @@ module Brutal
     end
 
     def self.parse?(pathname)
-      filename_extension = pathname.split(".")[1..][-1]
+      filename_extension = pathname.extname
       FILENAME_EXTENSIONS.include?(filename_extension)
     end
   end

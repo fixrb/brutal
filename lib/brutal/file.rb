@@ -10,28 +10,22 @@ module Brutal
   module File
     DEFAULT_CONFIG_FILENAME = ".brutal.yml"
     DEFAULT_GENERATED_FILENAME = "test.rb"
+    RUBY_EXTENSION = ".rb"
 
     def self.generated_pathname(pathname)
-      filename = pathname.split(separator).fetch(-1)
+      filename = pathname.basename
+      return pathname.dirname + DEFAULT_GENERATED_FILENAME if default_config_filename?(filename)
 
-      if filename == DEFAULT_CONFIG_FILENAME
-        directory_parts = pathname.split(separator)[..-2]
-        path_parts = directory_parts + [DEFAULT_GENERATED_FILENAME]
-        return path_parts.join(separator)
-      end
-
-      pathname.gsub(/.[^.]+\z/, ".rb")
+      pathname.sub_ext(RUBY_EXTENSION)
     end
 
     def self.override_protection(pathname)
-      return true unless ::File.exist?(pathname)
-
-      abort "A #{pathname} file already exists!"
+      abort "A #{pathname} file already exists!" if pathname.exist?
     end
 
-    def self.separator
-      ::File::SEPARATOR
+    def self.default_config_filename?(filename)
+      filename.to_s == DEFAULT_CONFIG_FILENAME
     end
-    private_class_method :separator
+    private_class_method :default_config_filename?
   end
 end

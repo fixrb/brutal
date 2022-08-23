@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "pathname"
 require_relative File.join("..", "lib", "brutal")
 
-Brutal.generate! ARGV.fetch(0, Brutal::File::DEFAULT_CONFIG_FILENAME), force: ARGV.none?("--no-force")
+path = ARGV.fetch(0, Brutal::File::DEFAULT_CONFIG_FILENAME)
+pathname = Pathname.new(path)
+pathname += Brutal::File::DEFAULT_CONFIG_FILENAME if pathname.directory?
+force_opt = ARGV.none?("--no-force")
+
+Brutal.generate!(pathname, force: force_opt)

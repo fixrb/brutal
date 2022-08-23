@@ -61,28 +61,48 @@ Just type `brutal` in a Ruby project's folder and watch the magic happen.
 
 __Brutal__ needs a configuration file to know how to write your tests.
 Currently, only the YAML format is supported.
-This file is composed of 4 top-level sections:
+This file is by default named `.brutal.yml` and is composed of 4 top-level sections:
 
 * `header` - Specifies the code to execute before generating the test suite.
 * `subject` - Specifies the template of the code to be declined across contexts.
 * `contexts` - Specifies a list of variables to populate the subject's template.
 * `actuals` - Specifies templates to challenge evaluated subjects & get results.
 
-This file is by default called `.brutal.yml`, but it would be possible to name it differently by passing it as an argument to the brutal command such as:
+When the configuration file is present, the generation of a test suite can be done with the command:
 
 ```sh
-brutal test_hello_world.yml
+brutal .brutal.yml
 ```
 
-This would create a `test_hello_world.rb` file containing the test suite.
+or:
+
+```sh
+brutal .
+```
+
+or even:
+
+```sh
+brutal
+```
+
+This would create a `test.rb` file containing the test suite.
+
+Configuration files can also be named differently:
+
+```sh
+brutal path/to/test_hello_world.yml
+```
+
+This would create a `path/to/test_hello_world.rb` file containing the test suite.
 
 To avoid accidentally overwriting a file, the `--no-force` option can be used:
 
 ```sh
-brutal test_hello_world.yml --no-force
+brutal path/to/test_hello_world.yml --no-force
 ```
 
-> A test_hello_world.rb file already exists!
+> A path/to/test_hello_world.rb file already exists!
 
 ### Getting started
 

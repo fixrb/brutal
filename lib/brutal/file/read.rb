@@ -15,7 +15,7 @@ module Brutal
       def call
         ::File.read(path)
       rescue ::Errno::ENOENT => _e
-        abort("File #{path} not found!")
+        abort "File #{path} not found!"
       end
 
       protected
