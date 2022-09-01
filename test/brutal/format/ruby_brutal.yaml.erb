@@ -10,7 +10,11 @@ header: |
   ::SimpleCov.command_name "Brutal test suite"
   ::SimpleCov.start
 
-  require "../../../lib/brutal/format"
+  begin
+    require_relative "../../../lib/brutal/format"
+  rescue ::LoadError
+    require "../../../lib/brutal/format"
+  end
 
 subject: |
   ::Brutal::Format::Ruby.new("%{header}", "%{subject}", *%{actuals}, **%{contexts})

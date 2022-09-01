@@ -8,34 +8,32 @@ require "simplecov"
 ::SimpleCov.command_name "Brutal test suite"
 ::SimpleCov.start
 
-require "../../../lib/brutal/format"
-
-# ------------------------------------------------------------------------------
-
-actual = ::Brutal::Format::Ruby.new("# frozen_string_literal: true", "'Hello ' + '%<string>s'", ["%<subject>s.length"],
-                                    **{ "string"=>%w[Alice Bob] })
-
-raise if actual.combinations_values != [["Alice"], ["Bob"]]
-raise if actual.context_names != ["string"]
-raise if actual.contexts_values != [%w[Alice Bob]]
-if actual.thematic_break_ruby_code != "# ------------------------------------------------------------------------------\n"
-  raise
-end
-if actual.to_s != "# frozen_string_literal: true\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Alice'\nend\n\nraise if actual.length != 11\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Bob'\nend\n\nraise if actual.length != 9\n"
-  raise
+begin
+  require_relative "../../../lib/brutal/format"
+rescue ::LoadError
+  require "../../../lib/brutal/format"
 end
 
 # ------------------------------------------------------------------------------
 
-actual = ::Brutal::Format::Ruby.new("# frozen_string_literal: true", "'Hello ' + '%<string>s'", ["%<subject>s.to_s"],
-                                    **{ "string"=>%w[Alice Bob] })
+actual = begin
+  ::Brutal::Format::Ruby.new("# frozen_string_literal: true", "'Hello ' + '%{string}'", *"%{subject}.length", **{"string"=>["Alice", "Bob"]})
+end
 
 raise if actual.combinations_values != [["Alice"], ["Bob"]]
 raise if actual.context_names != ["string"]
-raise if actual.contexts_values != [%w[Alice Bob]]
-if actual.thematic_break_ruby_code != "# ------------------------------------------------------------------------------\n"
-  raise
+raise if actual.contexts_values != [["Alice", "Bob"]]
+raise if actual.thematic_break_ruby_code != "# ------------------------------------------------------------------------------\n"
+raise if actual.to_s != "# frozen_string_literal: true\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Alice'\nend\n\nraise if actual.length != 11\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Bob'\nend\n\nraise if actual.length != 9\n"
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  ::Brutal::Format::Ruby.new("# frozen_string_literal: true", "'Hello ' + '%{string}'", *"%{subject}.to_s", **{"string"=>["Alice", "Bob"]})
 end
-if actual.to_s != "# frozen_string_literal: true\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Alice'\nend\n\nraise if actual.to_s != \"Hello Alice\"\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Bob'\nend\n\nraise if actual.to_s != \"Hello Bob\"\n"
-  raise
-end
+
+raise if actual.combinations_values != [["Alice"], ["Bob"]]
+raise if actual.context_names != ["string"]
+raise if actual.contexts_values != [["Alice", "Bob"]]
+raise if actual.thematic_break_ruby_code != "# ------------------------------------------------------------------------------\n"
+raise if actual.to_s != "# frozen_string_literal: true\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Alice'\nend\n\nraise if actual.to_s != \"Hello Alice\"\n\n# ------------------------------------------------------------------------------\n\nactual = begin\n  'Hello ' + 'Bob'\nend\n\nraise if actual.to_s != \"Hello Bob\"\n"

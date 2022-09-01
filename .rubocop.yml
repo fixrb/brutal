@@ -21,8 +21,10 @@ AllCops:
   
     - pkg/
   
-    - "*_brutal.rb"
+    - test/brutal/format/coverage/
+  
     - examples/**/*
+    - test/**/*
 
 inherit_from:
   - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop.yml
