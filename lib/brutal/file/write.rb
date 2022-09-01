@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Brutal
+class Brutal
   module File
     # Brutal::File::Write
     #

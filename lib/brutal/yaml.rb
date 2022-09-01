@@ -2,15 +2,10 @@
 
 require "yaml"
 
-module Brutal
+class Brutal
   # Brutal::Yaml
-  #
-  # @since 1.1.0
   module Yaml
-    FILENAME_EXTENSIONS = %w[
-      .yaml
-      .yml
-    ].freeze
+    FILENAME_EXTENSION = ".yaml"
 
     def self.parse(yaml)
       ::YAML.safe_load(yaml, symbolize_names: false)
@@ -18,7 +13,7 @@ module Brutal
 
     def self.parse?(pathname)
       filename_extension = pathname.extname
-      FILENAME_EXTENSIONS.include?(filename_extension)
+      filename_extension.eql?(FILENAME_EXTENSION)
     end
   end
 end

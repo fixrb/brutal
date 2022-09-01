@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Brutal
+class Brutal
   # Brutal::Configuration
   #
   # @since 1.0.0

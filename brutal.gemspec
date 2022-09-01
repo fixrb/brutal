@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name         = "brutal"
-  spec.version      = File.read("VERSION.semver").chomp
+  spec.version      = ::File.read("VERSION.semver").chomp
   spec.author       = "Cyril Kato"
   spec.email        = "contact@cyril.email"
   spec.summary      = "A code-first approach " \
@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.description  = spec.summary
   spec.homepage     = "https://github.com/fixrb/brutal"
   spec.license      = "MIT"
-  spec.files        = Dir["LICENSE.md", "README.md", "bin/brutal", "lib/**/*"]
-  spec.executables  = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.files        = ::Dir["LICENSE.md", "README.md", "bin/brutal", "lib/**/*"]
+  spec.executables  = spec.files.grep(%r{^bin/}) { |f| ::File.basename(f) }
 
   spec.required_ruby_version = ">= 2.7.0"
 

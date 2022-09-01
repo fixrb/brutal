@@ -7,7 +7,7 @@ AllCops:
   <% `git status --ignored --porcelain`.lines.grep(/^!! /).each do |path| %>
     - <%= path.sub(/^!! /, "").gsub(/\n/, "") %>
   <% end %>
-    - test.rb
+    - "*_brutal.rb"
     - examples/**/*
 
 inherit_from:
@@ -23,3 +23,6 @@ inherit_mode:
 require:
   - rubocop-gitlab-security
   - rubocop-md
+
+Metrics/MethodLength:
+  Max: 15

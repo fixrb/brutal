@@ -21,7 +21,7 @@ AllCops:
   
     - pkg/
   
-    - test.rb
+    - "*_brutal.rb"
     - examples/**/*
 
 inherit_from:
@@ -37,3 +37,6 @@ inherit_mode:
 require:
   - rubocop-gitlab-security
   - rubocop-md
+
+Metrics/MethodLength:
+  Max: 15

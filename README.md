@@ -38,7 +38,7 @@ It is therefore the responsibility of the developer to analyze the generated beh
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "brutal"
+gem "brutal", ">= 1.6.0.beta1", require: false
 ```
 
 And then execute:
@@ -50,18 +50,31 @@ bundle install
 Or install it yourself as:
 
 ```sh
-gem install brutal
+gem install brutal --pre
 ```
 
-## Quick Start
+## Command line
 
-Just type `brutal` in a Ruby project's folder and watch the magic happen.
+The `brutal` command comes with several options you can use to customize Brutal's behavior.
+
+For a full list of options, run the `brutal` command with the `--help` flag:
+
+```sh
+brutal --help
+```
+
+```txt
+Usage: #{$PROGRAM_NAME} [options] [files or directories]
+
+    --format=FORMAT Choose "ruby" (default).
+    --help          Display this help.
+    --version       Display the version.
+```
 
 ## Usage
 
-__Brutal__ needs a configuration file to know how to write your tests.
-Currently, only the YAML format is supported.
-This file is by default named `.brutal.yml` and is composed of 4 top-level sections:
+__Brutal__ needs configuration files in YAML format to know how to write tests.
+Configuration file names are suffixed by `_brutal.yaml` and composed of 4 top-level sections:
 
 * `header` - Specifies the code to execute before generating the test suite.
 * `subject` - Specifies the template of the code to be declined across contexts.
@@ -70,8 +83,10 @@ This file is by default named `.brutal.yml` and is composed of 4 top-level secti
 
 When the configuration file is present, the generation of a test suite can be done with the command:
 
+Assuming that in the workspace there is a configuration file named `user_brutal.yaml`, the test suite can be generated via one of these commands:
+
 ```sh
-brutal .brutal.yml
+brutal user_brutal.yaml
 ```
 
 or:
@@ -86,47 +101,27 @@ or even:
 brutal
 ```
 
-This would create a `test.rb` file containing the test suite.
+This would create a `user_brutal.rb` file containing the test suite.
 
-Configuration files can also be named differently:
-
-```sh
-brutal path/to/test_hello_world.yml
-```
-
-This would create a `path/to/test_hello_world.rb` file containing the test suite.
-
-To avoid accidentally overwriting a file, the `--no-force` option can be used:
+Assuming now that in the workspace there are a large number of configuration files named in the `spec/` folder, the complete test suite could be generated recursively via this command:
 
 ```sh
-brutal path/to/test_hello_world.yml --no-force
+brutal spec/ # => generate tests from each configuration file matching ./spec/**/*_brutal.yaml in to ./spec/**/*_brutal.rb
 ```
 
-> A path/to/test_hello_world.rb file already exists!
+### Some examples
 
-### Getting started
-
-1. Create a `.brutal.yml` file in your application's root directory. For example: <https://github.com/fixrb/brutal/blob/v1.4.0/examples/hello_world_v1/.brutal.yml>
-2. Run the `brutal` command from the same directory.
-3. Read the generated `test.rb` file in the same directory: <https://github.com/fixrb/brutal/blob/v1.4.0/examples/hello_world_v1/test.rb>
-
-### More examples
-
-<https://github.com/fixrb/brutal/blob/v1.4.0/examples/>
+<https://github.com/fixrb/brutal/blob/v1.6.0.beta1/examples/>
 
 ## Rake integration example
 
-A generated `test.rb` file could be matched as follows:
+Generated test suite files could be matched as follows:
 
 ```ruby
 Rake::TestTask.new do |t|
-  t.pattern = "test.rb"
+  t.pattern = "**/*_brutal.rb"
 end
 ```
-
-## Test suite
-
-__Brutal__'s test set is brutally self-generated here: [./test.rb](https://github.com/fixrb/brutal/blob/main/test.rb)
 
 ## Contact
 

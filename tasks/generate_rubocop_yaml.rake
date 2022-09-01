@@ -3,7 +3,7 @@
 require "erb"
 
 desc "Generate RuboCop manifest"
-task :generate_rubocop_yml do
+task :generate_rubocop_yaml do
   print "Generating .rubocop.yml file... "
 
   template = ::File.read(".rubocop.yml.erb")

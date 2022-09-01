@@ -10,10 +10,10 @@ header: |
   ::SimpleCov.command_name "Brutal test suite"
   ::SimpleCov.start
 
-  require "./lib/brutal/scaffold"
+  require "../../../lib/brutal/format"
 
 subject: |
-  ::Brutal::Scaffold.new("%{header}", "%{subject}", *%{actuals}, **%{contexts})
+  ::Brutal::Format::Ruby.new("%{header}", "%{subject}", *%{actuals}, **%{contexts})
 
 contexts:
   header:

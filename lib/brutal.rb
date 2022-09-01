@@ -3,41 +3,48 @@
 %w[
   configuration
   file
-  scaffold
+  format
   yaml
 ].each { |filename| require_relative(File.join("brutal", filename)) }
 
 # The Brutal namespace.
-module Brutal
-  def self.generate!(pathname, force: true)
-    hash = parse(pathname)
-    conf = Configuration.load(hash)
+class Brutal
+  attr_reader :format
 
-    ruby = Scaffold.new(conf.header,
-                        conf.subject,
-                        *conf.actuals,
-                        **conf.contexts)
-
-    write(pathname, ruby, force: force)
+  def initialize(format: Format::DEFAULT)
+    @format = String(format)
   end
 
-  def self.parse(pathname)
+  def call(pathname)
+    hash = parse(pathname)
+    conf = Configuration.load(hash)
+    code = scaffold(conf)
+    write(pathname, code)
+  end
+
+  def scaffold(conf)
+    engine = Format::SUPPORT.fetch(format) do
+      raise ::NotImplementedError, "#{format.inspect} format is not supported."
+    end
+
+    engine.new(conf.header, conf.subject, *conf.actuals, **conf.contexts)
+  end
+
+  private
+
+  def parse(pathname)
     return Yaml.parse(read(pathname)) if Yaml.parse?(pathname)
 
     raise ::ArgumentError, "Unrecognized extension.  " \
                            "Impossible to parse #{pathname.inspect}."
   end
-  private_class_method :parse
 
-  def self.read(pathname)
+  def read(pathname)
     File::Read.new(pathname).call
   end
-  private_class_method :read
 
-  def self.write(pathname, ruby, force:)
+  def write(pathname, ruby)
     new_pathname = File.generated_pathname(pathname)
-    File.override_protection(new_pathname) unless force
     File::Write.new(new_pathname).call(ruby)
   end
-  private_class_method :write
 end

@@ -7,7 +7,7 @@ require "rubocop/rake_task"
 require "yard"
 
 Rake::TestTask.new do |t|
-  t.pattern = "**/test.rb"
+  t.pattern = "**/*_brutal.rb"
   t.verbose = true
   t.warning = true
 end
@@ -18,9 +18,9 @@ YARD::Rake::YardocTask.new
 Dir["tasks/**/*.rake"].each { |t| load t }
 
 task default: %i[
-  generate_rubocop_yml
-  generate_brutal_yml
-  scaffold
+  generate_rubocop_yaml
+  generate_brutal_yaml
+  generate_test_suite
   yard
   rubocop:autocorrect
   test
