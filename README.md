@@ -76,7 +76,7 @@ brutal --help
 ```
 
 ```txt
-Usage: #{$PROGRAM_NAME} [options] [files or directories]
+Usage: brutal [options] [files or directories]
 
     --format=FORMAT Choose "ruby" (default).
     --help          Display this help.
