@@ -2,13 +2,17 @@
 # frozen_string_literal: true
 
 require_relative File.join("..", "lib", "brutal", "command_line_arguments_parser")
-format, pathnames = Brutal::CommandLineArgumentsParser.new(*ARGV).call
+
+formats, pathnames = Brutal::CommandLineArgumentsParser.new(*ARGV).call
 
 require_relative File.join("..", "lib", "brutal")
-generator = Brutal.new(format: format)
 
-pathnames.each do |pathname|
-  Dir.chdir(pathname.dirname) do
-    generator.call(pathname.basename)
+formats.each do |format|
+  generator = Brutal.new(format)
+
+  pathnames.each do |pathname|
+    Dir.chdir(pathname.dirname) do
+      generator.call(pathname.basename)
+    end
   end
 end

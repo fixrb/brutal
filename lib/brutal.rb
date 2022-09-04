@@ -1,50 +1,40 @@
 # frozen_string_literal: true
 
 %w[
-  configuration
-  file
   format
-  yaml
+  manifest
 ].each { |filename| require_relative(File.join("brutal", filename)) }
 
 # The Brutal namespace.
 class Brutal
-  attr_reader :format
+  attr_reader :engine
 
-  def initialize(format: Format::DEFAULT)
-    @format = String(format)
+  def initialize(format)
+    @engine = Format.const_get(format)
   end
 
   def call(pathname)
-    hash = parse(pathname)
-    conf = Configuration.load(hash)
-    code = scaffold(conf)
-    write(pathname, code)
-  end
-
-  def scaffold(conf)
-    engine = Format::SUPPORT.fetch(format) do
-      raise ::NotImplementedError, "#{format.inspect} format is not supported."
-    end
-
-    engine.new(conf.header, conf.subject, *conf.actuals, **conf.contexts)
+    manifest = Manifest.parse_file(pathname)
+    scaffold = brutalizer(manifest)
+    pathname = new_pathname(pathname)
+    pathname.write(scaffold)
   end
 
   private
 
-  def parse(pathname)
-    return Yaml.parse(read(pathname)) if Yaml.parse?(pathname)
-
-    raise ::ArgumentError, "Unrecognized extension.  " \
-                           "Impossible to parse #{pathname.inspect}."
+  def brutalizer(conf)
+    engine.new(conf.header, conf.subject, *conf.actuals, **conf.contexts)
   end
 
-  def read(pathname)
-    File::Read.new(pathname).call
+  def new_pathname(pathname)
+    pathname.dirname + "#{new_prefix}#{pathname.basename.sub(Manifest::File::Name::SUFFIX_REGEX, new_suffix)}"
   end
 
-  def write(pathname, ruby)
-    new_pathname = File.generated_pathname(pathname)
-    File::Write.new(new_pathname).call(ruby)
+  def new_prefix
+    engine.const_get(:Filename).const_get(:PREFIX)
+  end
+
+  def new_suffix
+    engine.const_get(:Filename).const_get(:SUFFIX)
   end
 end

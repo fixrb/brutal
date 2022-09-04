@@ -1,16 +1,11 @@
 # frozen_string_literal: true
 
-%w[
-  ruby
-].each { |filename| require_relative(File.join("format", filename)) }
+Dir[File.join(File.dirname(__FILE__), "format", "*.rb")].sort.each do |fname|
+  require_relative fname
+end
 
 class Brutal
-  # Brutal::Format
+  # A collection of formatter classes.
   module Format
-    SUPPORT = {
-      "ruby" => Ruby
-    }.freeze
-
-    DEFAULT = SUPPORT.keys.sort.fetch(-1)
   end
 end

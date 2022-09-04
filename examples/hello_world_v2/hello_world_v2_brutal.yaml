@@ -8,5 +8,5 @@ contexts:
     - Bob
 
 actuals:
-  - "%{subject}.to_s"
   - "%{subject}.length"
+  - "%{subject}.to_s"

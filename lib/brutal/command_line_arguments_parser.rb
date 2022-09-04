@@ -1,64 +1,68 @@
 # frozen_string_literal: true
 
+require_relative File.join("manifest", "file", "name")
+
 require "pathname"
 
 class Brutal
   # Accept an arbitrary number of arguments passed from the command-line.
   class CommandLineArgumentsParser
-    DEFAULT_FORMAT = "ruby"
-    FILE_SUFFIX = "_brutal.yaml"
-    FILE_PATTERN = ::File.join("**", "*#{FILE_SUFFIX}")
-    CURRENT_EXECUTION_CONTEXT = "."
+    MANIFEST_FILENAME_SUFFIX  = Manifest::File::Name::SUFFIX
+    MANIFEST_FILENAME_PATTERN = ::File.join("**", "*#{MANIFEST_FILENAME_SUFFIX}")
+    CURRENT_DIRECTORY_CONTEXT = "."
+    GEM_NAME                  = "brutal"
+    HELP_OPTION               = "--help"
+    VERSION_OPTION            = "--version"
+    RUBY_FORMAT_OPTION        = "--format=ruby"
+    DEFAULT_FORMAT_OPTION     = RUBY_FORMAT_OPTION
+
+    FORMAT_OPTIONS = {
+      RUBY_FORMAT_OPTION => :Ruby
+    }.freeze
+
+    DEFAULT_FORMAT  = FORMAT_OPTIONS.fetch(DEFAULT_FORMAT_OPTION)
+    DEFAULT_FORMATS = [DEFAULT_FORMAT].freeze
 
     attr_reader :pathnames
 
     def initialize(*args)
-      @any_path = false
+      args.each do |arg|
+        help!     if arg == HELP_OPTION
+        version!  if arg == VERSION_OPTION
+      end
+
+      @formats   = []
       @pathnames = []
+
+      args << CURRENT_DIRECTORY_CONTEXT unless any_path_given?(*args)
       args.each { |arg| parse!(arg) }
-      parse!(CURRENT_EXECUTION_CONTEXT) unless any_path?
     end
 
     def call
-      [format, pathnames]
+      [formats, pathnames]
     end
 
     private
 
-    def any_path?
-      @any_path
-    end
-
-    def format
-      @format || DEFAULT_FORMAT
+    def formats
+      @formats.empty? ? DEFAULT_FORMATS : @formats
     end
 
     def parse!(arg)
       case arg
-      when "--format=ruby"
-        format!("Ruby")
-      when "--help"
-        help!
-      when "--version"
-        version!
+      when RUBY_FORMAT_OPTION
+        @formats << FORMAT_OPTIONS.fetch(RUBY_FORMAT_OPTION)
       else
-        pathname = ::Pathname.new(arg)
-        load!(pathname)
+        load!(::Pathname.new(arg))
       end
     end
 
-    def format!(name)
-      raise ::ArgumentError, "Format already filled in." unless format.nil?
-
-      @format = name
-    end
-
     def help!
-      puts help_command_output
+      puts help_message
       exit
     end
 
-    def help_command_output
+    def help_message
       <<~TXT
         Usage: #{$PROGRAM_NAME} [options] [files or directories]
 
@@ -69,19 +73,29 @@ class Brutal
     end
 
     def load!(pathname)
-      @any_path = true
-
       if pathname.directory?
-        pathname.glob(FILE_PATTERN).each { |filename| load!(filename) }
+        pathname.glob(MANIFEST_FILENAME_PATTERN).each { |filename| load!(filename) }
       elsif pathname.file?
-        if pathname.to_s.end_with?(FILE_SUFFIX)
-          @pathnames << pathname
-        else
-          warn "Skipping #{pathname} because not suffixed with #{FILE_SUFFIX}."
-        end
+        load_file!(pathname)
       else
         raise ::ArgumentError, "#{pathname} is neither a file nor a directory."
       end
+    end
+
+    def load_file!(pathname)
+      if pathname.fnmatch?(MANIFEST_FILENAME_PATTERN)
+        @pathnames << pathname
+      else
+        warn "Skipping #{pathname} because not matched against #{MANIFEST_FILENAME_PATTERN}."
+      end
+    end
+
+    def any_path_given?(*args)
+      path_args(*args).any?
+    end
+
+    def path_args(*args)
+      args - FORMAT_OPTIONS.keys
     end
 
     def version!
@@ -92,7 +106,7 @@ class Brutal
     end
 
     def loaded_spec
-      ::Gem.loaded_specs["brutal"]
+      ::Gem.loaded_specs[GEM_NAME]
     end
 
     def not_loaded_spec?

@@ -53,7 +53,19 @@ Or install it yourself as:
 gem install brutal --pre
 ```
 
-## Command line
+## Usage
+
+### YAML manifest
+
+__Brutal__ needs configuration files in YAML format to know how to write tests.
+Configuration file names are suffixed by `_brutal.yaml` and composed of 4 top-level sections:
+
+* `header` - Specifies the code to execute before generating the test suite.
+* `subject` - Specifies the template of the code to be declined across contexts.
+* `contexts` - Specifies a list of variables to populate the subject's template.
+* `actuals` - Specifies templates to challenge evaluated subjects & get results.
+
+### Command line
 
 The `brutal` command comes with several options you can use to customize Brutal's behavior.
 
@@ -70,18 +82,6 @@ Usage: #{$PROGRAM_NAME} [options] [files or directories]
     --help          Display this help.
     --version       Display the version.
 ```
-
-## Usage
-
-__Brutal__ needs configuration files in YAML format to know how to write tests.
-Configuration file names are suffixed by `_brutal.yaml` and composed of 4 top-level sections:
-
-* `header` - Specifies the code to execute before generating the test suite.
-* `subject` - Specifies the template of the code to be declined across contexts.
-* `contexts` - Specifies a list of variables to populate the subject's template.
-* `actuals` - Specifies templates to challenge evaluated subjects & get results.
-
-When the configuration file is present, the generation of a test suite can be done with the command:
 
 Assuming that in the workspace there is a configuration file named `user_brutal.yaml`, the test suite can be generated via one of these commands:
 
@@ -106,8 +106,10 @@ This would create a `user_brutal.rb` file containing the test suite.
 Assuming now that in the workspace there are a large number of configuration files named in the `spec/` folder, the complete test suite could be generated recursively via this command:
 
 ```sh
-brutal spec/ # => generate tests from each configuration file matching ./spec/**/*_brutal.yaml in to ./spec/**/*_brutal.rb
+brutal spec/
 ```
+
+This would create one test file per configuration file matching `./spec/**/*_brutal.yaml` in to `./spec/**/*_brutal.rb`.
 
 ### Some examples
 

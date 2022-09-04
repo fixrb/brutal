@@ -17,5 +17,5 @@ contexts:
       "..."
 
 actuals:
-  - "%{subject}.to_s"
   - '%{subject}.length'
+  - "%{subject}.to_s"

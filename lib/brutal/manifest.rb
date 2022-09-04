@@ -1,19 +1,35 @@
 # frozen_string_literal: true
 
-class Brutal
-  # Brutal::Configuration
-  #
-  # @since 1.0.0
-  class Configuration
-    ACTUALS_KEY   = "actuals"
-    CONTEXTS_KEY  = "contexts"
-    HEADER_KEY    = "header"
-    SUBJECT_KEY   = "subject"
+require_relative File.join("manifest", "file")
 
-    DEFAULT_ACTUALS   = [].freeze
-    DEFAULT_CONTEXTS  = {}.freeze
-    DEFAULT_HEADER    = "# Brutal test suite"
-    DEFAULT_SUBJECT   = ""
+class Brutal
+  # Brutal YAML manifest file parser.
+  class Manifest
+    # The _actuals_ top-level section key.
+    ACTUALS_KEY = "actuals"
+
+    # The _contexts_ top-level section key.
+    CONTEXTS_KEY = "contexts"
+
+    # The _header_ top-level section key.
+    HEADER_KEY = "header"
+
+    # The _subject_ top-level section key.
+    SUBJECT_KEY = "subject"
+
+    # Default _actuals_ collection.
+    DEFAULT_ACTUALS = [].freeze
+
+    # Default _contexts_ collection.
+    DEFAULT_CONTEXTS = {}.freeze
+
+    # Default _header_ code to evaluate.
+    DEFAULT_HEADER = "# Brutal test suite"
+
+    # Parse a file at `pathname`.  Returns the YAML manifest instance.
+    def self.parse_file(pathname)
+      load(File.new(pathname).parse)
+    end
 
     # Load the configuration parameters.
     #
@@ -23,7 +39,7 @@ class Brutal
         actuals:  params.fetch(ACTUALS_KEY, DEFAULT_ACTUALS),
         contexts: params.fetch(CONTEXTS_KEY, DEFAULT_CONTEXTS),
         header:   params.fetch(HEADER_KEY, DEFAULT_HEADER),
-        subject:  params.fetch(SUBJECT_KEY, DEFAULT_SUBJECT)
+        subject:  params.fetch(SUBJECT_KEY)
       )
     end
 
@@ -46,7 +62,7 @@ class Brutal
       raise ::TypeError, header.inspect   unless header.is_a?(::String)
       raise ::TypeError, subject.inspect  unless subject.is_a?(::String)
 
-      @actuals  = actuals.sort
+      @actuals  = actuals
       @contexts = contexts
       @header   = header
       @subject  = subject

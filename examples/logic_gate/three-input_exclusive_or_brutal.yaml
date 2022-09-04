@@ -1,0 +1,24 @@
+---
+header: |
+  # frozen_string_literal: true
+
+  # Three-input ⊕ outputs.
+
+subject: |
+  %{A} ^ %{B} ^ %{C}
+
+contexts:
+  A:
+    - true
+    - false
+
+  B:
+    - true
+    - false
+
+  C:
+    - true
+    - false
+
+actuals:
+  - "%{subject}.itself"

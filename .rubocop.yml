@@ -39,6 +39,3 @@ inherit_mode:
 require:
   - rubocop-gitlab-security
   - rubocop-md
-
-Metrics/MethodLength:
-  Max: 15
