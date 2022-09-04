@@ -101,7 +101,7 @@ or even:
 brutal
 ```
 
-This would create a `user_brutal.rb` file containing the test suite.
+This would create a `test_user.rb` file containing the test suite.
 
 Assuming now that in the workspace there are a large number of configuration files named in the `spec/` folder, the complete test suite could be generated recursively via this command:
 
@@ -109,7 +109,7 @@ Assuming now that in the workspace there are a large number of configuration fil
 brutal spec/
 ```
 
-This would create one test file per configuration file matching `./spec/**/*_brutal.yaml` in to `./spec/**/*_brutal.rb`.
+This would create one test file per configuration file matching `./spec/**/*_brutal.yaml` in to `./spec/**/test_*.rb`.
 
 ### Some examples
 
@@ -121,7 +121,7 @@ Generated test suite files could be matched as follows:
 
 ```ruby
 Rake::TestTask.new do |t|
-  t.pattern = "**/*_brutal.rb"
+  t.pattern = "**/test_*.rb"
 end
 ```
 
