@@ -113,7 +113,7 @@ This would create one test file per configuration file matching `./spec/**/*_bru
 
 ### Some examples
 
-<https://github.com/fixrb/brutal/blob/v1.6.0.beta1/examples/>
+<https://github.com/fixrb/brutal/tree/main/examples/>
 
 ## Rake integration example
 
