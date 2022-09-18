@@ -1,4 +1,10 @@
 ---
+header: |
+  # Brutal test suite
+
+before: |
+  # Before example
+
 subject: |
   # This is a useless comment.
   -42.%{challenge}
@@ -10,3 +16,9 @@ contexts:
 
 actuals:
   - "%{subject}.to_s"
+
+after: |
+  # After example
+
+footer: |
+  # End of test

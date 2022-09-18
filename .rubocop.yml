@@ -15,13 +15,9 @@ AllCops:
   
     - .yardoc/
   
-    - coverage/
-  
     - doc/
   
     - pkg/
-  
-    - test/brutal/format/coverage/
   
     - examples/**/*
     - test/**/*
@@ -39,3 +35,15 @@ inherit_mode:
 require:
   - rubocop-gitlab-security
   - rubocop-md
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/ParameterLists:
+  Max: 7

@@ -23,7 +23,7 @@ class Brutal
   private
 
   def brutalizer(conf)
-    engine.new(conf.header, conf.subject, *conf.actuals, **conf.contexts)
+    engine.new(conf.header, conf.before, conf.subject, conf.after, conf.footer, *conf.actuals, **conf.contexts)
   end
 
   def new_pathname(pathname)

@@ -38,7 +38,7 @@ It is therefore the responsibility of the developer to analyze the generated beh
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "brutal", ">= 1.6.0.beta1", require: false
+gem "brutal", ">= 1.6.0.beta2", require: false
 ```
 
 And then execute:
@@ -58,12 +58,15 @@ gem install brutal --pre
 ### YAML manifest
 
 __Brutal__ needs configuration files in YAML format to know how to write tests.
-Configuration file names are suffixed by `_brutal.yaml` and composed of 4 top-level sections:
+Configuration file names are suffixed by `_brutal.yaml` and composed of 7 top-level sections:
 
-* `header` - Specifies the code to execute before generating the test suite.
+* `header` - Specifies a block of lines to be executed once before all examples.
+* `before` - Specifies a block of lines to be executed before each example.
 * `subject` - Specifies the template of the code to be declined across contexts.
 * `contexts` - Specifies a list of variables to populate the subject's template.
 * `actuals` - Specifies templates to challenge evaluated subjects & get results.
+* `after` - Specifies a block of lines to be executed after each example.
+* `footer` - Specifies a block of lines to be executed once after all examples.
 
 ### Command line
 
