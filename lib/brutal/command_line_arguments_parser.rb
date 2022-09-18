@@ -7,8 +7,7 @@ require "pathname"
 class Brutal
   # Accept an arbitrary number of arguments passed from the command-line.
   class CommandLineArgumentsParser
-    MANIFEST_FILENAME_SUFFIX  = Manifest::File::Name::SUFFIX
-    MANIFEST_FILENAME_PATTERN = ::File.join("**", "*#{MANIFEST_FILENAME_SUFFIX}")
+    MANIFEST_FILENAME_PATTERN = ::File.join("**", Manifest::File::Name::SUFFIX_PATTERN)
     CURRENT_DIRECTORY_CONTEXT = "."
     GEM_NAME                  = "brutal"
     HELP_OPTION               = "--help"
@@ -83,7 +82,7 @@ class Brutal
     end
 
     def load_file!(pathname)
-      if pathname.fnmatch?(MANIFEST_FILENAME_PATTERN)
+      if pathname.fnmatch?(MANIFEST_FILENAME_PATTERN, ::File::FNM_PATHNAME | ::File::FNM_DOTMATCH)
         @pathnames << pathname
       else
         warn "Skipping #{pathname} because not matched against #{MANIFEST_FILENAME_PATTERN}."

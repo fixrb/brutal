@@ -38,7 +38,7 @@ It is therefore the responsibility of the developer to analyze the generated beh
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "brutal", ">= 1.6.0.beta2", require: false
+gem "brutal", ">= 1.6.0.beta3", require: false
 ```
 
 And then execute:

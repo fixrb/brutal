@@ -11,7 +11,9 @@ class Brutal
       attr_reader :yaml
 
       def initialize(pathname)
-        raise ::ArgumentError unless pathname.fnmatch?(Name::SUFFIX_PATTERN)
+        unless pathname.fnmatch?(Name::SUFFIX_PATTERN, ::File::FNM_PATHNAME | ::File::FNM_DOTMATCH)
+          raise ::ArgumentError
+        end
 
         @yaml = pathname.read
       end
