@@ -39,8 +39,8 @@ class Brutal
       # Initialize a new scaffold generator.
       def initialize(header, before, subject, after, footer, *actuals, **contexts)
         header = "# Brutal test suite"      if header.empty?
-        before = "# Starting an example"    if before.empty?
-        after  = "# Finishing an example"   if after.empty?
+        before = "# Starting a test"        if before.empty?
+        after  = "# Finishing a test"       if after.empty?
         footer = "# End of the brutal test" if footer.empty?
 
         warn("Empty subject!")              if subject.empty?
@@ -98,14 +98,21 @@ class Brutal
 
       def actual_codes
         combinations_values.map do |values|
+          string = before_code
+          eval(before_code) # rubocop:disable Security/Eval
+
           actual_str = format(inspect(subject), **attributes(*values))
-          string = actual_code(actual_str)
+          string += actual_code(actual_str)
           actual = eval(actual_str) # rubocop:disable Security/Eval, Lint/UselessAssignment
 
           actuals.each do |actual_value|
             result_str = format(actual_value, subject: "actual")
-            string += "raise if #{result_str} != #{eval(result_str).inspect}\n" # rubocop:disable Security/Eval
+            result = eval(result_str) # rubocop:disable Security/Eval
+            string += "raise if #{result_str} != #{result.inspect}\n"
           end
+
+          string += after_code
+          eval(after_code) # rubocop:disable Security/Eval
 
           string
         end
@@ -113,12 +120,10 @@ class Brutal
 
       def actual_code(actual_str)
         <<~CODE
-          #{before_code}
           actual = begin
           #{actual_str.gsub(/^/, INDENTATION)}
           end
 
-          #{after_code}
         CODE
       end
 
@@ -131,11 +136,13 @@ class Brutal
       def before_code
         <<~CODE
           #{before.chomp}
+
         CODE
       end
 
       def after_code
         <<~CODE
+
           #{after.chomp}
         CODE
       end

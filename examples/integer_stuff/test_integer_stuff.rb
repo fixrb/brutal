@@ -2,27 +2,27 @@
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   -42.abs
 end
 
-# Finishing an example
-
 raise if actual.to_s != "42"
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   -42.-(2)
 end
 
-# Finishing an example
-
 raise if actual.to_s != "-44"
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 

@@ -6,27 +6,27 @@ end
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   Greeter.new('Alice')
 end
 
-# Finishing an example
-
 raise if actual.salute != "Hello Alice!"
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   Greeter.new('world')
 end
 
-# Finishing an example
-
 raise if actual.salute != "Hello World!"
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 

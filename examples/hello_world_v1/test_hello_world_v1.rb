@@ -1,31 +1,31 @@
-# Brutal test suite
+puts "Hello from header 👋"
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+puts "Hello from before 👋"
 
 actual = begin
   "Hello " + 'Alice'
 end
 
-# Finishing an example
-
 raise if actual.length != 11
 raise if actual.to_s != "Hello Alice"
 
+puts "Hello from after 👋"
+
 # ------------------------------------------------------------------------------
 
-# Starting an example
+puts "Hello from before 👋"
 
 actual = begin
   "Hello " + 'Bob'
 end
 
-# Finishing an example
-
 raise if actual.length != 9
 raise if actual.to_s != "Hello Bob"
 
+puts "Hello from after 👋"
+
 # ------------------------------------------------------------------------------
 
-# End of the brutal test
+puts "Hello from footer 👋"

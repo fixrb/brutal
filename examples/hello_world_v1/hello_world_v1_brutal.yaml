@@ -1,6 +1,18 @@
 ---
+header:
+  puts "Hello from header 👋"
+
+before:
+  puts "Hello from before 👋"
+
 subject: |
   "Hello " + %{string}
+
+after:
+  puts "Hello from after 👋"
+
+footer:
+  puts "Hello from footer 👋"
 
 contexts:
   string:

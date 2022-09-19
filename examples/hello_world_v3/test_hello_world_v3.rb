@@ -2,81 +2,81 @@
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   "Hello Miss Alice"
 end
 
-# Finishing an example
-
 raise if actual.length != 16
 raise if actual.to_s != "Hello Miss Alice"
 
+# Finishing a test
+
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   "Hello Miss Bob"
 end
 
-# Finishing an example
-
 raise if actual.length != 14
 raise if actual.to_s != "Hello Miss Bob"
 
+# Finishing a test
+
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   "Hello Mr Alice"
 end
 
-# Finishing an example
-
 raise if actual.length != 14
 raise if actual.to_s != "Hello Mr Alice"
 
+# Finishing a test
+
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   "Hello Mr Bob"
 end
 
-# Finishing an example
-
 raise if actual.length != 12
 raise if actual.to_s != "Hello Mr Bob"
 
+# Finishing a test
+
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   "Hello Mrs Alice"
 end
 
-# Finishing an example
-
 raise if actual.length != 15
 raise if actual.to_s != "Hello Mrs Alice"
 
+# Finishing a test
+
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   "Hello Mrs Bob"
 end
 
-# Finishing an example
-
 raise if actual.length != 13
 raise if actual.to_s != "Hello Mrs Bob"
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 

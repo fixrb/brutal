@@ -9,9 +9,9 @@ actual = begin
   -42.abs
 end
 
-# After example
-
 raise if actual.to_s != "42"
+
+# After example
 
 # ------------------------------------------------------------------------------
 
@@ -22,9 +22,9 @@ actual = begin
   -42.-(2)
 end
 
-# After example
-
 raise if actual.to_s != "-44"
+
+# After example
 
 # ------------------------------------------------------------------------------
 

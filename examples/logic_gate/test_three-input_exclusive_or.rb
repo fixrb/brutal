@@ -4,99 +4,99 @@
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   true ^ true ^ true
 end
 
-# Finishing an example
-
 raise if actual.itself != true
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   true ^ true ^ false
 end
 
-# Finishing an example
-
 raise if actual.itself != false
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   true ^ false ^ true
 end
 
-# Finishing an example
-
 raise if actual.itself != false
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   true ^ false ^ false
 end
 
-# Finishing an example
-
 raise if actual.itself != true
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   false ^ true ^ true
 end
 
-# Finishing an example
-
 raise if actual.itself != false
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   false ^ true ^ false
 end
 
-# Finishing an example
-
 raise if actual.itself != true
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   false ^ false ^ true
 end
 
-# Finishing an example
-
 raise if actual.itself != true
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
-# Starting an example
+# Starting a test
 
 actual = begin
   false ^ false ^ false
 end
 
-# Finishing an example
-
 raise if actual.itself != false
+
+# Finishing a test
 
 # ------------------------------------------------------------------------------
 
