@@ -1,18 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require_relative File.join("..", "lib", "brutal", "command_line_arguments_parser")
-
-formats, pathnames = Brutal::CommandLineArgumentsParser.new(*ARGV).call
-
 require_relative File.join("..", "lib", "brutal")
 
-formats.each do |format|
-  generator = Brutal.new(format)
-
-  pathnames.each do |pathname|
-    Dir.chdir(pathname.dirname) do
-      generator.call(pathname.basename)
-    end
-  end
+begin
+  exit Brutal::CLI.run(ARGV)
+rescue Interrupt
+  # Aw has killed and reaped the child. End by the signal, as an interrupted
+  # command does, so that a shell loop stops too, but without a backtrace.
+  Signal.trap(:INT, "SYSTEM_DEFAULT")
+  Process.kill(:INT, Process.pid)
 end

@@ -1,0 +1,25 @@
+version: 2
+
+updates:
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: weekly
+    # Let a new release age a week before proposing it.
+    cooldown:
+      default-days: 7
+    groups:
+      bundler:
+        patterns:
+          - "*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns:
+          - "*"

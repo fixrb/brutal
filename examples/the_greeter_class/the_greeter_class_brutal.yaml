@@ -1,10 +1,6 @@
 ---
 header: |
-  begin
-    require_relative "greeter"
-  rescue ::LoadError
-    require "./greeter"
-  end
+  require_relative "greeter"
 
 subject: |
   Greeter.new(%{string})

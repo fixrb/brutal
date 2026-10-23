@@ -1,10 +1,11 @@
+# Build and tool output
 /.bundle/
-/.yardoc
-/_yardoc/
+/.yardoc/
+/coverage/
 /doc/
 /pkg/
-/spec/reports/
-/tmp/
+/vendor/bundle/
+*.gem
 
-# Used by RuboCop. Remote config files pulled in from inherit_from directive.
-.rubocop-https?--*
+# macOS
+.DS_Store

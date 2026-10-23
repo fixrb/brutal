@@ -1,13 +1,27 @@
-name: RuboCop
+name: Lint
 
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Lint
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v2
-      - name: RuboCop Linter Action
-        uses: andrewmcodes/rubocop-linter-action@v3.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@651ff0d62c5c79bed6d53ec518387aae20e72c1a # v1.329.0
+      with:
+        ruby-version: "3.3"
+        bundler-cache: true
+
+    - name: Run RuboCop and YARD
+      run: bundle exec rake rubocop yard

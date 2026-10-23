@@ -1,49 +1,97 @@
+# The target Ruby version is read from `required_ruby_version` in the gemspec.
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.7
-
-  # @see https://docs.rubocop.org/rubocop/configuration.html#pre-processing
   Exclude:
-  
-    - .rubocop-https---raw-githubusercontent-com-sashite-sashite-rubocop-rb-v1-0-3-config-rubocop-performance-yml
-  
-    - .rubocop-https---raw-githubusercontent-com-sashite-sashite-rubocop-rb-v1-0-3-config-rubocop-rake-yml
-  
-    - .rubocop-https---raw-githubusercontent-com-sashite-sashite-rubocop-rb-v1-0-3-config-rubocop-thread-safety-yml
-  
-    - .rubocop-https---raw-githubusercontent-com-sashite-sashite-rubocop-rb-v1-0-3-config-rubocop-yml
-  
-    - .yardoc/
-  
-    - doc/
-  
-    - pkg/
-  
-    - examples/**/*
-    - test/**/*
+    # Written by brutal: generated code is checked by running it.
+    - examples/**/test_*.rb
 
-inherit_from:
-  - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop.yml
-  - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop/performance.yml
-  - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop/rake.yml
-  - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop/thread_safety.yml
-
+# Add to RuboCop's own exclusions (vendor/, node_modules/, tmp/…), rather
+# than replace them.
 inherit_mode:
   merge:
     - Exclude
 
-require:
-  - rubocop-gitlab-security
+plugins:
   - rubocop-md
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-thread_safety
+
+# Most readable form.
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+# The tests are a flat list of `raise unless …` checks, each one a sentence:
+# an empty line after each would double their length for nothing.
+Layout/EmptyLineAfterGuardClause:
+  Exclude:
+    - test/**/*
+
+# Program checks the code of a manifest and writes its two forms; Program#check
+# lists the placeholder rules in one place.
+Metrics/ClassLength:
+  Max: 110
 
 Metrics/AbcSize:
+  AllowedMethods:
+    - check
+
+# Runner.run holds the whole life of the ruby process in one place, as
+# Aw::Fork.run does: the spawn, the read, the wait and the cleanup.
+Metrics/MethodLength:
+  AllowedMethods:
+    - run
+
+# Literal.dump and Runner.copy have one branch per class they accept.
+Metrics/CyclomaticComplexity:
+  AllowedMethods:
+    - dump
+    - copy
+
+# Every class, module and method of the library carries a comment; YARD
+# (`--fail-on-warning` in .yardopts) checks the names of its `@param` tags.
+# RuboCop sees the methods that `private_class_method` hides as public.
+# Enabled explicitly: the next major release of RuboCop is expected to
+# disable `Style/Documentation` by default.
+Style/Documentation:
+  Enabled: true
+  Include:
+    - lib/**/*.rb
+
+Style/DocumentationMethod:
+  Enabled: true
+  Include:
+    - lib/**/*.rb
+
+# `%{name}` is brutal's placeholder, never a format string: the cop would
+# ask for `%<name>s` in brutal's messages and in the manifests of the tests.
+Style/FormatStringToken:
   Enabled: false
 
-Metrics/CyclomaticComplexity:
-  Max: 8
+# The README shows a test file as brutal writes it: `begin … end` holds a
+# subject of several statements, and `::Kernel.raise` stays Kernel's even
+# when the code under test defines a `raise`.
+Style/RedundantBegin:
+  Exclude:
+    - README.md
 
-Metrics/MethodLength:
-  Max: 15
+Style/RedundantConstantBase:
+  Exclude:
+    - README.md
 
-Metrics/ParameterLists:
-  Max: 7
+# The tests exercise what brutal isolates: the current directory, and an
+# interruption of the main thread.
+ThreadSafety/DirChdir:
+  Exclude:
+    - test/**/*
+
+ThreadSafety/NewThread:
+  Exclude:
+    - test/**/*
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes

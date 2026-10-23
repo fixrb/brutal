@@ -2,147 +2,225 @@
 
 [![Version](https://img.shields.io/github/v/tag/fixrb/brutal?label=Version&logo=github)](https://github.com/fixrb/brutal/tags)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/brutal/main)
-[![Ruby](https://github.com/fixrb/brutal/workflows/Ruby/badge.svg?branch=main)](https://github.com/fixrb/brutal/actions?query=workflow%3Aruby+branch%3Amain)
-[![RuboCop](https://github.com/fixrb/brutal/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/brutal/actions?query=workflow%3Arubocop+branch%3Amain)
 [![License](https://img.shields.io/github/license/fixrb/brutal?label=License&logo=github)](https://github.com/fixrb/brutal/raw/main/LICENSE.md)
 
 > A _code-first_ approach to automate the writing of unit tests.
 
-## Intro
-
-[![I Hate Tests](https://github.com/fixrb/brutal/raw/main/img/rubyhack-2019-ruby3-what-s-missing-by-yukihiro-matsumoto.jpg)](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736 "I don't like tests. It's not DRY.")
-
 > I don't like tests. It's not DRY.
-> -- [Matz](https://github.com/matz)
+> -- [Matz](https://github.com/matz), [RubyHack 2019](https://www.youtube.com/embed/cmOt9HhszCI?start=1732&end=1736)
 
-## Overview
+![Brutal-Driven Development](https://github.com/fixrb/brutal/raw/main/img/brutal-driven-development.png)
 
-Let __Brutal__ craft for you in no time a (potentially huge) framework-less vanilla Ruby file describing the actual behavior of your code across as many context combinations as necessary.
+Brutal writes plain Ruby test files from YAML manifests. A manifest gives a subject, contexts to combine and actuals to observe; brutal runs every combination, records what the code returns, and writes a test file that checks each of these values, without any framework: `ruby test_user.rb` runs it.
 
-By delegating to __Brutal__ the repetitive (and redundant) task of writing tests, you will be able to focus on your core business: the code itself.
-
-![Brutal-Driven Development](https://github.com/fixrb/brutal/raw/main/img/brutal-driven-development.jpg)
-
-## Warning
-
-The _Brutal-Driven Development_ process does not prevent bugs from appearing in the code.
-
-A generated test suite acts as a _picture of the code's behavior_. Therefore, if the code is wrong, the picture of the code's behavior will also be wrong.
-
-The mere fact that all expectations are true does not mean that the code behaves as it should.
-
-It is therefore the responsibility of the developer to analyze the generated behavioral pictures to ensure that the code reacts as it is supposed to according to the contexts in which it is evaluated.
+A test file written by brutal is a picture of what the code does, not of what it should do. If the code is wrong, the picture is wrong too, and every check passes: read the test file before you trust it, as you would read any code under review.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
 ```ruby
-gem "brutal", ">= 1.6.0.beta4", require: false
+# Gemfile
+gem "brutal", require: false
 ```
 
-And then execute:
+or `gem install brutal` for the command alone.
 
-```sh
-bundle install
-```
-
-Or install it yourself as:
-
-```sh
-gem install brutal --pre
-```
+Brutal requires Ruby 3.3 or later and `fork(2)`: it runs the code in a child process through [Aw](https://github.com/fixrb/aw), on Linux and macOS, with CRuby. Windows and JRuby are not supported.
 
 ## Usage
 
-### YAML manifest
-
-__Brutal__ needs configuration files in YAML format to know how to write tests.
-Configuration file names are suffixed by `_brutal.yaml` and composed of 7 top-level sections:
-
-* `header` - Specifies a block of lines to be executed once before all examples.
-* `before` - Specifies a block of lines to be executed before each example.
-* `subject` - Specifies the template of the code to be declined across contexts.
-* `contexts` - Specifies a list of variables to populate the subject's template.
-* `actuals` - Specifies templates to challenge evaluated subjects & get results.
-* `after` - Specifies a block of lines to be executed after each example.
-* `footer` - Specifies a block of lines to be executed once after all examples.
-
-### Command line
-
-The `brutal` command comes with several options you can use to customize Brutal's behavior.
-
-For a full list of options, run the `brutal` command with the `--help` flag:
-
-```sh
-brutal --help
-```
-
-```txt
-Usage: brutal [options] [files or directories]
-
-    --format=FORMAT Choose "ruby" (default).
-    --help          Display this help.
-    --version       Display the version.
-```
-
-Assuming that in the workspace there is a configuration file named `user_brutal.yaml`, the test suite can be generated via one of these commands:
-
-```sh
-brutal user_brutal.yaml
-```
-
-or:
-
-```sh
-brutal .
-```
-
-or even:
-
-```sh
-brutal
-```
-
-This would create a `test_user.rb` file containing the test suite.
-
-Assuming now that in the workspace there are a large number of configuration files named in the `spec/` folder, the complete test suite could be generated recursively via this command:
-
-```sh
-brutal spec/
-```
-
-This would create one test file per configuration file matching `./spec/**/*_brutal.yaml` in to `./spec/**/test_*.rb`.
-
-### Some examples
-
-<https://github.com/fixrb/brutal/tree/main/examples/>
-
-## Rake integration example
-
-Generated test suite files could be matched as follows:
+Given this class:
 
 ```ruby
-Rake::TestTask.new do |t|
-  t.pattern = "**/test_*.rb"
+# lib/greeter.rb
+class Greeter
+  def initialize(name)
+    @name = name.capitalize
+  end
+
+  def salute
+    "Hello #{@name}!"
+  end
 end
 ```
 
-## Contact
+a manifest is a file named `NAME_brutal.yaml`:
 
-* Source code: https://github.com/fixrb/brutal
+```yaml
+# test/greeter_brutal.yaml
+header: |
+  require_relative "../lib/greeter"
+
+subject: |
+  Greeter.new(%{name})
+
+contexts:
+  name:
+    - '"Alice"'
+    - '"world"'
+
+actuals:
+  - "%{subject}.salute"
+  - "%{subject}.salute.length"
+```
+
+```sh
+bundle exec brutal test/greeter_brutal.yaml
+```
+
+Brutal writes `test/test_greeter.rb` next to it:
+
+```ruby
+# Generated by brutal from greeter_brutal.yaml: edit the manifest, then run brutal again.
+
+require_relative "../lib/greeter"
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  Greeter.new("Alice")
+end
+
+::Kernel.raise "name = \"Alice\": actual.salute" unless ("Hello Alice!").eql?((
+  actual.salute
+))
+::Kernel.raise "name = \"Alice\": actual.salute.length" unless (12).eql?((
+  actual.salute.length
+))
+
+# ------------------------------------------------------------------------------
+
+actual = begin
+  Greeter.new("world")
+end
+
+::Kernel.raise "name = \"world\": actual.salute" unless ("Hello World!").eql?((
+  actual.salute
+))
+::Kernel.raise "name = \"world\": actual.salute.length" unless (12).eql?((
+  actual.salute.length
+))
+```
+
+```sh
+ruby test/test_greeter.rb
+```
+
+A check that fails raises a `RuntimeError` that names the example and the actual; the rest of the file does not run. More examples are in [examples/](https://github.com/fixrb/brutal/tree/main/examples/).
+
+## The manifest
+
+A manifest is a UTF-8 file (a BOM is accepted) holding one YAML document of seven sections; all but `contexts` hold Ruby code:
+
+* `header` (optional): run once, before the first example.
+* `before` (optional): run before each example.
+* `subject`: the code of each example, with a `%{name}` for each context.
+* `contexts`: for each name, a list of code fragments to put in place of `%{name}`.
+* `actuals`: the expressions to observe, with `%{subject}` for the value of the subject.
+* `after` (optional): run after each example.
+* `footer` (optional): run once, after the last example.
+
+There is one example for every combination of the contexts, in the order of the file, the first context varying the slowest. In each example, the value of the subject is held in a local variable named `actual`, and each actual is checked in turn.
+
+The values are read as text, never converted to YAML types: `1,2`, `yes`, `~` or `12:30` stay the Ruby code `1,2`, `yes`, `~` and `12:30` (`1,2` makes sense in a subject such as `[%{v}]`). Only the line breaks that end a value are dropped. YAML's own rules still apply: quotes and escapes are read as YAML reads them, a value that starts with a YAML indicator (`%`, `[`, `{`, `&`, `*`, `!`, `|`, `>`, `@`, `#`…) or holds `: ` or ` #` must be quoted (an unquoted ` #` starts a comment, silently), and in a flow list (`[a, b]`) a comma separates items. A value of several lines must be a literal block (`|`), which YAML does not fold. A fragment is code: a string needs its quotes (`'"Alice"'`), and a plain `Alice` is a constant.
+
+`%{name}` is replaced in the subject, and `%{subject}` in the actuals; nothing else is interpreted, and any other `%` is a `%`. Brutal refuses a placeholder without a context, a context the subject does not use, an actual that uses anything but `%{subject}`, a placeholder in another section, unknown, duplicate, missing or empty sections, and YAML anchors, aliases and tags. `NAME` is made of ASCII letters, digits, `.`, `_` and `-`, and does not start with a dot or a dash; a context name is made of ASCII letters, digits and `_`, and does not start with a digit.
+
+Each section, each subject once its fragments are in place, and each actual must be complete code on its own, and must not hold an end of file (an `__END__` line, a NUL, a ^D or a ^Z): a part cannot open a block, a string or a comment that another part closes, so it cannot skip, swallow or reorder a check. A part can still read differently once combined, through a local variable of an earlier part (`foo -1` is a call alone, a subtraction after `foo = 10`); the recording and the test file read it the same way.
+
+In the test file, a subject or an actual of one line is indented; one of several lines is written as it is, so that a multi-line string or a heredoc keeps its content. The other sections are written as they are.
+
+## How the code runs
+
+Brutal runs the code in a child process, as `ruby` will run the test file: at the top level, with `self` as `main`, the magic comments of the header (`# frozen_string_literal: true`), the local variables of each section visible to the next ones, `__dir__` the directory of the test file, `__FILE__` and `$0` its absolute path, no arguments and nothing on the standard input. It runs in the current directory: use `require_relative` and `__dir__` rather than paths relative to it. What the code does to the process (a monkey patch, a global, a constant, the current directory, `ENV`, a crash) stays in the child; what it does outside, to files or other processes, happens.
+
+Then brutal runs the test file with the Ruby that runs brutal, in a new process, from the current directory, under a temporary name next to it (`.test_NAME.rb.PID.tmp`), before it writes it; an unchanged test file is run where it is. It must pass; when it does not, brutal reports the first line of its standard error that is not a warning. This catches what differs between brutal's child and a real run: the child was forked from brutal, so it has the constants `Aw`, `Brutal`, `Psych` and `StringIO` (and Psych's `to_yaml`), which the test file alone does not; and a hash, an object id or a random number may differ from one process to the next. A value that happens to be the same in both runs (the current minute, a small random number) is not caught: do not observe it. Do not observe `__FILE__` or `$0` either: they are the absolute path of the test file in the recording, a temporary name in brutal's run, and what you type in yours; during the recording, the test file does not exist yet, or is the previous one.
+
+So the code runs twice. Its output shows once, the test file's run being silent, but its side effects happen twice. `--check` runs it once, and writes nothing.
+
+Brutal runs every manifest it is given: a manifest is code, and runs with your rights. Run brutal on your own manifests only.
+
+## Expected values
+
+An observed value is written as a Ruby literal, the same whatever the version of Ruby and the locale: `nil`, `true`, `false`, an `Integer`, a finite `Float`, a `String` in UTF-8, in binary, or with ASCII characters only, a `Symbol`, and an `Array` or a `Hash` of these, by their exact class. Non-ASCII and invisible characters are escaped (`"caf\u00E9"`), and a hash is written with `=>`.
+
+Anything else is refused, with the example and the actual: an object, a `Struct`, a `Set`, a `Range`, a `Rational`, a `Time`, a subclass of `String`, `Array` or `Hash`, `NaN`, an infinite `Float`, a string with non-ASCII characters in another encoding, a structure nested more than 100 levels deep or that contains itself. Observe a projection instead: `.to_s`, `.to_a`, `.to_h`, `.size`, an attribute. Mind that some projections depend on the version of Ruby: `{a: 1}.to_s` is `"{:a=>1}"` before Ruby 3.4 and `"{a: 1}"` since, and the text of an error message changes from one version to another.
+
+Each value is checked with `eql?`, the expected value receiving the call: `1` and `1.0` differ, and an object that claims to equal everything does not pass. `eql?` does not tell `0.0` from `-0.0`, nor the encoding of a string of ASCII characters. Once the test file is written, a string, an array or a hash of a subclass with the same content would pass it, and a hash compares its pairs with `eql?`; an object that is not a hash but converts to one (`to_hash`) is compared by its own `eql?`.
+
+## The command
+
+```txt
+Usage: brutal [--check] PATH...
+
+Writes test_NAME.rb next to each NAME_brutal.yaml given as PATH, or found
+in a directory given as PATH and its subdirectories.
+
+    --check     Run the code, write nothing; fail when a test file is missing or differs.
+    --help, -h  Show this help.
+```
+
+A directory is searched with its subdirectories, in order; hidden files and directories, symbolic links to directories, and anything but a regular file (a symbolic link to one counts) are left out, and a directory that cannot be read is an error, and no manifest of that PATH runs. A manifest given twice, or through a symbolic link to its directory, runs once. Point brutal at your test directory: a directory holding installed gems (`vendor/bundle`) holds code you did not write. An argument that starts with `-` is an option: a path that does is written `./-x`.
+
+A test file is written whole or not at all, through a temporary file renamed over it, with the permissions of the file it replaces (not its setuid, setgid or sticky bits); an unchanged file is left untouched, but run again. Brutal only replaces a file it wrote, whose first line is `# Generated by brutal from`, and checks this before running the code: a test file written by hand, or by brutal 1, a symbolic link or a directory in its place is an error.
+
+Each manifest that fails is reported on the standard error, with its path and the reason, and the others still run. The exit status is 0 when every manifest succeeded, 1 when one failed or a path designates no manifest, and 2 for a usage error. Interrupted, brutal kills the code it runs, writes nothing more, and ends by the signal.
+
+`--check` generates every test file in memory and compares it with the one in place, without running it: run it in CI, so that a test file cannot drift from its manifest. It reports a missing test file, one out of date and one brutal did not write, but not a test file whose manifest was removed.
+
+## Rake integration
+
+```ruby
+# Rakefile
+require "rake/testtask"
+
+desc "Write the test files of the brutal manifests"
+task :brutal do
+  require "brutal"
+  raise "brutal failed" unless Brutal::CLI.run(["test"]).zero?
+end
+
+Rake::TestTask.new do |t|
+  t.pattern = "test/**/test_*.rb"
+end
+```
+
+In CI, run `bundle exec brutal --check test` before the tests.
+
+## Things to know
+
+- The test file is plain Ruby, run by `ruby` or any test runner that loads files. It uses one local variable, `actual`, at the top level of the file; under `ruby -w`, a manifest whose actuals do not use `%{subject}` warns that `actual` is unused.
+- A failing check raises, and stops its file. `Rake::TestTask` loads every test file in one process: the first failure stops the run, and what a test file changes (a monkey patch) reaches the files loaded after it. Brutal runs each test file alone.
+- An `exit`, an `exit!` or a signal during the recording, or a top-level `return` that skips a check of the recording, is reported as a failure of the manifest, and nothing is written. During the recording, `at_exit` handlers do not run.
+- There is no timeout: code that never ends keeps brutal waiting, and so does, during the recording, a process the code forks and leaves running. Killed with `SIGKILL`, brutal leaves its child running, and may leave a `.test_NAME.rb.PID.tmp` file next to the test file.
+- A magic comment that must be on the first line (`# encoding:`, `# warn_indent:`) has no effect in the header, which starts on the third line; `# frozen_string_literal:` and `# shareable_constant_value:` do. The test file is read as UTF-8.
+- On macOS, code that uses Objective-C classes may crash in the child process: run brutal with `OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES`.
+- A check is `::Kernel.raise … unless (expected).eql?((actual))`: code that redefines `Kernel.raise`, or `eql?` on core classes (a refinement included), ends the process from an `at_exit` handler or a `TracePoint`, or behaves differently when it finds brutal (`$__brutal__`), changes the checks. Brutal does not guard against code that sets out to defeat it.
+
+## Changes in 2.0
+
+Compared with 1.6.0.beta4:
+
+- The code no longer runs inside brutal, through `eval` in a method of the generator, in the directory of the manifest, but in a child process, at the top level, from the current directory, as the test file runs: `self`, local variables across sections, reopened classes, magic comments and `__dir__` behave as in the test file, and nothing leaks from a manifest to the next one or to brutal. Before it is written, the test file must pass when `ruby` runs it.
+- An expected value is written as a literal by brutal, never as its `inspect`: a value whose `inspect` is not Ruby (`#<Point …>`, which turned the rest of the line into a comment and hid the next check), an unparenthesized `Range` or a `Rational` is refused instead of written. Literals are the same whatever the version of Ruby and the locale.
+- A check is `(expected).eql?((actual))`: the expected value decides, an `Integer` that becomes a `Float` fails, and an actual is parenthesized on its own lines, so that a `rescue` modifier, an `&&` or a trailing comment stays inside it. A check that fails names the example and the actual.
+- Each section, subject and actual must be complete code on its own, without an end of file.
+- A test file is written whole, through a temporary file, and only over a file brutal wrote. A manifest that fails no longer empties its test file.
+- The manifest is read as text: YAML no longer turns `1,2` into `12` or `yes` into `true`, and fragments are no longer stripped. A value of several lines must be a literal block. `%{name}` is replaced by brutal itself: a `%` in the code is written once, and a `%%` that 1.x needed must be undoubled. Anchors, tags, unknown or duplicate sections, empty sections, a scalar context, a missing `contexts` or `actuals` section, unused contexts and placeholders outside the subject and the actuals are refused. Contexts combine in the order of the file, instead of the alphabetical order of their names. A manifest's name is limited to ASCII letters, digits, `.`, `_` and `-`, and does not start with `.` or `-`.
+- Code of several lines is no longer indented, which changed multi-line strings and heredocs.
+- `brutal` requires a path, and no longer searches the current directory by default. `--check` is new; `--format` and `--version` are gone. A failing manifest is reported with its path and the others still run, where 1.x stopped at the first, with a backtrace.
+- The test file starts with a line saying it was generated, and has no default comments. Test files written by brutal 1 do not carry it: delete them once, then run brutal again.
+- Ruby 3.3 or later, and Aw 1.0.
+
+Compared with 1.5.0, the last stable release, a manifest is no longer any YAML file (`.brutal.yml` by default, written to `test.rb`, or `foo.yaml` to `foo.rb`), and `--no-force` is gone: every manifest is `NAME_brutal.yaml`, written to `test_NAME.rb`. The `before`, `after` and `footer` sections are new, and an unknown section, which 1.5.0 ignored, is refused.
 
 ## Versioning
 
-__Brutal__ follows [Semantic Versioning 2.0](https://semver.org/).
+Brutal follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
 The [gem](https://rubygems.org/gems/brutal) is available as open source under the terms of the [MIT License](https://github.com/fixrb/brutal/raw/main/LICENSE.md).
 
-***
+## Sponsors
 
-This project is sponsored by [Sashité](https://github.com/sashite/):
-
-![Sashité logo](https://github.com/fixrb/brutal/raw/main/img/sponsor/dark/en/sashite.png#gh-dark-mode-only "Sashité")
-![Sashité logo](https://github.com/fixrb/brutal/raw/main/img/sponsor/light/en/sashite.png#gh-light-mode-only "Sashité")
+This project is sponsored by [Sashité](https://sashite.com/)
