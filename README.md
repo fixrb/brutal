@@ -196,6 +196,11 @@ In CI, run `bundle exec brutal --check test` before the tests.
 - On macOS, code that uses Objective-C classes may crash in the child process: run brutal with `OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES`.
 - A check is `::Kernel.raise … unless (expected).eql?((actual))`: code that redefines `Kernel.raise`, or `eql?` on core classes (a refinement included), ends the process from an `at_exit` handler or a `TracePoint`, or behaves differently when it finds brutal (`$__brutal__`), changes the checks. Brutal does not guard against code that sets out to defeat it.
 
+## Changes in 2.0.1
+
+- Interrupted right after the test file ended, brutal no longer sends `KILL` to its pid, which may already belong to another process, nor raises `Errno::ESRCH` in place of the `Interrupt`: the process is checked before any signal, as Aw does.
+- Documentation: every combination of a manifest's contexts runs in one child process; a process the code forked and left running delays brutal only when the recording ends without a result.
+
 ## Changes in 2.0
 
 Compared with 1.6.0.beta4:

@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "aw", "~> 1.0"
 
   spec.metadata["bug_tracker_uri"]       = "https://github.com/fixrb/brutal/issues"
-  spec.metadata["changelog_uri"]         = "https://github.com/fixrb/brutal#changes-in-20"
+  spec.metadata["changelog_uri"]         = "https://github.com/fixrb/brutal#changes-in-201"
   spec.metadata["documentation_uri"]     = "https://rubydoc.info/gems/brutal"
   spec.metadata["rubygems_mfa_required"] = "true"
   spec.metadata["source_code_uri"]       = "https://github.com/fixrb/brutal"
