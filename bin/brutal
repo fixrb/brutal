@@ -6,7 +6,8 @@ require_relative File.join("..", "lib", "brutal")
 begin
   exit Brutal::CLI.run(ARGV)
 rescue Interrupt
-  # Aw has killed and reaped the child. End by the signal, as an interrupted
+  # The child, forked by Aw for the recording or spawned to run the test
+  # file, has been ended and reaped. End by the signal, as an interrupted
   # command does, so that a shell loop stops too, but without a backtrace.
   Signal.trap(:INT, "SYSTEM_DEFAULT")
   Process.kill(:INT, Process.pid)

@@ -4,7 +4,7 @@ require "aw"
 
 # Writes plain Ruby test files from YAML manifests. A manifest gives a
 # subject, contexts to combine and actuals to observe; brutal runs every
-# combination in a child process, records what the code returns, and writes
+# combination in one child process, records what the code returns, and writes
 # a test file that checks these values with `eql?`, without any framework.
 #
 # The test file describes what the code does, not what it should do: read

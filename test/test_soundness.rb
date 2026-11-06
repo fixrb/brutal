@@ -157,6 +157,37 @@ rescue Interrupt
   raise unless Process.waitall.empty?
 end
 
+# Reaping a child that was already reaped, or that has exited and waits to
+# be reaped, never sends a signal: the pid may belong to another process.
+reaped = Process.fork { exit! 0 }
+Process.wait(reaped)
+exit_read, exit_write = IO.pipe
+exited = Process.fork { exit! 0 }
+exit_write.close
+exit_read.read # end of file: the child has closed its descriptors, and exits
+exit_read.close
+deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + 5
+until `ps -o stat= -p #{exited}`.start_with?("Z") || Process.clock_gettime(Process::CLOCK_MONOTONIC) > deadline
+  sleep 0.01
+end
+killed = []
+Process.singleton_class.alias_method(:brutal_test_kill, :kill)
+Process.define_singleton_method(:kill) { |*args| killed << args }
+begin
+  Brutal::Runner.send(:reap, reaped)
+  Brutal::Runner.send(:reap, exited)
+ensure
+  Process.singleton_class.send(:remove_method, :kill)
+  Process.singleton_class.alias_method(:kill, :brutal_test_kill)
+end
+raise "kill was sent to a child that had exited" unless killed.empty?
+begin
+  Process.wait(exited)
+  raise "the child that had exited was not reaped"
+rescue Errno::ECHILD
+  nil
+end
+
 # Keys, labels and messages do not depend on the locale.
 verbose = $VERBOSE
 external = Encoding.default_external

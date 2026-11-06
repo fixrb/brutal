@@ -173,12 +173,17 @@ module Brutal
       "exit status #{status.exitstatus}"
     end
 
-    # Kills and reaps a process left running by an interruption.
+    # Kills and reaps a process left running by an interruption. The process
+    # is checked first: a wait2 interrupted right after it reaped would
+    # otherwise lead to a signal to a pid that may already belong to another
+    # process.
     def self.reap(pid)
-      return if pid.nil?
+      return if pid.nil? || ::Process.wait2(pid, ::Process::WNOHANG)
 
       ::Process.kill(:KILL, pid)
       ::Process.wait(pid)
+    rescue ::Errno::ECHILD
+      nil
     end
 
     private_class_method :failure, :fork, :compile, :evaluate, :describe, :plain, :copy, :status, :reap

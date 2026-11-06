@@ -7,7 +7,8 @@ Gem::Specification.new do |spec|
   spec.email                  = "contact@cyril.email"
   spec.summary                = "Plain Ruby tests, written from what the code does"
   spec.description            = "Writes framework-free Ruby test files from YAML manifests: runs every combination " \
-                                "of contexts in a child process, and checks each observed value with eql?."
+                                "of a manifest's contexts in one child process, and checks each observed value " \
+                                "with eql?."
   spec.homepage               = "https://fixrb.dev/gems/brutal/"
   spec.license                = "MIT"
   spec.files                  = Dir["LICENSE.md", "README.md", "bin/brutal", "lib/**/*.rb", base: __dir__]
