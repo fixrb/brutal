@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["bug_tracker_uri"]       = "https://github.com/fixrb/brutal/issues"
   spec.metadata["changelog_uri"]         = "https://github.com/fixrb/brutal#changes-in-201"
-  spec.metadata["documentation_uri"]     = "https://rubydoc.info/gems/brutal"
+  spec.metadata["documentation_uri"]     = "https://gemdocs.org/gems/#{spec.name}/#{spec.version}/"
   spec.metadata["rubygems_mfa_required"] = "true"
   spec.metadata["source_code_uri"]       = "https://github.com/fixrb/brutal"
 end
